@@ -1,7 +1,4 @@
-import Formatos.InformeClinicoPDF;
-import Formatos.LiberacionCustodiaPDF;
-import Formatos.ResumenPsicologicoPDF;
-import Formatos.TarjetaInformativaPDF;
+import Formatos.*;
 import Informacion.*;
 import com.itextpdf.text.DocumentException;
 import org.omg.CORBA.TRANSACTION_MODE;
@@ -165,8 +162,8 @@ public class Main {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);
 //            new LiberacionCustodiaPDF("LIBERACION_CUSTODIA","F:\\Downloads\\DIF\\", 0, liberacionDeCustodia);
-            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
-
+//            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
+            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\");
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
+import sun.awt.im.InputMethodAdapter;
 
 import javax.crypto.spec.DESedeKeySpec;
 import java.io.IOException;
@@ -57,6 +58,18 @@ public class Default {
         }
     }
 
+    public static class FooterTableCount extends PdfPageEventHelper {
+        protected PdfPTable footer;
+        public FooterTableCount() {
+            this.footer = new PdfPTable(1);
+        }
+        public void onEndPage(PdfWriter writer, Document document) {
+//            footer.addCell(Default.celda(/));
+            footer.addCell(String.valueOf(writer.getPageNumber()));
+            footer.writeSelectedRows(0, -1, 25, this.footer.getTotalHeight() + 15, writer.getDirectContent());
+        }
+    }
+
     public static PdfPCell firmaTrabajador(String trabajador, String cargo, String cedula) {
         PdfPTable content = new PdfPTable(1);
         content.addCell(Default.celda());
@@ -90,12 +103,32 @@ public class Default {
         return image;
     }
 
+    public static Image createImageWidth(String ruta, int largo, int posicion) throws IOException, BadElementException {
+        Image image = Image.getInstance(ruta);
+        if(largo > 300) {largo = 300;}
+        float height = (image.getHeight() / image.getWidth()) * largo;
+        image.scaleAbsoluteWidth(largo);
+        image.scaleAbsoluteHeight(height);
+        image.setAlignment(posicion);
+        return image;
+    }
+
     public static Image createImageHeight(String ruta, int alto) throws IOException, BadElementException {
         Image image = Image.getInstance(ruta);
         if(alto > 300) {alto = 300;}
         float width = (image.getWidth() / image.getHeight()) * alto;
         image.scaleAbsoluteWidth(width);
         image.scaleAbsoluteHeight(alto);
+        return image;
+    }
+
+    public static Image createImageHeight(String ruta, int alto, int posicion) throws IOException, BadElementException {
+        Image image = Image.getInstance(ruta);
+        if(alto > 300) {alto = 300;}
+        float width = (image.getWidth() / image.getHeight()) * alto;
+        image.scaleAbsoluteWidth(width);
+        image.scaleAbsoluteHeight(alto);
+        image.setAlignment(posicion);
         return image;
     }
 
