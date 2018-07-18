@@ -36,6 +36,16 @@ public class Default {
             this.tableHeight = this.table.getTotalHeight();
         }
 
+        public HeaderTable(PdfPTable table) throws IOException, BadElementException {
+            this.table = new PdfPTable(1);
+            this.table.addCell(Default.celda(table));
+            this.table.addCell(Default.celda());
+            this.table.addCell(Default.rellenoColor(3, 0x009FBF));
+            this.table.setTotalWidth(532);
+            this.table.setLockedWidth(true);
+            this.tableHeight = this.table.getTotalHeight();
+        }
+
         public float getTableHeight() {
             return tableHeight;
         }
@@ -134,7 +144,15 @@ public class Default {
 
     public static PdfPCell rellenoColor(String texto, int color) {
         PdfPCell cell = Default.celda(texto, NORMAL, Element.ALIGN_RIGHT, new int[] {255,255,255}, 9);
-//        cell.setFixedHeight(15);
+        cell.setFixedHeight(15);
+        cell.setBorder(0);
+        cell.setBackgroundColor(new BaseColor(color));
+        return cell;
+    }
+
+    public static PdfPCell rellenoColor(int altura, int color) {
+        PdfPCell cell = Default.celda(" ", NORMAL, Element.ALIGN_RIGHT, new int[] {255,255,255}, 9);
+        cell.setFixedHeight(altura);
         cell.setBorder(0);
         cell.setBackgroundColor(new BaseColor(color));
         return cell;
