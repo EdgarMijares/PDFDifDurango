@@ -7,11 +7,13 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import sun.awt.im.InputMethodAdapter;
+import sun.misc.CEFormatException;
 
 import javax.crypto.spec.DESedeKeySpec;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.ConcurrentNavigableMap;
 
 public class Default {
 
@@ -22,7 +24,15 @@ public class Default {
     public static Font TITULO_CHICA = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
     public static Font NORMAL_CHICA = new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL);
 
+
+    public static int HEXA_ROSA = 0xFF2075;
+    public static BaseColor COLOR_ROSA = new BaseColor(0xFF2075);
+
+    public static Font TITULO_CHICA_ROSA = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, COLOR_ROSA);
+    public static Font TITULO_CHICA_BLANCO = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, new BaseColor(0xFFFFFF));
+
     private static String[] MES_TEXTO = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
 
     public static class HeaderTable extends PdfPageEventHelper {
         protected PdfPTable table;
@@ -159,11 +169,65 @@ public class Default {
         return cell;
     }
 
+    public static PdfPCell rellenoColor(String texto, int fondo,Font fuente, int posicion) {
+        PdfPCell cell = Default.celda(texto, fuente, posicion);
+        cell.setFixedHeight(15);
+        cell.setBorder(0);
+        cell.setBackgroundColor(new BaseColor(fondo));
+        return cell;
+    }
+
+    public static PdfPCell checkTrue() {
+        Font fuente = TITULO_CHICA_BLANCO;
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk("X", fuente)));
+        cell.setFixedHeight(15);
+        cell.setBorderColor(COLOR_ROSA);
+        cell.setBackgroundColor(COLOR_ROSA);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        return cell;
+    }
+    public static PdfPCell checkFalse() {
+        Font fuente = TITULO_CHICA_BLANCO;
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(" ", fuente)));
+        cell.setFixedHeight(15);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setBorderColor(COLOR_ROSA);
+        return cell;
+    }
+
+    public static PdfPCell checkTrueFalse(boolean quest,int porcentaje) {
+        PdfPTable content = new PdfPTable(4);
+        content.addCell(Default.celda("SI", NORMAL_CHICA, Element.ALIGN_LEFT));
+        content.addCell((quest? checkTrue(): checkFalse()));
+        content.addCell(Default.celda("NO", NORMAL_CHICA, Element.ALIGN_CENTER));
+        content.addCell((quest? checkFalse(): checkTrue()));
+        content.setWidthPercentage(porcentaje);
+        return Default.celda(content);
+    }
+
     public static PdfPCell celdaDobleChica(String titulo, String texto, float[] porcentaje) throws DocumentException {
         PdfPTable content = new PdfPTable(2);
         content.addCell(Default.celdaBorderButtom(titulo, Default.TITULO_CHICA));
         content.addCell(Default.celdaBorderButtom(texto, Default.NORMAL_CHICA));
         content.setTotalWidth(porcentaje);
+        content.setWidthPercentage(100);
+        return Default.celda(content);
+    }
+
+    public static PdfPCell celdaDoble(String titulo, String texto, float[] porcentaje) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+        content.addCell(Default.celdaBorderButtom(titulo, Default.TITULO_CHICA));
+        content.addCell(Default.celdaBorderButtom(texto, Default.NORMAL_CHICA));
+        content.setTotalWidth(porcentaje);
+        content.setWidthPercentage(100);
+        return Default.celda(content);
+    }
+
+    public static PdfPCell celdaDoble(PdfPCell derecha, PdfPCell izquierda) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+        content.addCell(derecha);
+        content.addCell(izquierda);
+        content.setTotalWidth(new float[] {50, 50});
         content.setWidthPercentage(100);
         return Default.celda(content);
     }
@@ -199,7 +263,7 @@ public class Default {
 
     public static PdfPCell celdaBorderButtom(String texto, Font fuente) {
         PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
-        cell.setBorder(2);
+        cell.setBorder(0);
 //        cell.setBorderColorBottom();
         return cell;
     }
@@ -258,5 +322,14 @@ public class Default {
 
     public static String fechaTexto() {
         return Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " de " +  MES_TEXTO[Calendar.getInstance().get(Calendar.MONTH)] + " del " + Calendar.getInstance().get(Calendar.YEAR);
+    }
+
+    public static PdfPCell createTable(String[] titulo, ArrayList<Object> datos) {
+        PdfPTable table = new PdfPTable(titulo.length);
+        for (String t : titulo) {
+            table.addCell(Default.rellenoColor(t, HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+        }
+        table.setWidthPercentage(100);
+        return Default.celda(table);
     }
 }

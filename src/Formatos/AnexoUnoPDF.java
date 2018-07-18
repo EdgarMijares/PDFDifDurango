@@ -11,6 +11,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.concurrent.ConcurrentNavigableMap;
 
 public class AnexoUnoPDF {
     public AnexoUnoPDF(String nombre_reporte, String url_reporte) throws IOException, DocumentException {
@@ -87,8 +88,29 @@ public class AnexoUnoPDF {
         content.addCell(Default.celdaDobleChica("ESCOLARIDAD: ",        "9no semestre de licenciatura", new float[] {27, 73}));
         content.addCell(Default.celdaDobleChica("RELIGIÓN: ",           "Catolico",     new float[] {27, 73}));
         content.addCell(Default.celdaDobleChica("ESTADO CIVIL: ",       "Soltero",      new float[] {27, 73}));
+
+        PdfPTable discapaciad = new PdfPTable(4);
+        discapaciad.addCell(Default.celda("DISCAPACIDAD:", Default.TITULO_CHICA, Element.ALIGN_LEFT));
+        discapaciad.addCell(Default.checkTrueFalse(true, 90));
+        discapaciad.addCell(Default.celda("¿CUÁL?", Default.TITULO_CHICA, Element.ALIGN_LEFT));
+        discapaciad.addCell(Default.celda(" ", Default.NORMAL_CHICA, Element.ALIGN_LEFT));
+        discapaciad.setTotalWidth(new float[] {25,25,10,40});
+        discapaciad.setWidthPercentage(100);
+        content.addCell(Default.celda(discapaciad));
+
+        content.addCell(Default.celdaDoble("IDIOMA y/o DIALECTO:", "ESPAÑOL", new float[]{27,73}));
+        content.addCell(
+                Default.celdaDoble(
+                        Default.celdaDobleChica("GRUPO ÉTNICO:", "ESPAÑOL", new float[] {54, 46}),
+                        Default.celdaDobleChica("¿CUÁL?", "X", new float[] {20,80})));
+
+        content.addCell(Default.celdaDoble("DOMICILIO: ", "", new float[] {27,73}));
         content.addCell(Default.celda());
+        content.addCell(Default.celda("PERSONAS PRESENTES EN LA EVALUACIÓN PSICOLÓGICA Y SU PARENTESCO:", Default.TITULO_CHICA));
+        content.addCell(Default.createTable(new String[] {"Nombre(s)", "Apellido Paterno", "Apellido Materno", "Parentesco"}, null));
         content.addCell(Default.celda());
+        content.addCell(Default.celda("RESTRICCIONES EN LA EVALUACIÓN PSICOLÓGICA:", Default.TITULO_CHICA));
+        content.addCell(Default.celda(""));
 
         content.setWidthPercentage(85);
 
