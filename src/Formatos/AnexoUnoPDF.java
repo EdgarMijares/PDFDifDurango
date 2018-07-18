@@ -1,19 +1,34 @@
 package Formatos;
 
 import Design.Default;
-import Informacion.InformeClinicoData;
 import com.itextpdf.text.*;
-import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sun.org.apache.xerces.internal.impl.dtd.models.DFAContentModel;
 
+import javax.xml.crypto.dom.DOMCryptoContext;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.concurrent.ConcurrentNavigableMap;
 
 public class AnexoUnoPDF {
+
+    private static String[][] PRUEBAS = {
+            {"HTP (HOUSE-TREE-PERSON)", "TEST QUE PERMITE AL SUJETO PROYECTAR CON MÁS FACILIDAD SUS ÁREAS DE CONFLICTO Y ELEMENTOS DE SU PERSONALIDAD."},
+            {"TEST DEL ÁRBOL", "TEST PROYECTIVO QUE CONSISTE EN EL DIBUJO DE UN ÁRBOL, EN ESTE TODO NIÑO/ADOLESCENTE INFORMA ACERCA DE SÍ MISMO, DE SU EVOLUCIÓN PSICOSEXUAL " +
+                    "Y DE SU RELACIÓN CON EL MUNDO EN EL QUE SE DESARROLLA "},
+            {"TEST DE LA FAMILIA", "SE TRATA DE UNA PRUEBA DE PERSONALIDAD QUE PUEDE ADMINISTRARSE A LOS NIÑOS DE CINCO AÑOS HASTA LA ADOLESCENCIA, POSIBILITA LA LIBRE" +
+                    "EXPRESIÓN DE LOS SENTIMIENTOS DE LOS MENORES HACIA SUS FAMILIARES, ESPECIALMENTE DE SUS PROGENITORES Y REFLEJA, ADEMÁS, LA SITUACIÓN EN LA QUE SE COLOCAN ELLOS" +
+                    "MISMOS CON SU MEDIO DOMÉSTICO."},
+            {"TEST DE MACHOVER", "PRUEBA GRÁFICA DONDE POR MEDIO DE LA FIGURA HUMANA SE EVALÚA LA PERSONALIDAD."},
+            {"TEST DE APERCEPCIÓN INFANTIL", "PRUEBA PROYECTIVA, PERMITE CONOCER TANTO EL CONOCIMIENTO APERCEPTIVO COMO EL EXPRESIVO. "},
+            {"TEST DE PERSONA BAJO LA LLUVIA.", "PRUEBA PROYECTIVA, PERMITE EVALUAR LA ANSIEDAD, TEMOR, DEFENSAS, ADAPTACIÓN, ETC. "},
+            {"TEST GESTÁLTICO VISOMOTOR BENDER", "EXPLORA MADUREZ PERCEPTIVA, DETERIORO NEUROLÓGICO Y AJUSTE EMOCIONAL. "},
+            {"OTRO", ""}
+    };
+
+    private static String[] MATERIAL = {"MEMORAMA", "ROMPECABEZAS(EN FUNCIÓN DE LAS EDADES", "CUENTOS", "JUGUETES(CARROS, PELUCHES, ANIMALITOS, MUÑECAS, ETC.", "TÍTERES", "MASA(PLAY DOH)"};
     public AnexoUnoPDF(String nombre_reporte, String url_reporte) throws IOException, DocumentException {
         Default.HeaderTable header = new Default.HeaderTable(getHeader(), "DIF/PPNNA-040-019/2018");
 
@@ -24,6 +39,8 @@ public class AnexoUnoPDF {
         document.open();
         document.add(getDatosExpendientes());
         document.add(getDatosGenerales());
+        document.add(getEvaluacion());
+        document.add(getTecnicas());
         document.close();
         pdfWriter.setPageEvent(new Default.FooterTableCount());
         Desktop.getDesktop().open(new File(url_reporte + nombre_reporte + ".pdf"));
@@ -44,8 +61,7 @@ public class AnexoUnoPDF {
     private PdfPTable getDatosExpendientes() throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda());
-        content.addCell(Default.celda("ANEXO I", Default.TITULO, Element.ALIGN_CENTER));
+        content.addCell(Default.celda("\nANEXO I", Default.TITULO, Element.ALIGN_CENTER));
         content.addCell(Default.celda("Formato en materia Psicológica", Default.TITULO, Element.ALIGN_CENTER));
 
         PdfPTable content_double = new PdfPTable(2);
@@ -78,7 +94,7 @@ public class AnexoUnoPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("1. DATOS GENERALES", Default.TITULO));
-        content.addCell(Default.celda("1.1 INFORMACIÓN DEL PACIENTE", Default.TITULO));
+        content.addCell(Default.celda("1.1 INFORMACIÓN DEL PACIENTE", Default.TITULO_CHICA));
         content.addCell(Default.celda());
         content.addCell(Default.celdaDobleChica("NOMBRE: ",             "EDGAR CIPRIANO MIJARES CEJAS", new float[] {27, 73}));
         content.addCell(Default.celdaDobleChica("FECHA DE NACIMIENTO: ","06/08/1994",   new float[] {27, 73}));
@@ -114,6 +130,37 @@ public class AnexoUnoPDF {
 
         content.setWidthPercentage(85);
 
+        return content;
+    }
+
+    private PdfPTable getEvaluacion(){
+        PdfPTable content = new PdfPTable(1);
+        content.addCell(Default.celda("2. MOTIVO DE LA EVALUACIÓN PSICOLÓGICA:", Default.TITULO));
+        content.addCell(Default.celda());
+        content.setWidthPercentage(85);
+        return content;
+    }
+
+    private PdfPTable getTecnicas() throws DocumentException {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("3. TÉCNICAS UTILIZADAS", Default.TITULO));
+        content.addCell(Default.celda("3.2 ENTREVISTA", Default.TITULO_CHICA));
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("3.3 PRUEBAS", Default.TITULO_CHICA));
+        boolean t[] = new boolean[PRUEBAS.length];
+        for(int i = 0; i < PRUEBAS.length; i++) {
+            t[i] = true;
+            if (t[i]) { content.addCell(Default.celdaDoble(PRUEBAS[i][0], PRUEBAS[i][1], new float[]{27, 73})); }
+        }
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("3.4 MATERIAL PSICOPEDAGÓGICO", Default.TITULO_CHICA));
+        for(int i = 0; i < MATERIAL.length; i++) {
+            if (t[i]) { content.addCell(Default.celda(MATERIAL[i], Default.NORMAL_CHICA)); }
+        }
+        content.addCell(Default.celda());
+
+        content.setWidthPercentage(85);
         return content;
     }
 }
