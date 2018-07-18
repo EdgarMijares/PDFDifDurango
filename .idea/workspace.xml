@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/AnexoUnoPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/AnexoUnoPDF.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Design/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Design/Default.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" afterDir="false" />
     </list>
@@ -25,18 +26,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnexoUnoPDF.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnexoUnoPDF.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="80" column="70" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
-              <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
-              <caret line="82" column="83" selection-start-line="82" selection-start-column="83" selection-end-line="82" selection-end-column="83" />
-              <caret line="83" column="76" selection-start-line="83" selection-start-column="76" selection-end-line="83" selection-end-column="76" />
-              <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
-              <caret line="85" column="75" selection-start-line="85" selection-start-column="75" selection-end-line="85" selection-end-column="75" />
-              <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
-              <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+              <caret line="81" column="122" selection-start-line="81" selection-start-column="122" selection-end-line="81" selection-end-column="122" />
+              <caret line="82" column="106" selection-start-line="82" selection-start-column="106" selection-end-line="82" selection-end-column="106" />
+              <caret line="83" column="122" selection-start-line="83" selection-start-column="122" selection-end-line="83" selection-end-column="122" />
+              <caret line="84" column="106" selection-start-line="84" selection-start-column="106" selection-end-line="84" selection-end-column="106" />
+              <caret line="85" column="106" selection-start-line="85" selection-start-column="106" selection-end-line="85" selection-end-column="106" />
+              <caret line="86" column="122" selection-start-line="86" selection-start-column="122" selection-end-line="86" selection-end-column="122" />
+              <caret line="87" column="106" selection-start-line="87" selection-start-column="106" selection-end-line="87" selection-end-column="106" />
+              <caret line="88" column="106" selection-start-line="88" selection-start-column="106" selection-end-line="88" selection-end-column="106" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,13 +45,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Default.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Default.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
+            <state relative-caret-position="-335">
+              <caret line="164" column="49" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rectangle.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/itextpdf-5.4.2.jar!/com/itextpdf/text/Rectangle.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="358" column="16" selection-start-line="358" selection-start-column="16" selection-end-line="358" selection-end-column="16" />
+              <folding>
+                <element signature="e#9270#9271#0" expanded="true" />
+                <element signature="e#9328#9329#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,12 +86,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Design/Default.java" />
         <option value="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" />
+        <option value="$PROJECT_DIR$/src/Design/Default.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="906" />
     <option name="width" value="1022" />
     <option name="height" value="728" />
@@ -245,8 +259,8 @@
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4989339" visible="true" weight="0.26406926" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.5010661" side_tool="true" weight="0.26406926" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49840087" visible="true" weight="0.26406926" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.50159913" side_tool="true" visible="true" weight="0.26406926" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
       <window_info content_ui="combo" id="Project" order="5" weight="0.12793177" />
@@ -306,16 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -337,14 +341,35 @@
     <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="80" column="70" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
-          <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
-          <caret line="82" column="83" selection-start-line="82" selection-start-column="83" selection-end-line="82" selection-end-column="83" />
-          <caret line="83" column="76" selection-start-line="83" selection-start-column="76" selection-end-line="83" selection-end-column="76" />
-          <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
-          <caret line="85" column="75" selection-start-line="85" selection-start-column="75" selection-end-line="85" selection-end-column="75" />
-          <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
-          <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+          <caret line="81" column="122" selection-start-line="81" selection-start-column="122" selection-end-line="81" selection-end-column="122" />
+          <caret line="82" column="106" selection-start-line="82" selection-start-column="106" selection-end-line="82" selection-end-column="106" />
+          <caret line="83" column="122" selection-start-line="83" selection-start-column="122" selection-end-line="83" selection-end-column="122" />
+          <caret line="84" column="106" selection-start-line="84" selection-start-column="106" selection-end-line="84" selection-end-column="106" />
+          <caret line="85" column="106" selection-start-line="85" selection-start-column="106" selection-end-line="85" selection-end-column="106" />
+          <caret line="86" column="122" selection-start-line="86" selection-start-column="122" selection-end-line="86" selection-end-column="122" />
+          <caret line="87" column="106" selection-start-line="87" selection-start-column="106" selection-end-line="87" selection-end-column="106" />
+          <caret line="88" column="106" selection-start-line="88" selection-start-column="106" selection-end-line="88" selection-end-column="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/itextpdf-5.4.2.jar!/com/itextpdf/text/Rectangle.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="358" column="16" selection-start-line="358" selection-start-column="16" selection-end-line="358" selection-end-column="16" />
+          <folding>
+            <element signature="e#9270#9271#0" expanded="true" />
+            <element signature="e#9328#9329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-335">
+          <caret line="164" column="49" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

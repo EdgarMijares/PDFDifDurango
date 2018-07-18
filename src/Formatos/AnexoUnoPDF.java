@@ -73,24 +73,24 @@ public class AnexoUnoPDF {
         return content;
     }
 
-    private PdfPTable getDatosGenerales() {
+    private PdfPTable getDatosGenerales() throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("1. DATOS GENERALES", Default.TITULO));
         content.addCell(Default.celda("1.1 INFORMACIÓN DEL PACIENTE", Default.TITULO));
         content.addCell(Default.celda());
-        content.addCell(Default.celda("NOMBRE: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("FECHA DE NACIMIENTO: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("LUGAR DE NACIMIENTO: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("NACIONALIDAD: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("GÉNERO", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("ESCOLARIDAD: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("RELIGIÓN: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
-        content.addCell(Default.celda("ESTADO CIVIL: ", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)));
+        content.addCell(Default.celdaDobleChica("NOMBRE: ",             "EDGAR CIPRIANO MIJARES CEJAS", new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("FECHA DE NACIMIENTO: ","06/08/1994",   new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("LUGAR DE NACIMIENTO: ","Durango Durango Mexico",       new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("NACIONALIDAD: ",       "Mexicana",     new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("GÉNERO",               "Masculino",    new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("ESCOLARIDAD: ",        "9no semestre de licenciatura", new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("RELIGIÓN: ",           "Catolico",     new float[] {27, 73}));
+        content.addCell(Default.celdaDobleChica("ESTADO CIVIL: ",       "Soltero",      new float[] {27, 73}));
         content.addCell(Default.celda());
         content.addCell(Default.celda());
 
-        content.setWidthPercentage(80);
+        content.setWidthPercentage(85);
 
         return content;
     }

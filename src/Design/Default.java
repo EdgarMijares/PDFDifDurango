@@ -19,6 +19,7 @@ public class Default {
     public static Font NORMAL = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
     public static Font SUBRAYADO = new Font(Font.FontFamily.HELVETICA, 12, Font.UNDERLINE);
 
+    public static Font TITULO_CHICA = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
     public static Font NORMAL_CHICA = new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL);
 
     private static String[] MES_TEXTO = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
@@ -158,6 +159,15 @@ public class Default {
         return cell;
     }
 
+    public static PdfPCell celdaDobleChica(String titulo, String texto, float[] porcentaje) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+        content.addCell(Default.celdaBorderButtom(titulo, Default.TITULO_CHICA));
+        content.addCell(Default.celdaBorderButtom(texto, Default.NORMAL_CHICA));
+        content.setTotalWidth(porcentaje);
+        content.setWidthPercentage(100);
+        return Default.celda(content);
+    }
+
     public static PdfPCell celda() {
         PdfPCell cell = new PdfPCell();
         cell.addElement(new Paragraph(" "));
@@ -184,6 +194,13 @@ public class Default {
     public static PdfPCell celda(String texto, Font fuente) {
         PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
         cell.setBorder(0);
+        return cell;
+    }
+
+    public static PdfPCell celdaBorderButtom(String texto, Font fuente) {
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
+        cell.setBorder(2);
+//        cell.setBorderColorBottom();
         return cell;
     }
 
