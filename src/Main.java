@@ -158,6 +158,9 @@ public class Main {
         tarjetaInformativa.setTrabajador_receptor(receptor);
         tarjetaInformativa.setDireccion(direccion);
 
+        // ANEXO UNO
+
+
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);

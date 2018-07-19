@@ -4,9 +4,7 @@ import Design.Default;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.sun.org.apache.xerces.internal.impl.dtd.models.DFAContentModel;
 
-import javax.xml.crypto.dom.DOMCryptoContext;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,6 +27,7 @@ public class AnexoUnoPDF {
     };
 
     private static String[] MATERIAL = {"MEMORAMA", "ROMPECABEZAS(EN FUNCIÓN DE LAS EDADES", "CUENTOS", "JUGUETES(CARROS, PELUCHES, ANIMALITOS, MUÑECAS, ETC.", "TÍTERES", "MASA(PLAY DOH)"};
+
     public AnexoUnoPDF(String nombre_reporte, String url_reporte) throws IOException, DocumentException {
         Default.HeaderTable header = new Default.HeaderTable(getHeader(), "DIF/PPNNA-040-019/2018");
 
@@ -41,6 +40,9 @@ public class AnexoUnoPDF {
         document.add(getDatosGenerales());
         document.add(getEvaluacion());
         document.add(getTecnicas());
+        document.add(getEstado());
+        document.add(getResultados());
+        document.add(getFirma());
         document.close();
         pdfWriter.setPageEvent(new Default.FooterTableCount());
         Desktop.getDesktop().open(new File(url_reporte + nombre_reporte + ".pdf"));
@@ -159,6 +161,65 @@ public class AnexoUnoPDF {
             if (t[i]) { content.addCell(Default.celda(MATERIAL[i], Default.NORMAL_CHICA)); }
         }
         content.addCell(Default.celda());
+
+        content.setWidthPercentage(85);
+        return content;
+    }
+
+    private PdfPTable getEstado() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("4. ESTADO MENTAL Y ACTITUD HACIA LA EVALUACIÓN\n ", Default.TITULO));
+        content.addCell(Default.celda("4.1 APARIENCIA FÍSICA\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.2 CONDUCTA MOTRIZ\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.3 HABLA/LENGUAJE\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.4 SOCIALIZACIÓN\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.5 ORIENTACIÓN\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.6 CONSCIENCIA\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.7 MEMORIA, ATENCIÓN Y CONCENTRACIÓN\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.8 PERCEPCIÓN\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.9 PENSAMIENTO\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.10 AFECTO/EMOCIÓN\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+        content.addCell(Default.celda("4.11 INTELIGENCIA\n ", Default.TITULO_CHICA));
+//        content.addCell(Default.celda());
+
+        content.setWidthPercentage(85);
+        return content;
+    }
+
+    private PdfPTable getResultados() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("5. RESULTADOS E INTERPRETACIÓN DE LAS TÉCNICAS UTILIZADAS", Default.TITULO));
+        content.addCell(Default.celda());
+
+        content.addCell(Default.celda("6. CONCLUSIONES", Default.TITULO));
+        content.addCell(Default.celda());
+
+        content.addCell(Default.celda("7. SUGERENCIAS", Default.TITULO));
+        content.addCell(Default.celda());
+
+        content.setWidthPercentage(85);
+        return content;
+    }
+
+    private PdfPTable getFirma() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.firmaTrabajadorChica("NOMBRE DEL TRABAJADOR", "PSICÓLOGO"));
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("Ciudad de México, a " + Default.fechaTexto(), Default.TITULO, Element.ALIGN_JUSTIFIED));
 
         content.setWidthPercentage(85);
         return content;

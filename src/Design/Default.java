@@ -114,6 +114,17 @@ public class Default {
         return Default.celda(content);
     }
 
+    public static PdfPCell firmaTrabajadorChica(String trabajador, String cargo) {
+        PdfPTable content = new PdfPTable(1);
+        content.addCell(Default.celda());
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("_______________________________________", TITULO_CHICA, Element.ALIGN_CENTER));
+        content.addCell(Default.celda(trabajador, TITULO_CHICA, Element.ALIGN_CENTER));
+        content.addCell(Default.celda(cargo, TITULO_CHICA, Element.ALIGN_CENTER));
+
+        return Default.celda(content);
+    }
+
     public static Image createImageWidth(String ruta, int largo) throws IOException, BadElementException {
         Image image = Image.getInstance(ruta);
         if(largo > 300) {largo = 300;}
