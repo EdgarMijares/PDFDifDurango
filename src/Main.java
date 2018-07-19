@@ -5,6 +5,7 @@ import org.omg.CORBA.TRANSACTION_MODE;
 import sun.awt.geom.AreaOp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Main {
@@ -159,6 +160,13 @@ public class Main {
         tarjetaInformativa.setDireccion(direccion);
 
         // ANEXO UNO
+        AnexoUnoData anexoUnoData = new AnexoUnoData();
+
+        ArrayList<Familia> lista_familia = new ArrayList<>();
+        // AQUÍ CREO QUE TIENEN UN ARRAY LIST SOLO LO PASAN COMO PARAMETRO DIRECTO A FAMILIA
+        Familia familia = new Familia("Nanci Yutzelly", "Valles", "Cejas", "Hermanastra");
+        lista_familia.add(familia);
+        anexoUnoData.setFamilia(lista_familia);
 
 
         try {
@@ -166,7 +174,7 @@ public class Main {
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);
 //            new LiberacionCustodiaPDF("LIBERACION_CUSTODIA","F:\\Downloads\\DIF\\", 0, liberacionDeCustodia);
 //            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
-            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\");
+            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

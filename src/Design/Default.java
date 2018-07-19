@@ -1,5 +1,6 @@
 package Design;
 
+import Informacion.Familia;
 import Informacion.InformeClinicoData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -218,8 +219,8 @@ public class Default {
 
     public static PdfPCell celdaDobleChica(String titulo, String texto, float[] porcentaje) throws DocumentException {
         PdfPTable content = new PdfPTable(2);
-        content.addCell(Default.celdaBorderButtom(titulo, Default.TITULO_CHICA));
-        content.addCell(Default.celdaBorderButtom(texto, Default.NORMAL_CHICA));
+        content.addCell(Default.celda(titulo, Default.TITULO_CHICA));
+        content.addCell(Default.celda(texto, Default.NORMAL_CHICA));
         content.setTotalWidth(porcentaje);
         content.setWidthPercentage(100);
         return Default.celda(content);
@@ -227,8 +228,8 @@ public class Default {
 
     public static PdfPCell celdaDoble(String titulo, String texto, float[] porcentaje) throws DocumentException {
         PdfPTable content = new PdfPTable(2);
-        content.addCell(Default.celdaBorderButtom(titulo, Default.TITULO_CHICA));
-        content.addCell(Default.celdaBorderButtom(texto, Default.NORMAL_CHICA));
+        content.addCell(Default.celda(titulo, Default.TITULO_CHICA));
+        content.addCell(Default.celda(texto, Default.NORMAL_CHICA));
         content.setTotalWidth(porcentaje);
         content.setWidthPercentage(100);
         return Default.celda(content);
@@ -276,6 +277,14 @@ public class Default {
         PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
         cell.setBorder(0);
 //        cell.setBorderColorBottom();
+        return cell;
+    }
+
+    public static PdfPCell celdaBorderButtom(String texto, Font fuente, int posicion) {
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
+        cell.setBorder(2);
+        cell.setHorizontalAlignment(posicion);
+        cell.setBorderColor(COLOR_ROSA);
         return cell;
     }
 
@@ -335,12 +344,26 @@ public class Default {
         return Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " de " +  MES_TEXTO[Calendar.getInstance().get(Calendar.MONTH)] + " del " + Calendar.getInstance().get(Calendar.YEAR);
     }
 
-    public static PdfPCell createTable(String[] titulo, ArrayList<Object> datos) {
+    public static PdfPCell createTable(String[] titulo, ArrayList<Familia> datos) {
         PdfPTable table = new PdfPTable(titulo.length);
         for (String t : titulo) {
             table.addCell(Default.rellenoColor(t, HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
+        for (Familia t : datos){
+            table.addCell(Default.celdaBorderButtom(t.getNombre(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtom(t.getApellido_paterno(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtom(t.getApellido_materno(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtom(t.getParentesco(), NORMAL_CHICA, Element.ALIGN_CENTER));
+        }
         table.setWidthPercentage(100);
         return Default.celda(table);
+    }
+
+    public static ZapfDingbatsList crearLista(ArrayList lista) {
+        ZapfDingbatsList list = new ZapfDingbatsList(40);
+        for(int i = 0; i < lista.size(); i++) {
+            list.add(String.valueOf(lista.get(i)));
+        }
+        return list;
     }
 }

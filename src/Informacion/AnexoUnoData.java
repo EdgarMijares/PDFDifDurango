@@ -29,8 +29,8 @@ public class AnexoUnoData {
     private String motivo_evaluacion = "";
 
     private String entrevista = "";
-    private boolean pruebas[];
-    private boolean material[];
+    private boolean pruebas[] = {false, false, false, false, false, false, false, false};
+    private boolean material[] = {false, false, true, false, false, false};
 
     private String apariencia_fisica = "";
     private String conducta_motriz = "";
@@ -42,13 +42,17 @@ public class AnexoUnoData {
     private String percepcion = "";
     private String pensamiento = "";
     private String afecto = "";
-    private String inteligencia;
+    private String inteligencia = "";
 
     private String interpretacion_de_tecnicas = "";
     private String concluciones = "";
     private String sugerencias = "";
 
     private TrabajadorData trabajador = new TrabajadorData();
+
+    public AnexoUnoData() {
+
+    }
 
     public AnexoUnoData(String folio, String no_expediente, String fecha, String hora, String nombre, String fecha_nacimiento, String lugar_nacimiento, String nacionalidad, String sexo, String escolaridad, String religion, String estado_civil, boolean discapacidad, String tipo_discapacidad, String idioma, String etnia, String etnia_cual, String domicilio, String restricciones, String motivo_evaluacion, String entrevista, boolean[] pruebas, boolean[] material, String apariencia_fisica, String conducta_motriz, String habla, String socializacion, String orientacion, String conscienca, String memoria, String percepcion, String pensamiento, String afecto, String inteligencia, String interpretacion_de_tecnicas, String concluciones, String sugerencias) {
         this.folio = folio;
@@ -403,49 +407,3 @@ public class AnexoUnoData {
     }
 }
 
-class Familia {
-
-    private String nombre;
-    private String apellido_paterno;
-    private String apellido_materno;
-    private String parentesco;
-
-    public Familia(String nombre, String apellido_paterno, String apellido_materno, String parentesco) {
-        this.nombre = nombre;
-        this.apellido_paterno = apellido_paterno;
-        this.apellido_materno = apellido_materno;
-        this.parentesco = parentesco;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido_paterno() {
-        return apellido_paterno;
-    }
-
-    public void setApellido_paterno(String apellido_paterno) {
-        this.apellido_paterno = apellido_paterno;
-    }
-
-    public String getApellido_materno() {
-        return apellido_materno;
-    }
-
-    public void setApellido_materno(String apellido_materno) {
-        this.apellido_materno = apellido_materno;
-    }
-
-    public String getParentesco() {
-        return parentesco;
-    }
-
-    public void setParentesco(String parentesco) {
-        this.parentesco = parentesco;
-    }
-}
