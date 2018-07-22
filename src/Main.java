@@ -165,7 +165,9 @@ public class Main {
         ArrayList<Familia> lista_familia = new ArrayList<>();
         // AQUÍ CREO QUE TIENEN UN ARRAY LIST SOLO LO PASAN COMO PARAMETRO DIRECTO A FAMILIA
         Familia familia = new Familia("Nanci Yutzelly", "Valles", "Cejas", "Hermanastra");
+        Familia familia2 = new Familia("Nanci Yutzelly", "Valles", "Cejas", "Hermanastra");
         lista_familia.add(familia);
+        lista_familia.add(familia2);
         anexoUnoData.setFamilia(lista_familia);
 
 
