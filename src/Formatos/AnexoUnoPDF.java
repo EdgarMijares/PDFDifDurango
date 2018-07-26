@@ -31,7 +31,7 @@ public class AnexoUnoPDF {
 
     private AnexoUnoData data;
 
-    public AnexoUnoPDF(String nombre_reporte, String url_reporte, AnexoUnoData data) throws IOException, DocumentException {
+    public AnexoUnoPDF (String nombre_reporte, String url_reporte, AnexoUnoData data) throws IOException, DocumentException {
         this.data = data;
         Default.HeaderTable header = new Default.HeaderTable(getHeader(), data.getNo_expediente());
 
