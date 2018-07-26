@@ -2,6 +2,8 @@ package Formatos;
 
 import Design.Default;
 import Informacion.AnexoUnoData;
+import Informacion.PersonaData;
+import Informacion.RecepcionReporteData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -16,6 +18,8 @@ import java.io.IOException;
 import static Design.Default.*;
 
 public class RecepcionReportePDF {
+
+    RecepcionReporteData data;
 
     private static String LISTA_DE_DERECHOS[] = {
             "Derecho a la vida, a la supervivencia y al desarrollo",
@@ -43,8 +47,8 @@ public class RecepcionReportePDF {
                     "establecerá condiciones de competecia efectiva en la presentación de dicho servicios"
     };
 
-    public RecepcionReportePDF (String nombre_reporte, String url_reporte, AnexoUnoData data) throws IOException, DocumentException {
-//        this.data = data;
+    public RecepcionReportePDF (String nombre_reporte, String url_reporte, RecepcionReporteData data) throws IOException, DocumentException {
+        this.data = data;
 
         Document document = new Document(PageSize.A4, 30, 30, 30, (getFooter().getTotalHeight() + 25));
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(url_reporte + nombre_reporte + ".pdf"));
@@ -53,7 +57,7 @@ public class RecepcionReportePDF {
         document.add(getHeader());
         document.add(getDatosRecepcion());
         document.add(getDatosDenunciante());
-        document.add(getVictimas(false));
+        document.add(getVictimas());
         document.add(getDatosCustodio());
 //        document.newPage();
         document.add(getDatosAgresores());
@@ -65,16 +69,6 @@ public class RecepcionReportePDF {
         Desktop.getDesktop().open(new File(url_reporte + nombre_reporte + ".pdf"));
     }
 
-    private PdfPTable getFooter() {
-        PdfPTable content = new PdfPTable(1);
-
-        content.addCell(celda());
-        content.addCell(rellenoColor("EXPEDIENTE: DIF/PPNNA-040-071/2018", HEXA_ROSA));
-        content.setTotalWidth(550);
-
-        content.setWidthPercentage(100);
-        return content;
-    }
     private PdfPTable getHeader() throws IOException, BadElementException {
         PdfPTable content = new PdfPTable(1);
 
@@ -101,6 +95,17 @@ public class RecepcionReportePDF {
         return content;
     }
 
+    private PdfPTable getFooter() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(celda());
+        content.addCell(rellenoColor("EXPEDIENTE: " + data.getNo_expediente(), HEXA_ROSA));
+        content.setTotalWidth(550);
+
+        content.setWidthPercentage(100);
+        return content;
+    }
+
     private PdfPTable getDatosRecepcion () throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
@@ -109,7 +114,7 @@ public class RecepcionReportePDF {
                 celda(" ", NORMAL_CHICA),
                 celdaDoble(
                         celda("No. EXPEDIENTE:", TITULO_CHICA, Element.ALIGN_RIGHT),
-                        celda("DIF/PPNNA-040-071/2018", NORMAL_CHICA, Element.ALIGN_RIGHT)
+                        celda(data.getNo_expediente(), NORMAL_CHICA, Element.ALIGN_RIGHT)
                 ),
                 new float[] {53,48}));
 
@@ -117,7 +122,7 @@ public class RecepcionReportePDF {
                 celda(" ", NORMAL_CHICA),
                 celdaDoble(
                         celda("No. FOLIO:", TITULO_CHICA, Element.ALIGN_RIGHT),
-                        celda("99990", NORMAL_CHICA, Element.ALIGN_RIGHT),
+                        celda(data.getFolio(), NORMAL_CHICA, Element.ALIGN_RIGHT),
                         new float[] {70,30}
                 ),
                 new float[] {85,25}));
@@ -126,34 +131,34 @@ public class RecepcionReportePDF {
                 celda(" ", NORMAL_CHICA),
                 celdaDoble(
                         celda("FECHA:", TITULO_CHICA, Element.ALIGN_RIGHT),
-                        celda("01/06/2018 - 11:52:00", NORMAL_CHICA, Element.ALIGN_RIGHT),
+                        celda(data.getFecha() + " - " + data.getHora(), NORMAL_CHICA, Element.ALIGN_RIGHT),
                         new float[] {25,65}
                 ),
                 new float[] {70,30}));
 
         content.addCell(
                 celdaDoble(
-                        celdaDobleChica("RECIBIÓ:", "LIC. ELVA SOFIA BLANCO LOPEZ", new float[] {20, 80}),
-                        celdaDobleChica("No. OFICIO:", "123456789", new float[] {31, 69})
+                        celdaDobleChica("RECIBIÓ:", data.getRecibio(), new float[] {20, 80}),
+                        celdaDobleChica("No. OFICIO:", data.getNo_oficio(), new float[] {31, 69})
                 ));
         content.addCell(
                 celdaDoble(
-                        celdaDobleChica("FECHA OFICIO:", "123456789", new float[] {31, 69}),
-                        celdaDobleChica("QUIÉN ENVÍA:", " ", new float[] {31, 69})
+                        celdaDobleChica("FECHA OFICIO:", data.getFehca_oficio(), new float[] {31, 69}),
+                        celdaDobleChica("QUIÉN ENVÍA:", data.getQuien_envia(), new float[] {31, 69})
         ));
 
         PdfPTable anonimo = new PdfPTable(3);
-        anonimo.addCell(opcion("Anonimo", true));
-        anonimo.addCell(opcion("Público", false));
-        anonimo.addCell(opcion("Privado", false));
+        anonimo.addCell(opcion("Anonimo", data.getAnonimato()[0]));
+        anonimo.addCell(opcion("Público", data.getAnonimato()[1]));
+        anonimo.addCell(opcion("Privado", data.getAnonimato()[2]));
         anonimo.setWidthPercentage(100);
         content.addCell(celdaDobleChica("ANONIMATO:", celda(anonimo), new float[] {21, 79}));
 
         PdfPTable medio = new PdfPTable(4);
-        medio.addCell(opcion("Directa",       true, new float[]{25,85}));
-        medio.addCell(opcion("Vía telefonica",false, new float[]{15,85}));
-        medio.addCell(opcion("Escrita",       false, new float[]{25,85}));
-        medio.addCell(opcion("Personal",      false, new float[]{25,85}));
+        medio.addCell(opcion("Directa",       data.getMedio_reporte()[0], new float[]{25,85}));
+        medio.addCell(opcion("Vía telefonica",data.getMedio_reporte()[1], new float[]{15,85}));
+        medio.addCell(opcion("Escrita",       data.getMedio_reporte()[2], new float[]{25,85}));
+        medio.addCell(opcion("Personal",      data.getMedio_reporte()[3], new float[]{25,85}));
         medio.setTotalWidth(new float[] {20,30,20,20});
         medio.setWidthPercentage(100);
         content.addCell(celdaDobleChica("MEDIO DE REPORTE:", celda(medio), new float[] {21, 79}));
@@ -170,68 +175,66 @@ public class RecepcionReportePDF {
         content.addCell(celda("DATOS DEL DENUNCIANTE", TITULO));
         content.addCell(
                 celdaDoble(
-                        celdaDobleChica("NOMBRE:", "", new float[] {25, 75}),
+                        celdaDobleChica("NOMBRE:", data.getDenunciante().getNombre(), new float[] {25, 75}),
                         celdaDoble(
-                                    opcion("PERSONA FÍSICA", false),
-                                    opcion("PERSONA MORAL", false)
+                                    opcion("PERSONA FÍSICA", data.isEstado_denunciante()),
+                                    opcion("PERSONA MORAL", !data.isEstado_denunciante())
                                 ),
                         new float[] {45, 65}));
 
         // PREGUNTAR RELACION O PARENTESCO
         content.addCell(
                 celdaTriple(
-                        celdaDobleChica("EDAD:", "", new float[] {50, 50}),
-                        celdaDobleChica(
-                                celda("SEXO:", TITULO_CHICA, Element.ALIGN_RIGHT), "", new float[] {40, 60}),
-                        celdaDobleChica(
-                                celda("ESCOLARIDAD:", TITULO_CHICA),
-                                celda("NINGUNA", NORMAL_CHICA),
-                                new float[] {26, 74}),
+                        celdaDobleChica("EDAD:", data.getDenunciante().getEdad(), new float[] {50, 50}),
+                        celdaDobleChica(celda("SEXO:", TITULO_CHICA, Element.ALIGN_RIGHT), data.getDenunciante().getSexo(), new float[] {40, 60}),
+                        celdaDobleChica("ESCOLARIDAD:",data.getDenunciante().getEscolaridad(), new float[] {26, 74}),
                         new float[] {15,25,60}
                 )
         );
 //        content.addCell(celdaDobleChica("DOMICILIO:", "CALLE " + " #" + " C.P.", new float[] {12, 83}));
         content.addCell(celdaDoble(
-                celdaDobleChica("RELACIÓN CON LA VÍCTIMA: ", "", new float[] {75,25}),
-                celdaDobleChica("DOMICILIO:", "CALLE " + " #" + " C.P.", new float[] {20, 80}),
+                celdaDobleChica("RELACIÓN CON LA VÍCTIMA: ", data.getDenunciante().getRelacion(), new float[] {75,25}),
+                celdaDobleChica("DOMICILIO:", data.getDenunciante().getDireccion(), new float[] {20, 80}),
                 new float[] {40,60}
         ));
         content.addCell(celdaDoble(
-                celdaDobleChica("TELÉFONO FIJO:", "", new float[] {35,65}),
-                celdaDobleChica("TELÉFONO MÓVIL:", "", new float[] {38,62})
+                celdaDobleChica("TELÉFONO FIJO:", data.getDenunciante().getTelefono(), new float[] {35,65}),
+                celdaDobleChica("TELÉFONO MÓVIL:", data.getDenunciante().getCelular(), new float[] {38,62})
         ));
         content.addCell(celdaDoble(
-                celdaDobleChica("MUNICIPIO:", "", new float[] {22,68}),
-                celdaDobleChica("CORREO:", "", new float[] {19,71})
+                celdaDobleChica("MUNICIPIO:", data.getDenunciante().getMunicipio(), new float[] {22,68}),
+                celdaDobleChica("CORREO:", data.getDenunciante().getCorreo(), new float[] {19,71})
         ));
 
         content.setWidthPercentage(90);
         return content;
     }
 
-    private PdfPTable getVictimas(boolean t) throws DocumentException {
+    private PdfPTable getVictimas() throws DocumentException {
         PdfPTable content = new PdfPTable(1);
         content.addCell(rellenoColor());
-        content.addCell(celda("DATOS DE LA" + (t? "S":"") + " VICTIMA" + (t? "S":""), TITULO));
-        content.addCell(celdaTriple(
-                celdaDobleChica("NOMBRE:","", new float[] {10,40}),
-                celdaDobleChica("EDAD:", "", new float[] {50,50}),
-                celdaDobleChica("SEXO:", "", new float[] {50,50}),
-                new float[] {60,20,20}
-        ));
-        content.addCell(celdaDobleChica("ESCOLARIDAD:", "", new float[] {16,84}));
-        content.addCell(
-                celdaDoble(
-                        celdaDobleChica("RELACIÓN CON EL AGRESOR:", "", new float[] {60,40}),
-                        celdaDobleChica("CORREO:", "", new float[] {20,80})
-                )
-        );
-        content.addCell(celdaDoble(
-                celdaDobleChica("TELÉFONO FIJO:", "", new float[] {35,65}),
-                celdaDobleChica("TELÉFONO MÓVIL:", "", new float[] {38,62})
-        ));
-        content.addCell(celdaDobleChica("DIRECCIÓN:", "", new float[] {13,87}));
-        content.addCell(celdaDobleChica("REFERENCIA:", "", new float[] {15,85}));
+        content.addCell(celda("DATOS DE LA" + ((data.getVictima().size() > 0)? "S":"") + " VICTIMA" + ((data.getVictima().size() > 0)? "S":""), TITULO));
+        for (PersonaData victima : data.getVictima()) {
+            content.addCell(celdaTriple(
+                    celdaDobleChica("NOMBRE:",victima.getNombre(), new float[] {10,40}),
+                    celdaDobleChica("EDAD:", victima.getEdad(), new float[] {50,50}),
+                    celdaDobleChica("SEXO:", victima.getSexo(), new float[] {50,50}),
+                    new float[] {60,20,20}
+            ));
+            content.addCell(celdaDobleChica("ESCOLARIDAD:", victima.getEscolaridad(), new float[] {16,84}));
+            content.addCell(
+                    celdaDoble(
+                            celdaDobleChica("RELACIÓN CON EL AGRESOR:", victima.getRelacion(), new float[] {60,40}),
+                            celdaDobleChica("CORREO:", victima.getCorreo(), new float[] {20,80})
+                    )
+            );
+            content.addCell(celdaDoble(
+                    celdaDobleChica("TELÉFONO FIJO:", victima.getTelefono(), new float[] {35,65}),
+                    celdaDobleChica("TELÉFONO MÓVIL:", victima.getCelular(), new float[] {38,62})
+            ));
+        }
+        content.addCell(celdaDobleChica("DIRECCIÓN:", (data.getVictima().size() > 0)? data.getVictima().get(0).getDireccion(): "", new float[] {13,87}));
+        content.addCell(celdaDobleChica("REFERENCIA:",(data.getVictima().size() > 0)? data.getVictima().get(0).getReferencia(): "", new float[] {15,85}));
 
         content.setWidthPercentage(90);
         return content;
@@ -243,23 +246,23 @@ public class RecepcionReportePDF {
         content.addCell(rellenoColor());
         content.addCell(celda("DATOS GENERALES DE QUIEN EJERCE LA CUSTODIA, TUTELA, Y CUIDADOS DEL NNyA", TITULO));
         content.addCell(celdaTriple(
-                celdaDobleChica("NOMBRE:","", new float[] {10,40}),
-                celdaDobleChica("EDAD:", "", new float[] {50,50}),
-                celdaDobleChica("SEXO:", "", new float[] {50,50}),
+                celdaDobleChica("NOMBRE:",data.getCustodio().getNombre(), new float[] {10,40}),
+                celdaDobleChica("EDAD:", data.getCustodio().getEdad(), new float[] {50,50}),
+                celdaDobleChica("SEXO:", data.getCustodio().getSexo(), new float[] {50,50}),
                 new float[] {60,20,20}
         ));
-        content.addCell(celdaDobleChica("ESCOLARIDAD:", "", new float[] {16,84}));
+        content.addCell(celdaDobleChica("ESCOLARIDAD:", data.getCustodio().getEscolaridad(), new float[] {16,84}));
         content.addCell(
                 celdaDoble(
-                        celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", "", new float[] {60,40}),
-                        celdaDobleChica("CORREO:", "", new float[] {20,80})
+                        celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", data.getCustodio().getRelacion(), new float[] {60,40}),
+                        celdaDobleChica("CORREO:", data.getCustodio().getCorreo(), new float[] {20,80})
                 )
         );
         content.addCell(celdaDoble(
-                celdaDobleChica("TELÉFONO FIJO:", "", new float[] {35,65}),
-                celdaDobleChica("TELÉFONO MÓVIL:", "", new float[] {38,62})
+                celdaDobleChica("TELÉFONO FIJO:", data.getCustodio().getTelefono(), new float[] {35,65}),
+                celdaDobleChica("TELÉFONO MÓVIL:", data.getCustodio().getCelular(), new float[] {38,62})
         ));
-        content.addCell(celdaDobleChica("DIRECCIÓN:", "", new float[] {13,87}));
+        content.addCell(celdaDobleChica("DIRECCIÓN:", data.getCustodio().getDireccion(), new float[] {13,87}));
 
         content.setWidthPercentage(90);
         return content;
@@ -269,33 +272,35 @@ public class RecepcionReportePDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(rellenoColor());
-        content.addCell(celda("DATOS DEL AGRESOR", TITULO));
-        content.addCell(celdaTriple(
-                celdaDobleChica("NOMBRE:","", new float[] {10,40}),
-                celdaDobleChica("EDAD:", "", new float[] {50,50}),
-                celdaDobleChica("SEXO:", "", new float[] {50,50}),
-                new float[] {60,20,20}
-        ));
-        content.addCell(celdaDobleChica("ESCOLARIDAD:", "", new float[] {16,84}));
-        content.addCell(
-                celdaDoble(
-                        celdaDobleChica("OCUPACIÓN:", "", new float[] {30,70}),
-                        celdaDobleChica("LUGAR DE TRABAJO:", "", new float[] {45,55})
-                )
-        );
-        content.addCell(
-                celdaDoble(
-                        celdaDobleChica("ESTADO CIVIL:", "", new float[] {35,65}),
-                        celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", "", new float[] {60,40})
-                )
-        );
-        content.addCell(celdaTriple(
-                celdaDobleChica("CORREO:", "", new float[] {35,65}),
-                celdaDobleChica("TELÉFONO FIJO:", "", new float[] {55,45}),
-                celdaDobleChica("TELÉFONO MÓVIL:", "", new float[] {55,45}),
-                new float[] {33,33,34}
-        ));
-        content.addCell(celdaDobleChica("DIRECCIÓN:", "", new float[] {13,87}));
+        content.addCell(celda((data.getAgresor().size() > 1)? "DATOS DE LOS AGRESORES": "DATOS DEL AGRESOR", TITULO));
+        for (PersonaData agresor : data.getAgresor()) {
+            content.addCell(celdaTriple(
+                    celdaDobleChica("NOMBRE:",agresor.getNombre(), new float[] {10,40}),
+                    celdaDobleChica("EDAD:", agresor.getEdad(), new float[] {50,50}),
+                    celdaDobleChica("SEXO:", agresor.getSexo(), new float[] {50,50}),
+                    new float[] {60,20,20}
+            ));
+            content.addCell(celdaDobleChica("ESCOLARIDAD:", agresor.getEscolaridad(), new float[] {16,84}));
+            content.addCell(
+                    celdaDoble(
+                            celdaDobleChica("OCUPACIÓN:", agresor.getOcupacion(), new float[] {30,70}),
+                            celdaDobleChica("LUGAR DE TRABAJO:", agresor.getTrabajo(), new float[] {45,55})
+                    )
+            );
+            content.addCell(
+                    celdaDoble(
+                            celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", agresor.getRelacion(), new float[] {60,40}),
+                            celdaDobleChica("ESTADO CIVIL:", agresor.getEstado_civil(), new float[] {35,65})
+                    )
+            );
+            content.addCell(celdaTriple(
+                    celdaDobleChica("CORREO:", agresor.getCorreo(), new float[] {35,65}),
+                    celdaDobleChica("TELÉFONO FIJO:", agresor.getTelefono(), new float[] {55,45}),
+                    celdaDobleChica("TELÉFONO MÓVIL:", agresor.getCelular(), new float[] {55,45}),
+                    new float[] {33,33,34}
+            ));
+            content.addCell(celdaDobleChica("DIRECCIÓN:", agresor.getDireccion(), new float[] {13,87}));
+        }
 
         content.setWidthPercentage(90);
         return content;
@@ -307,9 +312,11 @@ public class RecepcionReportePDF {
         content.addCell(rellenoColor());
         content.addCell(celda("CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
         for (int i = 0; i < LISTA_DE_DERECHOS.length; i++) {
-            content.addCell(opcion(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
+            if (data.getDerechos()[i]){
+                content.addCell(opcion(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
+            }
         }
-        content.addCell("\n \n ");
+        content.addCell(data.getDerechos_otro());
         content.addCell(celda());
 
         content.setWidthPercentage(90);
@@ -321,7 +328,7 @@ public class RecepcionReportePDF {
 
         content.addCell(rellenoColor());
         content.addCell(celda("RESEÑA DE LA SITUACIÓN DE VULNERACIÓN O RESTRICCIÓN", TITULO));
-        content.addCell(celda("", NORMAL_CHICA,Element.ALIGN_JUSTIFIED));
+        content.addCell(celda(data.getResena(), NORMAL_CHICA,Element.ALIGN_JUSTIFIED));
 
         content.setWidthPercentage(90);
         return content;
@@ -332,9 +339,9 @@ public class RecepcionReportePDF {
 
         content.addCell(rellenoColor());
         content.addCell(celda("OBSERVACIONES", TITULO));
-        content.addCell(celda("", NORMAL_CHICA,Element.ALIGN_JUSTIFIED));
+        content.addCell(celda(data.getObservaciones(), NORMAL_CHICA,Element.ALIGN_JUSTIFIED));
 
-        content.addCell(firmaTrabajadorChica("NOMBRE", ""));
+        content.addCell(firmaTrabajadorChica(data.getFirma(), ""));
         content.setWidthPercentage(90);
         return content;
     }

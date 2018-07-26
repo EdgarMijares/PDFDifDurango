@@ -170,6 +170,10 @@ public class Main {
         lista_familia.add(familia2);
         anexoUnoData.setFamilia(lista_familia);
 
+        // RECEPCION REPORTE
+        RecepcionReporteData recepcionReporteData = new RecepcionReporteData();
+        recepcionReporteData.setEstado_denunciante(false);
+
 
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
@@ -177,7 +181,7 @@ public class Main {
 //            new LiberacionCustodiaPDF("LIBERACION_CUSTODIA","F:\\Downloads\\DIF\\", 0, liberacionDeCustodia);
 //            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
 //            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
-            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", anexoUnoData);
+            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
