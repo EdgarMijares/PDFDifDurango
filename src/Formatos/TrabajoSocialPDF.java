@@ -625,18 +625,10 @@ class DefaultV1 {
         return cell;
     }
 
-    public static PdfPCell celda(double text, int posicion, Font tipo){
-        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(String.valueOf(text), tipo)));
-        cell.setHorizontalAlignment(posicion);
-        cell.setBorder(0);
-        cell.setFixedHeight(20f);
-        return cell;
-    }
 
     public static PdfPCell celda(String text, int posicion, int border, Font tipo){
         PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(text, tipo)));
         cell.setHorizontalAlignment(posicion);
-//        cell.setBorder(border);
         cell.setFixedHeight(20f);
         return cell;
     }
@@ -678,20 +670,6 @@ class DefaultV1 {
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBorder(0);
         return cell;
-    }
-
-    public static Image createImage(String ruta, float escala) throws IOException, BadElementException {
-        Image image = Image.getInstance(ruta);
-        image.scaleAbsoluteHeight((float) (image.getScaledHeight() * (escala/100)));
-        image.scaleAbsoluteWidth((float) (image.getScaledWidth() * (escala/100)));
-        return image;
-    }
-
-    public static Image createImage(String ruta, int altura, int largo) throws IOException, BadElementException {
-        Image image = Image.getInstance(ruta);
-        image.scaleAbsoluteHeight((float) (altura));
-        image.scaleAbsoluteWidth((float) (largo));
-        return image;
     }
 
     public static Image createImageWidth(String ruta, int largo) throws IOException, BadElementException {
