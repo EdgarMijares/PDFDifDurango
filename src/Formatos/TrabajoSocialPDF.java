@@ -1,6 +1,7 @@
 package Formatos;
 
 import Informacion.Familia;
+import Informacion.InformacionNinoData;
 import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
@@ -11,6 +12,8 @@ import java.awt.*;
 import java.io.*;
 import java.nio.file.*;
 import java.text.DecimalFormat;
+
+import static Formatos.DefaultV1.*;
 
 public class TrabajoSocialPDF {
     TrabajoSocialData informacion;
@@ -23,12 +26,12 @@ public class TrabajoSocialPDF {
             table = new PdfPTable(1);
             table.setTotalWidth(523);
             table.setLockedWidth(true);
-            table.addCell(Default.celda(" "));
-            table.addCell(Default.celda(" "));
-            table.addCell(Default.borrarBordesTable(header()));
+            table.addCell(celda(" "));
+            table.addCell(celda(" "));
+            table.addCell(borrarBordesTable(header()));
             Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
             font.setColor(200,200,200);
-            table.addCell(Default.celda("________________________________________________________________________", Element.ALIGN_CENTER, font));
+            table.addCell(celda("________________________________________________________________________", Element.ALIGN_CENTER, font));
             tableHeight = table.getTotalHeight();
         }
 
@@ -86,8 +89,8 @@ public class TrabajoSocialPDF {
     }
 
     private PdfPTable header() throws IOException, BadElementException{
-        Image salud = Default.createImageHeight("http://contextodedurango.com.mx/noticias/wp-content/uploads/2017/09/DIF-2.png", 50);
-        Image dif = Default.createImageHeight("https://contextodedurango.com.mx/noticias/wp-content/uploads/2017/09/gobierno-del-estado.png", 50);
+        Image salud = createImageHeight("http://contextodedurango.com.mx/noticias/wp-content/uploads/2017/09/DIF-2.png", 50);
+        Image dif = createImageHeight("https://contextodedurango.com.mx/noticias/wp-content/uploads/2017/09/gobierno-del-estado.png", 50);
 
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100);
@@ -116,11 +119,11 @@ public class TrabajoSocialPDF {
         PdfPTable linea_uno = new PdfPTable(2);
 
 
-        table.addCell(Default.celda("______________________________________________________________________________", Element.ALIGN_CENTER));
-        linea_uno.addCell(Default.celda("TRABAJO SOCIAL " + informacion.getFecha(), Default.NORMAL_CHICA));
-        linea_uno.addCell(Default.celda(informacion.getNo_expediente() + "   ", Element.ALIGN_RIGHT, Default.NORMAL_CHICA));
+        table.addCell(celda("______________________________________________________________________________", Element.ALIGN_CENTER));
+        linea_uno.addCell(celda("TRABAJO SOCIAL " + informacion.getFecha(), NORMAL_CHICA));
+        linea_uno.addCell(celda(informacion.getNo_expediente() + "   ", Element.ALIGN_RIGHT, NORMAL_CHICA));
 
-        table.addCell(Default.borrarBordesTable(linea_uno));
+        table.addCell(borrarBordesTable(linea_uno));
 
         return table;
     }
@@ -130,11 +133,11 @@ public class TrabajoSocialPDF {
 
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda(" "));
-        content.addCell(Default.celda(" "));
-        content.addCell(Default.celda(" "));
-        content.addCell(Default.celda("___________________________", Element.ALIGN_CENTER));
-        content.addCell(Default.celda(informacion.getTrabajador_social(), Element.ALIGN_CENTER));
+        content.addCell(celda(" "));
+        content.addCell(celda(" "));
+        content.addCell(celda(" "));
+        content.addCell(celda("___________________________", Element.ALIGN_CENTER));
+        content.addCell(celda(informacion.getTrabajador_social(), Element.ALIGN_CENTER));
 
         paragraph.add(content);
         return paragraph;
@@ -145,10 +148,12 @@ public class TrabajoSocialPDF {
 
         paragraph.setAlignment(Element.ALIGN_CENTER);
 
-        paragraph.add(new Chunk("Anexo II\n\nFormato en materia de Trabajo Social\n", Default.TITULO));
+        paragraph.add(new Chunk("Anexo II\n\nFormato en materia de Trabajo Social\n", TITULO));
         paragraph.add(paginaUnoSeccionUno());
         paragraph.add(Chunk.NEWLINE);
-        paragraph.add(informacionNino());
+        for (InformacionNinoData informacionNinoData : informacion.getInformacionNinoData()) {
+            paragraph.add(informacionNino(informacionNinoData));
+        }
         paragraph.add(Chunk.NEWLINE);
         paragraph.add(informacionTutor());
 
@@ -163,38 +168,38 @@ public class TrabajoSocialPDF {
         PdfPTable linea_dos = new PdfPTable(1);
         PdfPTable linea_tres = new PdfPTable(7);
 
-        linea_uno.addCell(Default.celda(Default.checkValoracion(informacion.isValaracion()), Element.ALIGN_CENTER));
-        linea_dos.addCell(Default.celda(Default.checkTecnicas(
+        linea_uno.addCell(celda(checkValoracion(informacion.isValaracion()), Element.ALIGN_CENTER));
+        linea_dos.addCell(celda(checkTecnicas(
                 informacion.getTecnicas()[0],
                 informacion.getTecnicas()[1],
                 informacion.getTecnicas()[2],
                 informacion.getTecnicas()[3]), Element.ALIGN_CENTER));
 
-        linea_tres.addCell(Default.celda("NOMBRE",      Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("PARENTESCO",  Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("EDAD",        Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("SEXO",        Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("ESTADO CIVIL",Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("ESCOLARIDAD", Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
-        linea_tres.addCell(Default.celda("OCUPACIÓN",   Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("NOMBRE",      Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("PARENTESCO",  Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("EDAD",        Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("SEXO",        Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("ESTADO CIVIL",Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("ESCOLARIDAD", Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
+        linea_tres.addCell(celda("OCUPACIÓN",   Element.ALIGN_CENTER, 10, new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL)));
 
         for (Familia d : informacion.getFamilia()) {
-            linea_tres.addCell(Default.celda(d.getNombre(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getParentesco(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getEdad(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getSexo(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getEstado_civil(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getEscolaridad(), Default.NORMAL_CHICA, false));
-            linea_tres.addCell(Default.celda(d.getOcupacion(), Default.NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getNombre(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getParentesco(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getEdad(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getSexo(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getEstado_civil(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getEscolaridad(), NORMAL_CHICA, false));
+            linea_tres.addCell(celda(d.getOcupacion(), NORMAL_CHICA, false));
         }
 
-        content.addCell(Default.celda("                II. VALORACÓN\n\n", Default.TITULO));
-        content.addCell(Default.borrarBordesTable(linea_uno));
+        content.addCell(celda("                II. VALORACÓN\n\n", TITULO));
+        content.addCell(borrarBordesTable(linea_uno));
 
-        content.addCell(Default.celda("\n                III. TÉCNICAS UTILIZADAS\n\n", Default.TITULO));
-        content.addCell(Default.borrarBordesTable(linea_dos));
+        content.addCell(celda("\n                III. TÉCNICAS UTILIZADAS\n\n", TITULO));
+        content.addCell(borrarBordesTable(linea_dos));
 
-        content.addCell(Default.celda("\n                IV. ESTRUCTURA FAMILIAR\n\n", Default.TITULO));
+        content.addCell(celda("\n                IV. ESTRUCTURA FAMILIAR\n\n", TITULO));
 
         content.setWidthPercentage(100);
 
@@ -212,12 +217,12 @@ public class TrabajoSocialPDF {
 
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda("\n\n            V. DINÁMICA FAMILIAR\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getDinamica_familiar()));
+        content.addCell(celda("\n\n            V. DINÁMICA FAMILIAR\n\n", TITULO));
+        content.addCell(celda(informacion.getDinamica_familiar()));
 
-        content.addCell(Default.celda("\n\n            VI. FAMILIOGRAMA\n\n", Default.TITULO));
+        content.addCell(celda("\n\n            VI. FAMILIOGRAMA\n\n", TITULO));
         if(!informacion.getFamiliograma().equals(""))
-            content.addCell(Default.celda(Default.createImageWidth(informacion.getFamiliograma(), 300)));
+            content.addCell(celda(createImageWidth(informacion.getFamiliograma(), 300)));
 
         content.setWidthPercentage(100);
         paragraph.add(content);
@@ -234,108 +239,108 @@ public class TrabajoSocialPDF {
 
         PdfPTable situacion_ingresos = new PdfPTable(2);
 
-        content.addCell(Default.celda("\n\n            VII. SITUACION ECONOMICA", Default.TITULO));
-        titulo.addCell(Default.celda("\n               VII.I. INGRESO (MENSUAL)\n\n", Default.TITULO));
+        content.addCell(celda("\n\n            VII. SITUACION ECONOMICA", TITULO));
+        titulo.addCell(celda("\n               VII.I. INGRESO (MENSUAL)\n\n", TITULO));
 
-        situacion_ingresos.addCell(Default.celda("Padre:",      Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_ingresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getIngresos_padre()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_ingresos.addCell(Default.celda("Madre:",      Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_ingresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getIngresos_madre()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_ingresos.addCell(Default.celda("Hermano(a):", Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_ingresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getIngresos_hermano()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_ingresos.addCell(Default.celda("Otros:",      Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_ingresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getIngresos_otros()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_ingresos.addCell(Default.celda("TOTAL:",      Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_ingresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getIngresos_total()), Element.ALIGN_LEFT, Default.SUBRAYADO));
+        situacion_ingresos.addCell(celda("Padre:",      Element.ALIGN_RIGHT, TITULO));
+        situacion_ingresos.addCell(celda("$" + formatoMoneda.format(informacion.getIngresos_padre()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_ingresos.addCell(celda("Madre:",      Element.ALIGN_RIGHT, TITULO));
+        situacion_ingresos.addCell(celda("$" + formatoMoneda.format(informacion.getIngresos_madre()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_ingresos.addCell(celda("Hermano(a):", Element.ALIGN_RIGHT, TITULO));
+        situacion_ingresos.addCell(celda("$" + formatoMoneda.format(informacion.getIngresos_hermano()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_ingresos.addCell(celda("Otros:",      Element.ALIGN_RIGHT, TITULO));
+        situacion_ingresos.addCell(celda("$" + formatoMoneda.format(informacion.getIngresos_otros()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_ingresos.addCell(celda("TOTAL:",      Element.ALIGN_RIGHT, TITULO));
+        situacion_ingresos.addCell(celda("$" + formatoMoneda.format(informacion.getIngresos_total()), Element.ALIGN_LEFT, SUBRAYADO));
 
         PdfPTable situacion_egresos = new PdfPTable(2);
 
-        titulo.addCell(Default.celda("\n            VII.II. EGRESO (MENSUAL):\n\n", Default.TITULO));
-        situacion_egresos.addCell(Default.celda("Alimentación:", Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_alimentacion()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Educación:",   Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_educacion()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Salud:",       Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_salud()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Vestido:",     Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_vestido()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Servicios:",   Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_servicios()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Transporte:",  Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_transporte()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Renta:",       Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_renta()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("Otros:",       Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_otros()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        situacion_egresos.addCell(Default.celda("TOTAL:",       Element.ALIGN_RIGHT, Default.TITULO));
-        situacion_egresos.addCell(Default.celda("$" + formatoMoneda.format(informacion.getEgresos_total()), Element.ALIGN_LEFT, Default.SUBRAYADO));
+        titulo.addCell(celda("\n            VII.II. EGRESO (MENSUAL):\n\n", TITULO));
+        situacion_egresos.addCell(celda("Alimentación:", Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_alimentacion()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Educación:",   Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_educacion()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Salud:",       Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_salud()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Vestido:",     Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_vestido()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Servicios:",   Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_servicios()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Transporte:",  Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_transporte()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Renta:",       Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_renta()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("Otros:",       Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_otros()), Element.ALIGN_LEFT, SUBRAYADO));
+        situacion_egresos.addCell(celda("TOTAL:",       Element.ALIGN_RIGHT, TITULO));
+        situacion_egresos.addCell(celda("$" + formatoMoneda.format(informacion.getEgresos_total()), Element.ALIGN_LEFT, SUBRAYADO));
 
-        titulo.addCell(Default.celda("\n            VII.II. EGRESO (MENSUAL):\n\n", Default.TITULO));
+        titulo.addCell(celda("\n            VII.II. EGRESO (MENSUAL):\n\n", TITULO));
 
-        linea_uno.addCell(Default.borrarBordesTable(situacion_ingresos));
-        linea_uno.addCell(Default.borrarBordesTable(situacion_egresos));
+        linea_uno.addCell(borrarBordesTable(situacion_ingresos));
+        linea_uno.addCell(borrarBordesTable(situacion_egresos));
 
         PdfPTable totales = new PdfPTable(2);
-        totales.addCell(Default.celda(" "));
-        totales.addCell(Default.celda(" "));
-        totales.addCell(Default.celda("SUPERÁVIT:", Element.ALIGN_RIGHT, Default.TITULO));
-        totales.addCell(Default.celda("$" + formatoMoneda.format(informacion.getSuperavit()), Element.ALIGN_LEFT, Default.SUBRAYADO));
-        totales.addCell(Default.celda("DÉFICIT:",   Element.ALIGN_RIGHT, Default.TITULO));
-        totales.addCell(Default.celda("$" + formatoMoneda.format(informacion.getDeficit()), Element.ALIGN_LEFT, Default.SUBRAYADO));
+        totales.addCell(celda(" "));
+        totales.addCell(celda(" "));
+        totales.addCell(celda("SUPERÁVIT:", Element.ALIGN_RIGHT, TITULO));
+        totales.addCell(celda("$" + formatoMoneda.format(informacion.getSuperavit()), Element.ALIGN_LEFT, SUBRAYADO));
+        totales.addCell(celda("DÉFICIT:",   Element.ALIGN_RIGHT, TITULO));
+        totales.addCell(celda("$" + formatoMoneda.format(informacion.getDeficit()), Element.ALIGN_LEFT, SUBRAYADO));
 
         PdfPTable distribucion = new PdfPTable(6);
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda(" "));
-        distribucion.addCell(Default.celda("Habitaciones:", Element.ALIGN_RIGHT));
-        distribucion.addCell(Default.celda(informacion.getHabitaciones()[0], Default.SUBRAYADO));
-        distribucion.addCell(Default.celda("Recamaras:", Element.ALIGN_RIGHT));
-        distribucion.addCell(Default.celda(informacion.getHabitaciones()[1], Default.SUBRAYADO));
-        distribucion.addCell(Default.celda("Hacinamiento:", Element.ALIGN_RIGHT));
-        distribucion.addCell(Default.celda(informacion.getHabitaciones()[2], Default.SUBRAYADO));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda(" "));
+        distribucion.addCell(celda("Habitaciones:", Element.ALIGN_RIGHT));
+        distribucion.addCell(celda(informacion.getHabitaciones()[0], SUBRAYADO));
+        distribucion.addCell(celda("Recamaras:", Element.ALIGN_RIGHT));
+        distribucion.addCell(celda(informacion.getHabitaciones()[1], SUBRAYADO));
+        distribucion.addCell(celda("Hacinamiento:", Element.ALIGN_RIGHT));
+        distribucion.addCell(celda(informacion.getHabitaciones()[2], SUBRAYADO));
 
         distribucion.setTotalWidth(new float[] {20, 10, 20, 10, 20, 10});
 
-        content.addCell(Default.borrarBordesTable(titulo));
-        content.addCell(Default.borrarBordesTable(linea_uno));
-        content.addCell(Default.borrarBordesTable(totales));
+        content.addCell(borrarBordesTable(titulo));
+        content.addCell(borrarBordesTable(linea_uno));
+        content.addCell(borrarBordesTable(totales));
 
-        content.addCell(Default.celda("\n            VII.III. VIVIENDA:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkVivienda(informacion.getVivienda()), Element.ALIGN_CENTER));
+        content.addCell(celda("\n            VII.III. VIVIENDA:\n\n", TITULO));
+        content.addCell(celda(checkVivienda(informacion.getVivienda()), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda("\n            VII.IV. TIPO DE VIVIENDA:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkTipoVivienda(informacion.getTipo_vivienda()), Element.ALIGN_CENTER));
+        content.addCell(celda("\n            VII.IV. TIPO DE VIVIENDA:\n\n", TITULO));
+        content.addCell(celda(checkTipoVivienda(informacion.getTipo_vivienda()), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda("\n            VII.V. ZONA:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkZona(informacion.getZona_vivienda()), Element.ALIGN_CENTER));
+        content.addCell(celda("\n            VII.V. ZONA:\n\n", TITULO));
+        content.addCell(celda(checkZona(informacion.getZona_vivienda()), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda("\n            VII.VI. DISTRIBUCIÒN:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkDistribucion(
+        content.addCell(celda("\n            VII.VI. DISTRIBUCIÒN:\n\n", TITULO));
+        content.addCell(celda(checkDistribucion(
                 informacion.getDistribucion()[0],
                 informacion.getDistribucion()[1],
                 informacion.getDistribucion()[2],
                 informacion.getDistribucion()[3]), Element.ALIGN_CENTER));
-        content.addCell(Default.borrarBordesTable(distribucion));
+        content.addCell(borrarBordesTable(distribucion));
 
-        content.addCell(Default.celda("\n            VII.VIII. MATERIAL DE LA VIVIENDA:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkMaterialPisos(
+        content.addCell(celda("\n            VII.VIII. MATERIAL DE LA VIVIENDA:\n\n", TITULO));
+        content.addCell(celda(checkMaterialPisos(
                 informacion.getMaterial_piso()[0],
                 informacion.getMaterial_piso()[1],
                 informacion.getMaterial_piso()[2],
                 informacion.getMaterial_piso()[3],
                 informacion.getMaterial_piso_otro()), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda(Default.checkMaterialMuro(
+        content.addCell(celda(checkMaterialMuro(
                 informacion.getMaterial_muros()[0],
                 informacion.getMaterial_muros()[1],
                 informacion.getMaterial_muros()[2],
                 informacion.getMaterial_muros()[3],
                 informacion.getMaterial_muros_otro()), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda(Default.checkMaterialTecho(
+        content.addCell(celda(checkMaterialTecho(
                 informacion.getMaterial_techo()[0],
                 informacion.getMaterial_techo()[1],
                 informacion.getMaterial_techo()[2],
@@ -353,8 +358,8 @@ public class TrabajoSocialPDF {
 
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda("\n            VII.VIII. SERVICIOS PÚBLICOS:\n\n", Default.TITULO));
-        content.addCell(Default.celda(Default.checkServiciosPublicos(
+        content.addCell(celda("\n            VII.VIII. SERVICIOS PÚBLICOS:\n\n", TITULO));
+        content.addCell(celda(checkServiciosPublicos(
                 informacion.getServicios_publicos()[0],
                 informacion.getServicios_publicos()[1],
                 informacion.getServicios_publicos()[2],
@@ -363,11 +368,11 @@ public class TrabajoSocialPDF {
                 informacion.getServicios_publicos()[5]
         ), Element.ALIGN_CENTER));
 
-        content.addCell(Default.celda("\n\n            VIII. ANTECEDENTES Y DESCRIPCIÓN DE LA PROBLEMÁTICA:\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getDescripcion_problematica()));
+        content.addCell(celda("\n\n            VIII. ANTECEDENTES Y DESCRIPCIÓN DE LA PROBLEMÁTICA:\n\n", TITULO));
+        content.addCell(celda(informacion.getDescripcion_problematica()));
 
-        content.addCell(Default.celda("\n\n            IX. ENTREVISTA CON NIÑA, NIÑO O ADOLESCENTE:\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getEntrevista_nino()));
+        content.addCell(celda("\n\n            IX. ENTREVISTA CON NIÑA, NIÑO O ADOLESCENTE:\n\n", TITULO));
+        content.addCell(celda(informacion.getEntrevista_nino()));
 
         content.setWidthPercentage(100);
         paragraph.add(content);
@@ -380,14 +385,14 @@ public class TrabajoSocialPDF {
 
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda("\n\n            X. DIAGNÓSTICO SOCIAL:\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getDiagnostico_social()));
+        content.addCell(celda("\n\n            X. DIAGNÓSTICO SOCIAL:\n\n", TITULO));
+        content.addCell(celda(informacion.getDiagnostico_social()));
 
-        content.addCell(Default.celda("\n\n            XI. PLAN DE ACCIÓN:\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getPlan_de_accion()));
+        content.addCell(celda("\n\n            XI. PLAN DE ACCIÓN:\n\n", TITULO));
+        content.addCell(celda(informacion.getPlan_de_accion()));
 
-        content.addCell(Default.celda("\n\n            XII. OBSERVACIONES:\n\n", Default.TITULO));
-        content.addCell(Default.celda(informacion.getObservaciones()));
+        content.addCell(celda("\n\n            XII. OBSERVACIONES:\n\n", TITULO));
+        content.addCell(celda(informacion.getObservaciones()));
 
         content.setWidthPercentage(100);
         paragraph.add(content);
@@ -398,24 +403,24 @@ public class TrabajoSocialPDF {
     private PdfPTable paginaUnoSeccionUno() throws DocumentException {
         PdfPTable table = new PdfPTable(2);
 
-        Paragraph p = new Paragraph(new Chunk("I. DATOS GENERALES\n\n    I.I. NIÑA, NIÑO O ADOLESENTE", Default.TITULO));
+        Paragraph p = new Paragraph(new Chunk("I. DATOS GENERALES\n\n    I.I. NIÑA, NIÑO O ADOLESENTE", TITULO));
         PdfPCell tituloDatosGenerales = new PdfPCell(p);
         tituloDatosGenerales.setVerticalAlignment(Element.ALIGN_BOTTOM);
 
         PdfPCell infoGeneral = new PdfPCell();
         PdfPTable tablaInfoGeneral = new PdfPTable(2);
         tablaInfoGeneral.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        tablaInfoGeneral.addCell(Default.celda("#: ", Element.ALIGN_RIGHT, Default.TITULO));
-        tablaInfoGeneral.addCell(Default.celda(informacion.getFolio()));
+        tablaInfoGeneral.addCell(celda("#: ", Element.ALIGN_RIGHT, TITULO));
+        tablaInfoGeneral.addCell(celda(informacion.getFolio()));
 
-        tablaInfoGeneral.addCell(Default.celda("N° de Expediente: ", Element.ALIGN_RIGHT, Default.TITULO));
-        tablaInfoGeneral.addCell(Default.celda(informacion.getNo_expediente()));
+        tablaInfoGeneral.addCell(celda("N° de Expediente: ", Element.ALIGN_RIGHT, TITULO));
+        tablaInfoGeneral.addCell(celda(informacion.getNo_expediente()));
 
-        tablaInfoGeneral.addCell(Default.celda("Fecha: ", Element.ALIGN_RIGHT, Default.TITULO));
-        tablaInfoGeneral.addCell(Default.celda(informacion.getFecha()));
+        tablaInfoGeneral.addCell(celda("Fecha: ", Element.ALIGN_RIGHT, TITULO));
+        tablaInfoGeneral.addCell(celda(informacion.getFecha()));
 
-        tablaInfoGeneral.addCell(Default.celda("Hora: ", Element.ALIGN_RIGHT, Default.TITULO));
-        tablaInfoGeneral.addCell(Default.celda(informacion.getHora()));
+        tablaInfoGeneral.addCell(celda("Hora: ", Element.ALIGN_RIGHT, TITULO));
+        tablaInfoGeneral.addCell(celda(informacion.getHora()));
 
         tablaInfoGeneral.setWidthPercentage(110);
         infoGeneral.addElement(tablaInfoGeneral);
@@ -431,7 +436,7 @@ public class TrabajoSocialPDF {
         return table;
     }
 
-    private PdfPTable informacionNino() throws DocumentException {
+    private PdfPTable informacionNino(InformacionNinoData informacionNinoData) throws DocumentException {
         PdfPTable table = new PdfPTable(1);
 
         PdfPTable linea_uno = new PdfPTable(4);
@@ -442,49 +447,49 @@ public class TrabajoSocialPDF {
         PdfPTable linea_seis = new PdfPTable(4);
 
         // LINEA UNO
-        linea_uno.addCell(Default.celda("Nombre:", Default.TITULO));
-        linea_uno.addCell(Default.celda(informacion.getNombre(), Default.SUBRAYADO));
+        linea_uno.addCell(celda("Nombre:", TITULO));
+        linea_uno.addCell(celda(informacionNinoData.getNombre(), SUBRAYADO));
 
-        linea_uno.addCell(Default.celda("Edad:", Default.TITULO));
-        linea_uno.addCell(Default.celda(informacion.getEdad(), Default.SUBRAYADO));
+        linea_uno.addCell(celda("Edad:", TITULO));
+        linea_uno.addCell(celda(informacionNinoData.getEdad(), SUBRAYADO));
 
         // LINEA DOS
-        linea_dos.addCell(Default.celda("Fecha de Nacimiento:", Default.TITULO));
-        linea_dos.addCell(Default.celda(informacion.getFecha_nacimiento(), Default.SUBRAYADO));
+        linea_dos.addCell(celda("Fecha de Nacimiento:", TITULO));
+        linea_dos.addCell(celda(informacionNinoData.getFecha_nacimiento(), SUBRAYADO));
 
-        linea_dos.addCell(Default.celda("Lugar de Nacimiento:", Default.TITULO));
-        linea_dos.addCell(Default.celda(informacion.getLugar_nacimiento(), Default.SUBRAYADO));
+        linea_dos.addCell(celda("Lugar de Nacimiento:", TITULO));
+        linea_dos.addCell(celda(informacionNinoData.getLugar_nacimiento(), SUBRAYADO));
 
         // LINEA TRES
-        linea_tres.addCell(Default.celda("Nacionalidad:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getNacionalidad(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Nacionalidad:", TITULO));
+        linea_tres.addCell(celda(informacionNinoData.getNacionalidad(), SUBRAYADO));
 
-        linea_tres.addCell(Default.celda("Género:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getSexo(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Género:", TITULO));
+        linea_tres.addCell(celda(informacionNinoData.getSexo(), SUBRAYADO));
 
-        linea_tres.addCell(Default.celda("Idioma:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getIdioma(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Idioma:", TITULO));
+        linea_tres.addCell(celda(informacionNinoData.getIdioma(), SUBRAYADO));
 
         // LINEA CUATRO
-        linea_cuatro.addCell(Default.celda("Grupo Étnico:", Default.TITULO));
-        linea_cuatro.addCell(Default.celda(informacion.getEtnia(), Default.SUBRAYADO));
+        linea_cuatro.addCell(celda("Grupo Étnico:", TITULO));
+        linea_cuatro.addCell(celda(informacionNinoData.getEtnia(), SUBRAYADO));
 
-        linea_cuatro.addCell(Default.celda("Religión:", Default.TITULO));
-        linea_cuatro.addCell(Default.celda(informacion.getReligion(), Default.SUBRAYADO));
+        linea_cuatro.addCell(celda("Religión:", TITULO));
+        linea_cuatro.addCell(celda(informacionNinoData.getReligion(), SUBRAYADO));
 
         // LINEA CINCO
-        linea_cinco.addCell(Default.celda("Discapacidad:", Default.TITULO));
-        linea_cinco.addCell(Default.celda(Default.checkSiNo(informacion.isDiscapacidad()), Default.NORMAL));
+        linea_cinco.addCell(celda("Discapacidad:", TITULO));
+        linea_cinco.addCell(celda(checkSiNo(informacionNinoData.isDiscapacidad()), NORMAL));
 
-        linea_cinco.addCell(Default.celda("¿Cuál?", Default.TITULO));
-        linea_cinco.addCell(Default.celda(informacion.getTipo_discapacidad(), Default.NORMAL));
+        linea_cinco.addCell(celda("¿Cuál?", TITULO));
+        linea_cinco.addCell(celda(informacionNinoData.getTipo_discapacidad(), NORMAL));
 
         // LINEA SEIS
-        linea_seis.addCell(Default.celda("Escolaridad:", Default.TITULO));
-        linea_seis.addCell(Default.celda(informacion.getEscolaridad(), Default.SUBRAYADO));
+        linea_seis.addCell(celda("Escolaridad:", TITULO));
+        linea_seis.addCell(celda(informacionNinoData.getEscolaridad(), SUBRAYADO));
 
-        linea_seis.addCell(Default.celda("Domicilio:", Default.TITULO));
-        linea_seis.addCell(Default.celda(informacion.getDomicilio()));
+        linea_seis.addCell(celda("Domicilio:", TITULO));
+        linea_seis.addCell(celda(informacionNinoData.getDomicilio()));
 
         linea_uno.setTotalWidth(new float[]     {15, 65, 10, 10});
         linea_dos.setTotalWidth(new float[]     {28, 15, 27, 30});
@@ -495,17 +500,17 @@ public class TrabajoSocialPDF {
 
         table.setWidthPercentage(90);
 
-        table.addCell(Default.borrarBordesTable(linea_uno));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_dos));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_tres));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_cuatro));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_cinco));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_seis));
+        table.addCell(borrarBordesTable(linea_uno));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_dos));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_tres));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_cuatro));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_cinco));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_seis));
 
         return table;
     }
@@ -522,48 +527,48 @@ public class TrabajoSocialPDF {
         PdfPTable linea_seis = new PdfPTable(4);
 
         // TITULO
-        titulo.addCell(Default.celda("    I.II. MADRE, PADRE O TUTOR:", Default.TITULO));
+        titulo.addCell(celda("    I.II. MADRE, PADRE O TUTOR:", TITULO));
 
         // LINEA UNO
-        linea_uno.addCell(Default.celda("Nombre:", Default.TITULO));
-        linea_uno.addCell(Default.celda(informacion.getNombre_tutor(), Default.SUBRAYADO));
+        linea_uno.addCell(celda("Nombre:", TITULO));
+        linea_uno.addCell(celda(informacion.getNombre_tutor(), SUBRAYADO));
 
-        linea_uno.addCell(Default.celda("Edad:", Default.TITULO));
-        linea_uno.addCell(Default.celda(informacion.getEdad_tutor(), Default.SUBRAYADO));
+        linea_uno.addCell(celda("Edad:", TITULO));
+        linea_uno.addCell(celda(informacion.getEdad_tutor(), SUBRAYADO));
 
         // LINEA DOS
-        linea_dos.addCell(Default.celda("Parentesco:", Default.TITULO));
-        linea_dos.addCell(Default.celda(informacion.getParentesco(), Default.SUBRAYADO));
+        linea_dos.addCell(celda("Parentesco:", TITULO));
+        linea_dos.addCell(celda(informacion.getParentesco(), SUBRAYADO));
 
-        linea_dos.addCell(Default.celda("Estado Civil:", Default.TITULO));
-        linea_dos.addCell(Default.celda(informacion.getEstado_civil(), Default.SUBRAYADO));
+        linea_dos.addCell(celda("Estado Civil:", TITULO));
+        linea_dos.addCell(celda(informacion.getEstado_civil(), SUBRAYADO));
 
-        linea_dos.addCell(Default.celda("Teléfono:", Default.TITULO));
-        linea_dos.addCell(Default.celda(informacion.getTelefono(), Default.SUBRAYADO));
+        linea_dos.addCell(celda("Teléfono:", TITULO));
+        linea_dos.addCell(celda(informacion.getTelefono(), SUBRAYADO));
 
         // LINEA TRES
-        linea_tres.addCell(Default.celda("Idioma:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getIdioma_tutor(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Idioma:", TITULO));
+        linea_tres.addCell(celda(informacion.getIdioma_tutor(), SUBRAYADO));
 
-        linea_tres.addCell(Default.celda("Grupo Étnico:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getEtnia_tutor(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Grupo Étnico:", TITULO));
+        linea_tres.addCell(celda(informacion.getEtnia_tutor(), SUBRAYADO));
 
-        linea_tres.addCell(Default.celda("Religión:", Default.TITULO));
-        linea_tres.addCell(Default.celda(informacion.getReligion_tutor(), Default.SUBRAYADO));
+        linea_tres.addCell(celda("Religión:", TITULO));
+        linea_tres.addCell(celda(informacion.getReligion_tutor(), SUBRAYADO));
 
         // LINEA CUATRO
-        linea_cuatro.addCell(Default.celda("Discapacidad:", Default.TITULO));
-        linea_cuatro.addCell(Default.celda(Default.checkSiNo(informacion.isDiscapacidad_tutor()), Default.NORMAL));
+        linea_cuatro.addCell(celda("Discapacidad:", TITULO));
+        linea_cuatro.addCell(celda(checkSiNo(informacion.isDiscapacidad_tutor()), NORMAL));
 
-        linea_cuatro.addCell(Default.celda("¿Cuál?", Default.TITULO));
-        linea_cuatro.addCell(Default.celda(informacion.getTipo_discapacidad_tutor(), Default.NORMAL));
+        linea_cuatro.addCell(celda("¿Cuál?", TITULO));
+        linea_cuatro.addCell(celda(informacion.getTipo_discapacidad_tutor(), NORMAL));
 
         // LINEA CINCO
-        linea_cinco.addCell(Default.celda("Escolaridad:", Default.TITULO));
-        linea_cinco.addCell(Default.celda(informacion.getEscolaridad_tutor(), Default.SUBRAYADO));
+        linea_cinco.addCell(celda("Escolaridad:", TITULO));
+        linea_cinco.addCell(celda(informacion.getEscolaridad_tutor(), SUBRAYADO));
 
-        linea_cinco.addCell(Default.celda("Domicilio:", Default.TITULO));
-        linea_cinco.addCell(Default.celda(informacion.getDomicilio_tutor()));
+        linea_cinco.addCell(celda("Domicilio:", TITULO));
+        linea_cinco.addCell(celda(informacion.getDomicilio_tutor()));
 
         linea_uno.setTotalWidth(new float[] {15, 65, 10, 10});
         linea_dos.setTotalWidth(new float[] {16, 14, 18, 12, 15, 25});
@@ -581,25 +586,25 @@ public class TrabajoSocialPDF {
         linea_cinco.setWidthPercentage(100);
         linea_seis.setWidthPercentage(100);
 
-        table.addCell(Default.borrarBordesTable(titulo));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_uno));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_dos));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_tres));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_cuatro));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_cinco));
-        table.addCell(Default.celda(" "));
-        table.addCell(Default.borrarBordesTable(linea_seis));
+        table.addCell(borrarBordesTable(titulo));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_uno));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_dos));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_tres));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_cuatro));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_cinco));
+        table.addCell(celda(" "));
+        table.addCell(borrarBordesTable(linea_seis));
 
         return table;
     }
 }
 
-class Default {
+class DefaultV1 {
 
     public static Font TITULO = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
     public static Font NORMAL = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);

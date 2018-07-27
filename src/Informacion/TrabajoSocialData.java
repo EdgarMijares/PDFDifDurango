@@ -13,19 +13,7 @@ public class TrabajoSocialData {
     private String hora = "";
 
     // INFORMACION NINO
-    private String nombre = "";
-    private String edad = "";
-    private String fecha_nacimiento = "";
-    private String lugar_nacimiento = "";
-    private String nacionalidad = "";
-    private String sexo = "";
-    private String idioma = "";
-    private String etnia = "";
-    private String religion = "";
-    private boolean discapacidad = false;
-    private String tipo_discapacidad = "";
-    private String escolaridad = "";
-    private String domicilio = "";
+    private ArrayList<InformacionNinoData> informacionNinoData = new ArrayList();
 
     // INFORMACION TECNICAS
     private String nombre_tutor = "";
@@ -101,24 +89,12 @@ public class TrabajoSocialData {
         super();
     }
 
-    public TrabajoSocialData(String folio, String no_expediente, String fecha, String hora, String nombre, String edad, String fecha_nacimiento, String lugar_nacimiento, String nacionalidad, String sexo, String idioma, String etnia, String religion, boolean discapacidad, String tipo_discapacidad, String escolaridad, String domicilio, String nombre_tutor, String edad_tutor, String parentesco, String estado_civil, String telefono, String idioma_tutor, String etnia_tutor, String religion_tutor, boolean discapacidad_tutor, String tipo_discapacidad_tutor, String escolaridad_tutor, String domicilio_tutor, boolean valaracion, boolean[] tecnicas, ArrayList<Familia> familia, String dinamica_familiar, String familiograma, double ingresos_padre, double ingresos_madre, double ingresos_hermano, double ingresos_otros, double ingresos_total, double egresos_alimentacion, double egresos_educacion, double egresos_salud, double egresos_vestido, double egresos_servicios, double egresos_transporte, double egresos_renta, double egresos_otros, double egresos_total, double superavit, double deficit, int vivienda, int tipo_vivienda, int zona_vivienda, boolean[] distribucion, String[] habitaciones, boolean[] material_piso, boolean[] material_muros, boolean[] material_techo, boolean[] servicios_publicos, String material_piso_otro, String material_muros_otro, String material_techo_otro, String descripcion_problematica, String entrevista_nino, String diagnostico_social, String plan_de_accion, String observaciones, String trabajador_social) {
+    public TrabajoSocialData(String folio, String no_expediente, String fecha, String hora, ArrayList<InformacionNinoData> informacionNinoData, String nombre_tutor, String edad_tutor, String parentesco, String estado_civil, String telefono, String idioma_tutor, String etnia_tutor, String religion_tutor, boolean discapacidad_tutor, String tipo_discapacidad_tutor, String escolaridad_tutor, String domicilio_tutor, boolean valaracion, boolean[] tecnicas, ArrayList<Familia> familia, String dinamica_familiar, String familiograma, double ingresos_padre, double ingresos_madre, double ingresos_hermano, double ingresos_otros, double ingresos_total, double egresos_alimentacion, double egresos_educacion, double egresos_salud, double egresos_vestido, double egresos_servicios, double egresos_transporte, double egresos_renta, double egresos_otros, double egresos_total, double superavit, double deficit, int vivienda, int tipo_vivienda, int zona_vivienda, boolean[] distribucion, String[] habitaciones, boolean[] material_piso, boolean[] material_muros, boolean[] material_techo, boolean[] servicios_publicos, String material_piso_otro, String material_muros_otro, String material_techo_otro, String descripcion_problematica, String entrevista_nino, String diagnostico_social, String plan_de_accion, String observaciones, String trabajador_social) {
         this.folio = folio;
         this.no_expediente = no_expediente;
         this.fecha = fecha;
         this.hora = hora;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.lugar_nacimiento = lugar_nacimiento;
-        this.nacionalidad = nacionalidad;
-        this.sexo = sexo;
-        this.idioma = idioma;
-        this.etnia = etnia;
-        this.religion = religion;
-        this.discapacidad = discapacidad;
-        this.tipo_discapacidad = tipo_discapacidad;
-        this.escolaridad = escolaridad;
-        this.domicilio = domicilio;
+        this.informacionNinoData = informacionNinoData;
         this.nombre_tutor = nombre_tutor;
         this.edad_tutor = edad_tutor;
         this.parentesco = parentesco;
@@ -204,108 +180,12 @@ public class TrabajoSocialData {
         this.hora = hora;
     }
 
-    public String getNombre() {
-        return nombre;
+    public ArrayList<InformacionNinoData> getInformacionNinoData() {
+        return informacionNinoData;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEdad() {
-        return edad;
-    }
-
-    public void setEdad(String edad) {
-        this.edad = edad;
-    }
-
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
-    }
-
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
-    }
-
-    public String getLugar_nacimiento() {
-        return lugar_nacimiento;
-    }
-
-    public void setLugar_nacimiento(String lugar_nacimiento) {
-        this.lugar_nacimiento = lugar_nacimiento;
-    }
-
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
-    }
-
-    public String getEtnia() {
-        return etnia;
-    }
-
-    public void setEtnia(String etnia) {
-        this.etnia = etnia;
-    }
-
-    public String getReligion() {
-        return religion;
-    }
-
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
-
-    public boolean isDiscapacidad() {
-        return discapacidad;
-    }
-
-    public void setDiscapacidad(boolean discapacidad) {
-        this.discapacidad = discapacidad;
-    }
-
-    public String getTipo_discapacidad() {
-        return tipo_discapacidad;
-    }
-
-    public void setTipo_discapacidad(String tipo_discapacidad) {
-        this.tipo_discapacidad = tipo_discapacidad;
-    }
-
-    public String getEscolaridad() {
-        return escolaridad;
-    }
-
-    public void setEscolaridad(String escolaridad) {
-        this.escolaridad = escolaridad;
-    }
-
-    public String getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
+    public void setInformacionNinoData(ArrayList<InformacionNinoData> informacionNinoData) {
+        this.informacionNinoData = informacionNinoData;
     }
 
     public String getNombre_tutor() {
