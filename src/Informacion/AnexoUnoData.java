@@ -30,6 +30,7 @@ public class AnexoUnoData {
 
     private String entrevista = "";
     private boolean pruebas[] = {false, false, false, false, false, false, false, false};
+    private String pruebas_otro = "";
     private boolean material[] = {false, false, true, false, false, false};
 
     private String apariencia_fisica = "";
@@ -276,6 +277,14 @@ public class AnexoUnoData {
 
     public void setPruebas(boolean[] pruebas) {
         this.pruebas = pruebas;
+    }
+
+    public String getPruebas_otro() {
+        return pruebas_otro;
+    }
+
+    public void setPruebas_otro(String pruebas_otro) {
+        this.pruebas_otro = pruebas_otro;
     }
 
     public boolean[] getMaterial() {

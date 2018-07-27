@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class AnexoUnoPDF {
 
+    private AnexoUnoData data;
     private static String[][] PRUEBAS = {
             {"HTP (HOUSE-TREE-PERSON)", "TEST QUE PERMITE AL SUJETO PROYECTAR CON MÁS FACILIDAD SUS ÁREAS DE CONFLICTO Y ELEMENTOS DE SU PERSONALIDAD."},
             {"TEST DEL ÁRBOL", "TEST PROYECTIVO QUE CONSISTE EN EL DIBUJO DE UN ÁRBOL, EN ESTE TODO NIÑO/ADOLESCENTE INFORMA ACERCA DE SÍ MISMO, DE SU EVOLUCIÓN PSICOSEXUAL " +
@@ -29,7 +30,6 @@ public class AnexoUnoPDF {
 
     private static String[] MATERIAL = {"MEMORAMA", "ROMPECABEZAS(EN FUNCIÓN DE LAS EDADES", "CUENTOS", "JUGUETES(CARROS, PELUCHES, ANIMALITOS, MUÑECAS, ETC.", "TÍTERES", "MASA(PLAY DOH)"};
 
-    private AnexoUnoData data;
 
     public AnexoUnoPDF (String nombre_reporte, String url_reporte, AnexoUnoData data) throws IOException, DocumentException {
         this.data = data;
@@ -157,7 +157,13 @@ public class AnexoUnoPDF {
         content.addCell(Default.celda(data.getEntrevista() + "\n ", Default.NORMAL_CHICA));
         content.addCell(Default.celda("3.3 PRUEBAS", Default.TITULO_CHICA));
         for(int i = 0; i < PRUEBAS.length; i++) {
-            if (data.getPruebas()[i]) { content.addCell(Default.celdaDoble(PRUEBAS[i][0], PRUEBAS[i][1], new float[]{27, 73})); }
+            if (data.getPruebas()[i]) {
+                if (i == (PRUEBAS.length - 1)){
+                    content.addCell(Default.celdaDoble(PRUEBAS[i][0], data.getPruebas_otro(), new float[]{27, 73}));
+                } else {
+                    content.addCell(Default.celdaDoble(PRUEBAS[i][0], PRUEBAS[i][1], new float[]{27, 73}));
+                }
+            }
         }
         content.addCell(Default.celda("\n "));
         content.addCell(Default.celda("3.4 MATERIAL PSICOPEDAGÓGICO", Default.TITULO_CHICA));
