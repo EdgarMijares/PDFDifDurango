@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Informacion/InformacionNinoData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" afterDir="false" />
-    </list>
+    <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +36,8 @@
       <file leaf-file-name="TrabajoSocialPDF.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="608" column="7" selection-start-line="608" selection-start-column="7" selection-end-line="608" selection-end-column="7" />
+            <state relative-caret-position="11373">
+              <caret line="673" selection-start-line="673" selection-end-line="673" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -209,37 +204,6 @@
             </path>
             <path>
               <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Design" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Formatos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Formatos" type="462c0819:PsiDirectoryNode" />
-              <item name="TrabajoSocialPDF.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Image" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Informacion" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -364,10 +328,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49946696" weight="0.32900432" />
       <window_info anchor="bottom" id="Run" order="6" sideWeight="0.48614073" visible="true" weight="0.26406926" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.5138593" side_tool="true" visible="true" weight="0.26406926" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.5138593" side_tool="true" visible="true" weight="0.26406926" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.13272922" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13272922" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
@@ -880,8 +844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="608" column="7" selection-start-line="608" selection-start-column="7" selection-end-line="608" selection-end-column="7" />
+        <state relative-caret-position="11373">
+          <caret line="673" selection-start-line="673" selection-end-line="673" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

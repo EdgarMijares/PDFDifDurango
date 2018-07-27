@@ -220,7 +220,7 @@ public class AnexoUnoPDF {
     private PdfPTable getFirma() {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.firmaTrabajadorChica("NOMBRE DEL TRABAJADOR", "PSICÓLOGO"));
+        content.addCell(Default.firmaTrabajadorChica(data.getTrabajador().getNombre(), data.getTrabajador().getCargo()));
         content.addCell(Default.celda());
         content.addCell(Default.celda("Ciudad de México, a " + Default.fechaTexto(), Default.TITULO, Element.ALIGN_JUSTIFIED));
 
