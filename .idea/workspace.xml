@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Informacion/AnexoUnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Informacion/AnexoUnoData.java" afterDir="false" />
-    </list>
+    <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,20 +12,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AnexoUnoPDF.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AnexoUnoPDF.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="464">
+              <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnexoUnoData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnexoUnoData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Informacion/AnexoUnoData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+            <state relative-caret-position="2958">
+              <caret line="281" column="37" selection-start-line="281" selection-start-column="37" selection-end-line="281" selection-end-column="37" />
+              <folding>
+                <element signature="e#7845#7846#0" expanded="true" />
+                <element signature="e#7901#7902#0" expanded="true" />
+                <element signature="e#7949#7950#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,6 +50,9 @@
       <find>(</find>
       <find>celdaBorderButtom</find>
       <find>check</find>
+      <find>otro</find>
+      <find>PRUEBAS</find>
+      <find>pruebas</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -65,8 +71,8 @@
         <option value="$PROJECT_DIR$/src/Informacion/InformacionNinoData.java" />
         <option value="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" />
         <option value="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" />
-        <option value="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" />
         <option value="$PROJECT_DIR$/src/Informacion/AnexoUnoData.java" />
+        <option value="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" />
       </list>
     </option>
   </component>
@@ -119,6 +125,12 @@
               <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Formatos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Image" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
@@ -241,7 +253,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.49946696" weight="0.32900432" />
@@ -252,11 +263,11 @@
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49946696" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.48614073" visible="true" weight="0.26406926" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.5138593" side_tool="true" visible="true" weight="0.26406926" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.48614073" weight="0.26406926" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.5138593" side_tool="true" visible="true" weight="0.26406926" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.13272922" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13272922" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
@@ -763,17 +774,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
+    <entry file="file://$PROJECT_DIR$/src/Informacion/AnexoUnoData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="2958">
+          <caret line="281" column="37" selection-start-line="281" selection-start-column="37" selection-end-line="281" selection-end-column="37" />
+          <folding>
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7901#7902#0" expanded="true" />
+            <element signature="e#7949#7950#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Informacion/AnexoUnoData.java">
+    <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        <state relative-caret-position="464">
+          <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
         </state>
       </provider>
     </entry>

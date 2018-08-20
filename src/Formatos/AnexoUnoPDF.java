@@ -219,6 +219,9 @@ public class AnexoUnoPDF {
         content.addCell(Default.celda("7. SUGERENCIAS", Default.TITULO));
         content.addCell(Default.celda(data.getSugerencias(), Default.NORMAL_CHICA));
 
+        content.addCell(Default.celda("8. Historial Clínico", Default.TITULO));
+        content.addCell(Default.celda(data.getHistorial_clinico(), Default.NORMAL_CHICA));
+
         content.setWidthPercentage(85);
         return content;
     }

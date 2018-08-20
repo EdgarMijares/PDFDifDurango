@@ -48,6 +48,7 @@ public class AnexoUnoData {
     private String interpretacion_de_tecnicas = "";
     private String concluciones = "";
     private String sugerencias = "";
+    private String historial_clinico = "";
 
     private TrabajadorData trabajador = new TrabajadorData();
 
@@ -413,6 +414,14 @@ public class AnexoUnoData {
 
     public void setTrabajador(TrabajadorData trabajador) {
         this.trabajador = trabajador;
+    }
+
+    public String getHistorial_clinico() {
+        return historial_clinico;
+    }
+
+    public void setHistorial_clinico(String historial_clinico) {
+        this.historial_clinico = historial_clinico;
     }
 }
 
