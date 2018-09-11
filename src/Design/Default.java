@@ -1,7 +1,6 @@
 package Design;
 
-import Informacion.Familia;
-import Informacion.InformeClinicoData;
+import Informacion.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -34,6 +33,9 @@ public class Default {
     public static Font TITULO_CHICA_ROSA = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, COLOR_ROSA);
     public static Font TITULO_CHICA_BLANCO = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, new BaseColor(0xFFFFFF));
     public static Font NORMAL_CHICA_BLANCO = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, new BaseColor(0xFFFFFF));
+
+    public static Font TITULO_ROSA = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, COLOR_ROSA);
+
 
     private static String[] MES_TEXTO = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
 
@@ -469,6 +471,23 @@ public class Default {
             table.addCell(celdaBorderButtom(t.getApellido_paterno(), NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(celdaBorderButtom(t.getApellido_materno(), NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(celdaBorderButtom(t.getParentesco(), NORMAL_CHICA, Element.ALIGN_CENTER));
+        }
+        table.setWidthPercentage(100);
+        return celda(table);
+    }
+
+    public static PdfPCell createTableEstaditicas(ArrayList<EstadisticasData> datos) {
+        PdfPTable table = new PdfPTable(1);
+        PdfPTable table2 = new PdfPTable(2);
+        for (EstadisticasData d: datos){
+            table.addCell(rellenoColor(d.getTitulo(), HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+            for (TablaEstadisticasData t: d.getDatos()) {
+                table2.addCell(celdaBorderButtom(t.getTitulo(), NORMAL_CHICA, Element.ALIGN_CENTER));
+                table2.addCell(celdaBorderButtom(t.getDato(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            }
+            table.addCell(Default.celda(table2));
+            table.addCell(Default.celda());
+            table2.deleteBodyRows();
         }
         table.setWidthPercentage(100);
         return celda(table);
