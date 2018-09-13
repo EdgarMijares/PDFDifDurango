@@ -476,20 +476,23 @@ public class Default {
         return celda(table);
     }
 
-    public static PdfPCell createTableEstaditicas(ArrayList<EstadisticasData> datos) {
+    public static PdfPCell createTableEstaditicas(ArrayList<TablaEstadisticasData> datos) {
         PdfPTable table = new PdfPTable(1);
         PdfPTable table2 = new PdfPTable(2);
-        for (EstadisticasData d: datos){
-            table.addCell(rellenoColor(d.getTitulo(), HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
-            for (TablaEstadisticasData t: d.getDatos()) {
-                table2.addCell(celdaBorderButtom(t.getTitulo(), NORMAL_CHICA, Element.ALIGN_CENTER));
-                table2.addCell(celdaBorderButtom(t.getDato(), NORMAL_CHICA, Element.ALIGN_CENTER));
+        if(datos != null){
+            for (TablaEstadisticasData d: datos){
+                table.addCell(rellenoColor(d.getTitulo(), HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+                for (int i = 0; i < d.getColumna_izquierda().size(); i++) {
+                    table2.addCell(celdaBorderButtom(d.getColumna_izquierda().get(i), NORMAL_CHICA, Element.ALIGN_CENTER));
+                    table2.addCell(celdaBorderButtom(d.getColumna_derecha().get(i), NORMAL_CHICA, Element.ALIGN_CENTER));
+                }
+                table.addCell(Default.celda(table2));
+                table.addCell(Default.celda());
+                table2.deleteBodyRows();
             }
-            table.addCell(Default.celda(table2));
-            table.addCell(Default.celda());
-            table2.deleteBodyRows();
+            table.setWidthPercentage(90);
+
         }
-        table.setWidthPercentage(100);
         return celda(table);
     }
 

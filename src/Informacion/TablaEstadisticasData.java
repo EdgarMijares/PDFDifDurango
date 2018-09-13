@@ -1,15 +1,19 @@
 package Informacion;
 
+import java.util.ArrayList;
+
 public class TablaEstadisticasData {
     private String titulo = "";
-    private String dato = "";
+    private ArrayList<String> columna_izquierda = new ArrayList<>();
+    private ArrayList<String> columna_derecha = new ArrayList<>();
 
-    public TablaEstadisticasData(String titulo, String dato) {
+    public TablaEstadisticasData() {    }
+
+    public TablaEstadisticasData(String titulo, ArrayList<String> columna_izquierda, ArrayList<String> columna_derecha) {
         this.titulo = titulo;
-        this.dato = dato;
+        this.columna_izquierda = columna_izquierda;
+        this.columna_derecha = columna_derecha;
     }
-
-    public TablaEstadisticasData() { }
 
     public String getTitulo() {
         return titulo;
@@ -19,11 +23,19 @@ public class TablaEstadisticasData {
         this.titulo = titulo;
     }
 
-    public String getDato() {
-        return dato;
+    public ArrayList<String> getColumna_izquierda() {
+        return columna_izquierda;
     }
 
-    public void setDato(String dato) {
-        this.dato = dato;
+    public void setColumna_izquierda(ArrayList<String> columna_izquierda) {
+        this.columna_izquierda = columna_izquierda;
+    }
+
+    public ArrayList<String> getColumna_derecha() {
+        return columna_derecha;
+    }
+
+    public void setColumna_derecha(ArrayList<String> columna_derecha) {
+        this.columna_derecha = columna_derecha;
     }
 }

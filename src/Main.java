@@ -174,6 +174,39 @@ public class Main {
         RecepcionReporteData recepcionReporteData = new RecepcionReporteData();
         recepcionReporteData.setEstado_denunciante(false);
 
+        //Estadisticas Data
+        ArrayList<String> derecha = new ArrayList<>();
+        ArrayList<String> izquierda = new ArrayList<>();
+
+        ArrayList<String> derecha2 = new ArrayList<>();
+        ArrayList<String> izquierda2 = new ArrayList<>();
+
+        for (int i = 1; i <= 5; i++){
+            izquierda.add("Dato " + i);
+            derecha.add(String.valueOf(Math.random() * 10 + 1));
+        }
+
+        for (int i = 1; i <= 5; i++){
+            izquierda2.add("Dato " + (i + 5));
+            derecha2.add(String.valueOf(Math.random() * 10 + 1));
+        }
+
+        TablaEstadisticasData tablaEstadisticasData = new TablaEstadisticasData();
+        tablaEstadisticasData.setTitulo("Tabla 1");
+        tablaEstadisticasData.setColumna_derecha(derecha);
+        tablaEstadisticasData.setColumna_izquierda(izquierda);
+
+        TablaEstadisticasData tablaEstadisticasData2 = new TablaEstadisticasData();
+        tablaEstadisticasData2.setTitulo("Tabla 2");
+        tablaEstadisticasData2.setColumna_derecha(derecha2);
+        tablaEstadisticasData2.setColumna_izquierda(izquierda2);
+
+        ArrayList<TablaEstadisticasData> arrayTabalaEstadisticaData = new ArrayList<>();
+        arrayTabalaEstadisticaData.add(tablaEstadisticasData);
+        arrayTabalaEstadisticaData.add(tablaEstadisticasData2);
+
+        EstadisticasData estadisticasData = new EstadisticasData("PERIODO", "TRABAJADOR", arrayTabalaEstadisticaData);
+
 
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
@@ -182,7 +215,7 @@ public class Main {
 //            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
 //            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
 //            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
-            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", anexoUnoData);
+            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

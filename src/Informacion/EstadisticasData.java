@@ -4,22 +4,32 @@ import java.util.ArrayList;
 
 public class EstadisticasData {
 
-    private String titulo = "";
+    private String periodo = "";
+    private String trabajador = "";
     private ArrayList<TablaEstadisticasData> datos = new ArrayList<>();
 
     public EstadisticasData() { }
 
-    public EstadisticasData(String titulo, ArrayList<TablaEstadisticasData> datos) {
-        this.titulo = titulo;
+    public EstadisticasData(String periodo, String trabajador, ArrayList<TablaEstadisticasData> datos) {
         this.datos = datos;
+        this.periodo = periodo;
+        this.trabajador = trabajador;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public String getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(String trabajador) {
+        this.trabajador = trabajador;
     }
 
     public ArrayList<TablaEstadisticasData> getDatos() {
@@ -30,3 +40,4 @@ public class EstadisticasData {
         this.datos = datos;
     }
 }
+
