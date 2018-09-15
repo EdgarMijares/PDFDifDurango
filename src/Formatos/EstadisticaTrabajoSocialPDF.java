@@ -21,7 +21,6 @@ import static Design.Default.*;
 public class EstadisticaTrabajoSocialPDF {
 
     public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data) throws IOException, DocumentException {
-//        this.data = data;
         Default.HeaderTable header = new Default.HeaderTable(getHeader(), true);
 
         Document document = new Document(PageSize.A4.rotate(), 30, 30, header.getTableHeight(), 30);
