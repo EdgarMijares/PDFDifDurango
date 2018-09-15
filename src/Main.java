@@ -345,6 +345,19 @@ public class Main {
 
         data.setTrabajador_social("Edgar Cipriano Mijares Cejas");
 
+        //ESTADISTICA TRABAJO SOCIAL
+        EstadisticaTrabajoSocialData estadisticaTrabajoSocialData = new EstadisticaTrabajoSocialData();
+        estadisticaTrabajoSocialData.setDatos_mpales(new String[] {"1", "2", "3", "4", "5","6"});
+        estadisticaTrabajoSocialData.setDatos_pmnna(new String[] {"1", "2", "3", "4", "5", "6"});
+
+        estadisticaTrabajoSocialData.setDatos_primera_t2(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+        estadisticaTrabajoSocialData.setDatos_segunda_t2(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+        estadisticaTrabajoSocialData.setDatos_tercera_t2(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+
+        estadisticaTrabajoSocialData.setDatos_primera_t3(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+        estadisticaTrabajoSocialData.setDatos_segunda_t3(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+        estadisticaTrabajoSocialData.setDatos_tercera_t3(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);
@@ -354,7 +367,7 @@ public class Main {
 //            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
 //            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
 //            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
-            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\", data);
+            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

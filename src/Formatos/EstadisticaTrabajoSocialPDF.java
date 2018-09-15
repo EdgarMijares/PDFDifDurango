@@ -1,6 +1,8 @@
 package Formatos;
 
 import Design.Default;
+import Informacion.EstadisticaTrabajoSocialData;
+import Informacion.EstadisticasData;
 import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -18,7 +20,7 @@ import static Design.Default.*;
 
 public class EstadisticaTrabajoSocialPDF {
 
-    public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, TrabajoSocialData data) throws IOException, DocumentException {
+    public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data) throws IOException, DocumentException {
 //        this.data = data;
         Default.HeaderTable header = new Default.HeaderTable(getHeader(), true);
 
@@ -27,9 +29,9 @@ public class EstadisticaTrabajoSocialPDF {
 
         pdfWriter.setPageEvent(header);
         document.open();
-        document.add(getTablaUno());
-        document.add(getTablaDos());
-        document.add(getTablaTres());
+        document.add(getTablaUno(data.getPMNNA(), data.getMPALES()));
+        document.add(getTablaDos(data.getPRIMERAVEZ_T2(), data.getSUBSECUENTE_T2(), data.getSEGUIMIENTO_T2()));
+        document.add(getTablaTres(data.getPRIMERAVEZ_T3(), data.getSUBSECUENTE_T3(), data.getSEGUIMIENTO_T3()));
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -49,13 +51,12 @@ public class EstadisticaTrabajoSocialPDF {
         return content;
     }
 
-    private PdfPTable getTablaUno() throws DocumentException {
+    private PdfPTable getTablaUno(String[] PMNNA, String[] MPALES) throws DocumentException {
         String[] titulo = new String[] {"SOLICITANTES", "DIRECTAS", "COLATERALES", "TOTAL", "1ERA VEZ", "SUB", "SEGUIM"};
-        String[] pammna = new String[] {"PAMNNA", "9", "8","7","6","5","4"};
-        String[] del_mpales = new String[] {"DEL. MPALES", "9", "8","7","6","5","4"};
         ArrayList<String[]> datos = new ArrayList<>();
-        datos.add(pammna);
-        datos.add(del_mpales);
+        datos.add(PMNNA);
+        datos.add(MPALES);
+        System.out.println(PMNNA.length);
         PdfPTable table = new PdfPTable(titulo.length);
 
         for (String t : titulo) {
@@ -79,11 +80,8 @@ public class EstadisticaTrabajoSocialPDF {
         return content;
     }
 
-    private PdfPTable getTablaDos() throws DocumentException {
+    private PdfPTable getTablaDos(String[] PRIMERAVEZ, String[] SUBSECUENTE, String[] SEGUIMIENTO) throws DocumentException {
         String[] titulo = new String[] {"VALORACIÓN", "COMPROBADO", "NO COMPROBADO", "FALSO", "FAVORABLE", "NO FAVORABLE", "NO SE LOCALIZA", "ASEGURAMIENTO", "CITATORIO", "OTROS"};
-        String[] PRIMERAVEZ = new String[] {"1ERA VEZ", "9", "8","7","6","5","4", "9", "9", "2"};
-        String[] SUBSECUENTE = new String[] {"SUBSECUENTE", "9", "8","7","6","5","4", "9", "9", "2"};
-        String[] SEGUIMIENTO = new String[] {"SEGUIMIENTO", "9", "8","7","6","5","4", "9", "9", "2"};
         ArrayList<String[]> datos = new ArrayList<>();
         datos.add(PRIMERAVEZ);
         datos.add(SUBSECUENTE);
@@ -114,11 +112,8 @@ public class EstadisticaTrabajoSocialPDF {
         return content;
     }
 
-    private PdfPTable getTablaTres() throws DocumentException {
+    private PdfPTable getTablaTres(String[] PRIMERAVEZ, String[] SUBSECUENTE, String[] SEGUIMIENTO) throws DocumentException {
         String[] titulo = new String[] {"VALORACIÓN", "OC", "FISICO", "PSIC EM", "EB SEX", "G Y C", "AM FAB", "RIES", "REINT", "OTRO"};
-        String[] PRIMERAVEZ = new String[] {"1ERA VEZ", "9", "8","7","6","5","4", "9", "9", "2"};
-        String[] SUBSECUENTE = new String[] {"SUBSECUENTE", "9", "8","7","6","5","4", "9", "9", "2"};
-        String[] SEGUIMIENTO = new String[] {"SEGUIMIENTO", "9", "8","7","6","5","4", "9", "9", "2"};
         ArrayList<String[]> datos = new ArrayList<>();
         datos.add(PRIMERAVEZ);
         datos.add(SUBSECUENTE);
