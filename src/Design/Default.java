@@ -56,9 +56,17 @@ public class Default {
         public HeaderTable(PdfPTable table) throws IOException, BadElementException {
             this.table = new PdfPTable(1);
             this.table.addCell(celda(table));
-            this.table.addCell(celda());
             this.table.addCell(rellenoColor(3, 0x009FBF));
             this.table.setTotalWidth(532);
+            this.table.setLockedWidth(true);
+            this.tableHeight = this.table.getTotalHeight();
+        }
+
+        public HeaderTable(PdfPTable table, boolean v) throws IOException, BadElementException {
+            this.table = new PdfPTable(1);
+            this.table.addCell(celda(table));
+            this.table.addCell(rellenoColor(3, 0x009FBF));
+            this.table.setTotalWidth(770);
             this.table.setLockedWidth(true);
             this.tableHeight = this.table.getTotalHeight();
         }
@@ -178,6 +186,14 @@ public class Default {
         return cell;
     }
 
+    public static PdfPCell rellenoColor(String texto, int color, int align) {
+        PdfPCell cell = celda(texto, NORMAL, align, new int[] {255,255,255}, 9);
+        cell.setFixedHeight(15);
+        cell.setBorder(0);
+        cell.setBackgroundColor(new BaseColor(color));
+        return cell;
+    }
+
     public static PdfPCell rellenoTrue(int color) {
         PdfPCell cell = celda("X", NORMAL_CHICA_BLANCO, Element.ALIGN_RIGHT, new int[] {255,255,255}, 9);
         cell.setFixedHeight(3);
@@ -217,6 +233,13 @@ public class Default {
     public static PdfPCell rellenoColor(String texto, int fondo,Font fuente, int posicion) {
         PdfPCell cell = celda(texto, fuente, posicion);
         cell.setFixedHeight(15);
+        cell.setBorder(0);
+        cell.setBackgroundColor(new BaseColor(fondo));
+        return cell;
+    }
+
+    public static PdfPCell rellenoColorDoble(String texto, int fondo,Font fuente, int posicion) {
+        PdfPCell cell = celda(texto, fuente, posicion);
         cell.setBorder(0);
         cell.setBackgroundColor(new BaseColor(fondo));
         return cell;
@@ -263,6 +286,17 @@ public class Default {
     public static PdfPCell opcion (String opcion, boolean question, float size[]) throws DocumentException {
         PdfPTable content = new PdfPTable(2);
         content.addCell(question? rellenoTrue(HEXA_ROSA): rellenoFalse(HEXA_ROSA));
+        content.addCell(celda(opcion, TITULO_CHICA));
+        content.setHorizontalAlignment(Element.ALIGN_CENTER);
+        content.setWidthPercentage(100);
+        content.setTotalWidth(size);
+        return celda(content);
+    }
+
+    public static PdfPCell opcion (String opcion, String valor, float size[]) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+//        content.addCell(question? rellenoTrue(HEXA_ROSA): rellenoFalse(HEXA_ROSA));
+        content.addCell(rellenoColor(valor, HEXA_ROSA, Element.ALIGN_CENTER));
         content.addCell(celda(opcion, TITULO_CHICA));
         content.setHorizontalAlignment(Element.ALIGN_CENTER);
         content.setWidthPercentage(100);
@@ -352,6 +386,15 @@ public class Default {
         return celda(content);
     }
 
+    public static PdfPCell celdaTriple(PdfPCell derecha, PdfPCell centro, PdfPCell izquierda) throws DocumentException {
+        PdfPTable content = new PdfPTable(3);
+        content.addCell(derecha);
+        content.addCell(centro);
+        content.addCell(izquierda);
+        content.setWidthPercentage(100);
+        return celda(content);
+    }
+
     public static PdfPCell celda() {
         PdfPCell cell = new PdfPCell();
         cell.addElement(new Paragraph(" "));
@@ -402,6 +445,14 @@ public class Default {
         cell.setBorder(2);
         cell.setHorizontalAlignment(posicion);
         cell.setBorderColor(COLOR_ROSA);
+        return cell;
+    }
+
+    public static PdfPCell celdaBorderButtomAzul(String texto, Font fuente, int posicion) {
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
+        cell.setBorder(2);
+        cell.setHorizontalAlignment(posicion);
+        cell.setBorderColor(COLOR_AZUL);
         return cell;
     }
 
@@ -472,6 +523,25 @@ public class Default {
             table.addCell(celdaBorderButtom(t.getApellido_materno(), NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(celdaBorderButtom(t.getParentesco(), NORMAL_CHICA, Element.ALIGN_CENTER));
         }
+        table.setWidthPercentage(100);
+        return celda(table);
+    }
+
+    public static PdfPCell createTableFamilaDetallada(String[] titulo, ArrayList<Familia> datos) throws DocumentException {
+        PdfPTable table = new PdfPTable(titulo.length);
+        for (String t : titulo) {
+            table.addCell(rellenoColor(t, HEXA_ROSA, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+        }
+        for (Familia t : datos){
+            table.addCell(celdaBorderButtom(t.getNombre() + " " + t.getApellido_paterno()+ " " + t.getApellido_materno(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getParentesco(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getEdad(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getSexo(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getEstado_civil(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getEscolaridad(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(celdaBorderButtom(t.getOcupacion(), NORMAL_CHICA, Element.ALIGN_CENTER));
+        }
+        table.setTotalWidth(new float[] {25,15,7,7,15,15,15});
         table.setWidthPercentage(100);
         return celda(table);
     }

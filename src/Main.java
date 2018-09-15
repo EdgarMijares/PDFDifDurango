@@ -207,6 +207,143 @@ public class Main {
 
         EstadisticasData estadisticasData = new EstadisticasData("PERIODO", "TRABAJADOR", arrayTabalaEstadisticaData);
 
+        // TRABAJO SOCIAL
+        TrabajoSocialData data = new TrabajoSocialData();
+        data.setFolio("12345");
+        data.setNo_expediente("DIF/PPNNA-040-019/2018");
+        data.setFecha(
+                Calendar.getInstance().get(Calendar.DATE) + "/" +
+                        (Calendar.getInstance().get(Calendar.MONTH) + 1) + "/" +
+                        Calendar.getInstance().get(Calendar.YEAR));
+        data.setHora(
+                Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" +
+                        Calendar.getInstance().get(Calendar.MINUTE) + ":" +
+                        Calendar.getInstance().get(Calendar.SECOND));
+
+        // INFORMACION NINO
+        ArrayList<InformacionNinoData> lista_nino = new ArrayList<>();
+        InformacionNinoData nino = new InformacionNinoData();
+        nino.setNombre("Edgar Cipriano Mijares Cejas");
+        nino.setEdad("23");
+        nino.setFecha_nacimiento("06/08/1994");
+        nino.setLugar_nacimiento("Durango Durango MX");
+        nino.setNacionalidad("Mexicana");
+        nino.setSexo("Masculino");
+        nino.setIdioma("Español");
+        nino.setEtnia("");
+        nino.setReligion("Catolico");
+        nino.setDiscapacidad(false);
+        nino.setTipo_discapacidad("");
+        nino.setEscolaridad("Tecnico informatico");
+        nino.setDomicilio("Fraccionamiento Arantzazu Privada Bilbao #111");
+        lista_nino.add(nino);
+
+        data.setInformacionNinoData(lista_nino);
+
+        // INFORMACION TUTOR
+        data.setNombre_tutor("Cipriano Mijares Chavarria");
+        data.setEdad_tutor("42");
+        data.setParentesco("Padre");
+        data.setEstado_civil("Casado");
+        data.setTelefono("+52 618 157 18 96");
+        data.setIdioma_tutor("Español");
+        data.setEtnia_tutor("");
+        data.setReligion_tutor("Catolico");
+        data.setDiscapacidad_tutor(false);
+        data.setEscolaridad_tutor("");
+        data.setDomicilio_tutor("Fraccionamiento Arantzazu Privada Bilbao #111");
+
+        // INFORMACION
+        data.setValaracion(true);
+        data.setTecnicas(new boolean[]{true, true, false, false});
+
+        // INFORMACION FAMILIA
+        ArrayList<Familia> lista_familia2 = new ArrayList<>();
+        // AQUÍ CREO QUE TIENEN UN ARRAY LIST SOLO LO PASAN COMO PARAMETRO DIRECTO A FAMILIA
+
+        Familia familia3 = new Familia(
+                "Nanci Yutzelly",
+                "Valles",
+                "Cejas",
+                "Hermanastra",
+                "28",
+                "F",
+                "Soltero",
+                "Lic. Odontologo",
+                "Odontologo");
+
+        lista_familia2.add(familia3);
+        data.setFamilia(lista_familia2);
+
+        data.setDinamica_familiar("Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took" +
+                " a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries," +
+                " but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the " +
+                "1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop " +
+                "publishing software like Aldus PageMaker including versions of Lorem Ipsum");
+
+        data.setFamiliograma("http://www.gabrielcastro.com/wordpress/wp-content/uploads/2009/11/genograma_v05.jpg");
+
+        // INFORMACION ECONOMICA
+        data.setIngresos_padre(2500.00);
+        data.setIngresos_madre(2500.00);
+        data.setIngresos_hermano(2500.00);
+        data.setIngresos_otros(2500.00);
+
+        data.setEgresos_alimentacion(2500.00);
+        data.setEgresos_educacion(2500.00);
+        data.setEgresos_salud(2500.00);
+        data.setEgresos_vestido(2500.00);
+        data.setEgresos_servicios(2500.00);
+        data.setEgresos_transporte(2500.00);
+        data.setEgresos_renta(2500.00);
+
+        // INFORMACION VIVIENDA
+        data.setVivienda(2);
+        data.setTipo_vivienda(0);
+        data.setZona_vivienda(1);
+        data.setDistribucion(new boolean[] {true, true, true, true});
+        data.setHabitaciones(new String[] {"1", "1", "1"});
+        data.setMaterial_piso(new boolean[] {false, true, false, false, false});
+        data.setMaterial_piso_otro("Vitropiso");
+        data.setMaterial_muros(new boolean[] {false, false, true, false, false});
+        data.setMaterial_muros_otro("");
+        data.setMaterial_techo(new boolean[] {true, true, false, true, false});
+        data.setMaterial_techo_otro("");
+        data.setServicios_publicos(new boolean[] {true, true, true, true, true, false});
+
+        data.setDescripcion_problematica(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a " +
+                        "piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor " +
+                        "at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum " );
+
+        data.setEntrevista_nino(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a " +
+                        "piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor " +
+                        "at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum " +
+                        "passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum " +
+                        "comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, " +
+                        "written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of " +
+                        "Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n");
+
+        data.setDiagnostico_social(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a " +
+                        "piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor " +
+                        "at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum " +
+                        "passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum " +
+                        "comes from sections 1.10.32 and 1.10.33 of ");
+
+        data.setPlan_de_accion(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a " +
+                        "piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor " +
+                        "at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum " +
+                        "passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum " +
+                        "comes from sections 1.10.32 and 1.10.33 of");
+
+        data.setObservaciones(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a ");
+
+        data.setTrabajador_social("Edgar Cipriano Mijares Cejas");
 
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
@@ -215,7 +352,9 @@ public class Main {
 //            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
 //            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
 //            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
-            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
+//            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
+//            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
+            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\", data);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

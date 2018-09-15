@@ -19,6 +19,18 @@ public class Familia {
         this.parentesco = parentesco;
     }
 
+    public Familia(String nombre, String apellido_paterno, String apellido_materno, String parentesco, String edad, String sexo, String estado_civil, String escolaridad, String ocupacion) {
+        this.nombre = nombre;
+        this.apellido_paterno = apellido_paterno;
+        this.apellido_materno = apellido_materno;
+        this.parentesco = parentesco;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.estado_civil = estado_civil;
+        this.escolaridad = escolaridad;
+        this.ocupacion = ocupacion;
+    }
+
     public String getNombre() {
         return nombre;
     }

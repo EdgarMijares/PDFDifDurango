@@ -33,7 +33,9 @@ public class TrabajoSocialData {
     private boolean valaracion = false;
 
     // INFORMACION TECNICAS
-    private boolean tecnicas[];
+    private boolean tecnicas[] = {false, false, false, false};
+    private String colateral = "";
+    private String directa = "";
 
     // INFORMACION FAMILIAR
     private ArrayList<Familia> familia = new ArrayList<>();
@@ -298,6 +300,22 @@ public class TrabajoSocialData {
 
     public void setTecnicas(boolean[] tecnicas) {
         this.tecnicas = tecnicas;
+    }
+
+    public String getColateral() {
+        return colateral;
+    }
+
+    public void setColateral(String colateral) {
+        this.colateral = colateral;
+    }
+
+    public String getDirecta() {
+        return directa;
+    }
+
+    public void setDirecta(String directa) {
+        this.directa = directa;
     }
 
     public ArrayList<Familia> getFamilia() {
