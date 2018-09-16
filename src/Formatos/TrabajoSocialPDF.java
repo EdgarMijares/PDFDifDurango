@@ -5,6 +5,7 @@ import Informacion.InformacionNinoData;
 import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import com.sun.org.apache.bcel.internal.classfile.ConstantNameAndType;
 
 import java.awt.*;
 import java.io.*;
@@ -213,6 +214,26 @@ public class TrabajoSocialPDF {
         content.addCell(Default.celda(data.getDinamica_familiar(), Element.ALIGN_JUSTIFIED));
 
         content.setWidthPercentage(90);
+        return content;
+    }
+
+    private PdfPTable getFamiliograma() throws IOException, BadElementException {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.celda(Default.createImageWidth(data.getFamiliograma(), 300)));
+        content.setWidthPercentage(90);
+
+        return content;
+    }
+
+    private PdfPTable getSituacionEconomica() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("VII. SITUACIÓN ECONOMICA", Default.TITULO));
+//        content.------a
+
         return content;
     }
 }

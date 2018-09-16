@@ -3,12 +3,14 @@ package Formatos;
 import Design.Default;
 import Informacion.EstadisticaTrabajoSocialData;
 import Informacion.EstadisticasData;
+import Informacion.TrabajadorData;
 import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javax.print.attribute.standard.PDLOverrideSupported;
 import javax.xml.crypto.dom.DOMCryptoContext;
 import java.awt.*;
 import java.io.File;
@@ -20,8 +22,8 @@ import static Design.Default.*;
 
 public class EstadisticaTrabajoSocialPDF {
 
-    public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data) throws IOException, DocumentException {
-        Default.HeaderTable header = new Default.HeaderTable(getHeader(), true);
+    public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data, String periodo, TrabajadorData d) throws IOException, DocumentException {
+        Default.HeaderTable header = new Default.HeaderTable(getHeader(), periodo);
 
         Document document = new Document(PageSize.A4.rotate(), 30, 30, header.getTableHeight(), 30);
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(url_reporte + nombre_reporte + ".pdf"));
@@ -31,6 +33,7 @@ public class EstadisticaTrabajoSocialPDF {
         document.add(getTablaUno(data.getPMNNA(), data.getMPALES()));
         document.add(getTablaDos(data.getPRIMERAVEZ_T2(), data.getSUBSECUENTE_T2(), data.getSEGUIMIENTO_T2()));
         document.add(getTablaTres(data.getPRIMERAVEZ_T3(), data.getSUBSECUENTE_T3(), data.getSEGUIMIENTO_T3()));
+        document.add(getFirma(d));
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -139,6 +142,14 @@ public class EstadisticaTrabajoSocialPDF {
         content.addCell(celda(table));
         content.addCell(Default.celda());
         content.setWidthPercentage(100);
+        return content;
+    }
+
+    private PdfPTable getFirma(TrabajadorData t) {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda(t.getNombre()));
+
         return content;
     }
 }
