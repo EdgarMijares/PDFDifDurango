@@ -45,9 +45,7 @@ public class EstadisticasPDF {
 
     private PdfPTable getContet() throws NullPointerException {
         PdfPTable content = new PdfPTable(1);
-        System.out.println(data.getDatos().size());
-        System.out.println(data.getDatos().get(0).getTitulo());
-        System.out.println(data.getDatos().get(1).getTitulo());
+
         content.addCell(Default.celda());
         content.addCell(Default.createTableEstaditicas(data.getDatos()));
 

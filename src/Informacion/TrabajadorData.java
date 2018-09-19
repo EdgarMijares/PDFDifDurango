@@ -8,6 +8,12 @@ public class TrabajadorData {
     public TrabajadorData() {
     }
 
+    public TrabajadorData(String nombre) {
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.cedula = cedula;
+    }
+
     public TrabajadorData(String nombre, String cargo, String cedula) {
         this.nombre = nombre;
         this.cargo = cargo;

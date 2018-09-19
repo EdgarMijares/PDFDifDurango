@@ -91,7 +91,7 @@ public class Main {
                 "las figuras de autoridad, así como la tendencia a la manipulación para obtener ganancia " +
                 "secundaria, derivado de esta conducta es por la razón que Angélica es ingresada a Casa " +
                 "Hogar, ya a referencia de ella misma no obedecía las indicaciones y la mayor parte del tiempo " +
-                "estaba fuera de la casa, llegando a altas horas de la noche, tanto con sus hermanas como con " +
+                "estaba fuera deElement la casa, llegando a altas horas de la noche, tanto con sus hermanas como con " +
                 "su supuesto padre.\n\n" +
                 "En las últimas semanas ha manifestado constantemente su necesidad por reintegrarse con su " +
                 "familia, por lo que actualmente se encuentra abierta a la posibilidad de la opción que " +
@@ -365,9 +365,9 @@ public class Main {
 //            new TarjetaInformativaPDF("TARJETA_INFORMATIVA","F:\\Downloads\\DIF\\", 0, tarjetaInformativa);
 //            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
 //            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
-//            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
-            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
-//            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData);
+            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
+//            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
+//            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

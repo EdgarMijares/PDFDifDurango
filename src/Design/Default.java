@@ -62,10 +62,10 @@ public class Default {
             this.tableHeight = this.table.getTotalHeight();
         }
 
-        public HeaderTable(PdfPTable table, boolean v) throws IOException, BadElementException {
+        public HeaderTable(PdfPTable table,String periodo, boolean v) throws IOException, BadElementException {
             this.table = new PdfPTable(1);
             this.table.addCell(celda(table));
-            this.table.addCell(rellenoColor(3, 0x009FBF));
+            this.table.addCell(rellenoColor(periodo, 0x009FBF));
             this.table.setTotalWidth(770);
             this.table.setLockedWidth(true);
             this.tableHeight = this.table.getTotalHeight();

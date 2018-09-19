@@ -23,13 +23,14 @@ import static Design.Default.*;
 public class EstadisticaTrabajoSocialPDF {
 
     public EstadisticaTrabajoSocialPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data, String periodo, TrabajadorData d) throws IOException, DocumentException {
-        Default.HeaderTable header = new Default.HeaderTable(getHeader(), periodo);
+        Default.HeaderTable header = new Default.HeaderTable(getHeader(), periodo, true);
 
         Document document = new Document(PageSize.A4.rotate(), 30, 30, header.getTableHeight(), 30);
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(url_reporte + nombre_reporte + ".pdf"));
 
         pdfWriter.setPageEvent(header);
         document.open();
+        document.add(getTitle());
         document.add(getTablaUno(data.getPMNNA(), data.getMPALES()));
         document.add(getTablaDos(data.getPRIMERAVEZ_T2(), data.getSUBSECUENTE_T2(), data.getSEGUIMIENTO_T2()));
         document.add(getTablaTres(data.getPRIMERAVEZ_T3(), data.getSUBSECUENTE_T3(), data.getSEGUIMIENTO_T3()));
@@ -148,7 +149,16 @@ public class EstadisticaTrabajoSocialPDF {
     private PdfPTable getFirma(TrabajadorData t) {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda(t.getNombre()));
+        content.addCell(Default.firmaTrabajador(t.getNombre(), ""));
+
+        return content;
+    }
+
+    public PdfPTable getTitle() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("ESTADISTICAS DEL DEPARTAMENTO DE TRABAJO SOCIAL", Default.TITULO, Element.ALIGN_CENTER));
 
         return content;
     }
