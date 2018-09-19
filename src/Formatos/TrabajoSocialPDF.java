@@ -30,6 +30,7 @@ public class TrabajoSocialPDF {
         document.add(getEstrucutraFamiliar());
         document.add(getDinamicaFamiliar());
         document.add(getSituacionEconomica());
+        document.add(getVivienda());
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -281,4 +282,38 @@ public class TrabajoSocialPDF {
         content.setWidthPercentage(90);
         return content;
     }
+
+    private PdfPTable getVivienda() throws DocumentException {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("VII.III. VIVIENDA", Default.TITULO));
+        content.addCell(Default.celdaTriple(
+                Default.opcion("PROPIA", (data.getVivienda() == 0) ? true : false, new float[] {20, 80}),
+                Default.opcion("RENTADA", (data.getVivienda() == 1) ? true : false, new float[] {20, 80}),
+                Default.opcion("PRESTADA", (data.getVivienda() == 2) ? true : false, new float[] {20, 80})
+        ));
+
+        content.addCell(Default.celda("VII.IV. TIPO DE VIVIENDA", Default.TITULO));
+        content.addCell(Default.celdaTriple(
+                Default.opcion("CASA SOLA", (data.getTipo_vivienda() == 0) ? true : false, new float[] {20, 80}),
+                Default.opcion("DEPARTAMENTO", (data.getTipo_vivienda() == 1) ? true : false, new float[] {20, 80}),
+                Default.opcion("VECINDAD", (data.getTipo_vivienda() == 2) ? true : false, new float[] {20, 80})
+        ));
+        content.addCell(Default.celdaTriple(
+                Default.opcion("IMPROVISADO", (data.getTipo_vivienda() == 3) ? true : false, new float[] {20, 80}),
+                Default.opcion("OTRO", (data.getTipo_vivienda() == 4) ? true : false, new float[] {20, 80}),
+                Default.celda()
+        ));
+        content.setWidthPercentage(90);
+
+        content.addCell(Default.celda("VII.V. ZONA", Default.TITULO));
+        content.addCell(Default.celdaDoble(
+                Default.opcion("RURAL", (data.getZona_vivienda() == 0) ? true : false, new float[] {20, 80}),
+                Default.opcion("URBANA", (data.getZona_vivienda() == 1) ? true : false, new float[] {20, 80})
+        ));
+
+        return content;
+    }
+
 }
