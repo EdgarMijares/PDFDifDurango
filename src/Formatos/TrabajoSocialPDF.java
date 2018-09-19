@@ -5,13 +5,14 @@ import Informacion.InformacionNinoData;
 import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import com.sun.org.apache.bcel.internal.classfile.ConstantNameAndType;
 
 import java.awt.*;
 import java.io.*;
+import java.text.DecimalFormat;
 
 public class TrabajoSocialPDF {
     TrabajoSocialData data;
+    DecimalFormat moneda = new DecimalFormat("$ #.00");
 
     public TrabajoSocialPDF (String nombre_reporte, String url_reporte, TrabajoSocialData data) throws IOException, DocumentException {
         this.data = data;
@@ -28,6 +29,7 @@ public class TrabajoSocialPDF {
         document.add(getTecnicasUtilizadas());
         document.add(getEstrucutraFamiliar());
         document.add(getDinamicaFamiliar());
+        document.add(getSituacionEconomica());
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -227,13 +229,56 @@ public class TrabajoSocialPDF {
         return content;
     }
 
-    private PdfPTable getSituacionEconomica() {
+    private PdfPTable getSituacionEconomica() throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda());
         content.addCell(Default.celda("VII. SITUACIÓN ECONOMICA", Default.TITULO));
-//        content.------a
 
+        PdfPTable ingresos = new PdfPTable(2);
+        ingresos.addCell(Default.celda("PADRE", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        ingresos.addCell(Default.celda(String.valueOf(moneda.format(data.getIngresos_padre())), Default.NORMAL_CHICA));
+        ingresos.addCell(Default.celda("MADRE", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        ingresos.addCell(Default.celda(String.valueOf(moneda.format(data.getIngresos_madre())), Default.NORMAL_CHICA));
+        ingresos.addCell(Default.celda("HERMANO(A)", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        ingresos.addCell(Default.celda(String.valueOf(moneda.format(data.getIngresos_hermano())), Default.NORMAL_CHICA));
+        ingresos.addCell(Default.celda("OTROS", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        ingresos.addCell(Default.celda(String.valueOf(moneda.format(data.getIngresos_otros())), Default.NORMAL_CHICA));
+        ingresos.addCell(Default.celda("TOTAL", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        ingresos.addCell(Default.celda(String.valueOf(moneda.format(data.getIngresos_total())), Default.NORMAL_CHICA));
+
+        PdfPTable egresos = new PdfPTable(2);
+        egresos.addCell(Default.celda("ALIMENTACIÓN", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_alimentacion())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("EDUCACIÓN", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_educacion())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("SALUD", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_salud())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("VESTIDO", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_vestido())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("SERVICIOS", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_servicios())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("TRANSPORTE", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_transporte())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("RENTA", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_renta())), Default.NORMAL_CHICA));
+        egresos.addCell(Default.celda("TOTAL", Default.TITULO_CHICA, Element.ALIGN_RIGHT));
+        egresos.addCell(Default.celda(String.valueOf(moneda.format(data.getEgresos_total())), Default.NORMAL_CHICA));
+
+        content.addCell(Default.celdaDoble(
+                Default.celda("INGRESOS(MENSUAL)", Default.TITULO_CHICA, Element.ALIGN_CENTER),
+                Default.celda("EGRESOS(MENSUAL)", Default.TITULO_CHICA, Element.ALIGN_CENTER)));
+        content.addCell(Default.celdaDoble(Default.celda(ingresos),Default.celda(egresos)));
+
+        content.addCell(Default.celdaDoble(
+                Default.celda("SUPERÁVIT", Default.TITULO_CHICA, Element.ALIGN_RIGHT),
+                Default.celda(moneda.format(data.getSuperavit()), Default.NORMAL_CHICA)));
+
+        content.addCell(Default.celdaDoble(
+                Default.celda("DEFICIT", Default.TITULO_CHICA, Element.ALIGN_RIGHT),
+                Default.celda(moneda.format(data.getDeficit()), Default.NORMAL_CHICA)));
+
+        content.setWidthPercentage(90);
         return content;
     }
 }
