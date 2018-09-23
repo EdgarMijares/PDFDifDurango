@@ -7,9 +7,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javax.xml.bind.annotation.XmlType;
 import java.awt.*;
-import java.awt.Font;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -63,9 +61,9 @@ public class TarjetaInformativaPDF {
 
         String ruta_img = "";
         switch (centro) {
-            case 0: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("Image/CASA_HOGAR.png").toString(); break;
-            case 1: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("Image/MI_CASA.png").toString(); break;
-            case 2: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("Image/REFUGIO_ESPERANZA.png").toString(); break;
+            case 0: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("images/CASA_HOGAR.png").toString(); break;
+            case 1: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("images/MI_CASA.png").toString(); break;
+            case 2: ruta_img = TarjetaInformativaPDF.class.getClassLoader().getResource("images/REFUGIO_ESPERANZA.png").toString(); break;
         }
         content.addCell(Default.celda());
         content.addCell(Default.celda(Default.createImageWidth(ruta_img, 250)));
@@ -83,8 +81,8 @@ public class TarjetaInformativaPDF {
         PdfPTable redes = new PdfPTable(3);
 
         redes.addCell(Default.celda("WWW.DURANGO.GOB.MX", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.COURIER, 12, com.itextpdf.text.Font.NORMAL), Element.ALIGN_RIGHT));
-        redes.addCell(Default.celda(Default.createImageWidth(TarjetaInformativaPDF.class.getClassLoader().getResource("Image/facebook.png").toString(), 15), "| DIF Municipal Durango"));
-        redes.addCell(Default.celda(Default.createImageWidth(TarjetaInformativaPDF.class.getClassLoader().getResource("Image/twitter.png").toString(), 15), "| @DIF_Durango"));
+        redes.addCell(Default.celda(Default.createImageWidth(TarjetaInformativaPDF.class.getClassLoader().getResource("images/facebook.png").toString(), 15), "| DIF Municipal Durango"));
+        redes.addCell(Default.celda(Default.createImageWidth(TarjetaInformativaPDF.class.getClassLoader().getResource("images/twitter.png").toString(), 15), "| @DIF_Durango"));
 
         redes.setWidthPercentage(100);
 

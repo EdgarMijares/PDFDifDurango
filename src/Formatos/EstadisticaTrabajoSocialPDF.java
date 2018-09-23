@@ -2,16 +2,11 @@ package Formatos;
 
 import Design.Default;
 import Informacion.EstadisticaTrabajoSocialData;
-import Informacion.EstadisticasData;
 import Informacion.TrabajadorData;
-import Informacion.TrabajoSocialData;
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javax.print.attribute.standard.PDLOverrideSupported;
-import javax.xml.crypto.dom.DOMCryptoContext;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,8 +42,8 @@ public class EstadisticaTrabajoSocialPDF {
         content.addCell(Default.celda());
         content.addCell(Default.celda());
 
-        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/DIF_ESTATAL.png").toString(), 60, Element.ALIGN_LEFT)));
-        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/evnnya_lateral.png").toString(), 60, Element.ALIGN_RIGHT)));
+        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/DIF_ESTATAL.png").toString(), 60, Element.ALIGN_LEFT)));
+        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/evnnya_lateral.png").toString(), 60, Element.ALIGN_RIGHT)));
 
         content.setWidthPercentage(100);
         return content;

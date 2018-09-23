@@ -87,9 +87,9 @@ public class InformeClinicoPDF {
 
         String ruta_img = "";
         switch (centro) {
-            case 0: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("Image/CASA_HOGAR.png").toString(); nombre_casa = "CASA HOGAR "; break;
-            case 1: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("Image/MI_CASA.png").toString(); nombre_casa = "MI CASA "; break;
-            case 2: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("Image/REFUGIO_ESPERANZA.png").toString(); nombre_casa = "REFUCIO ESPERANZA "; break;
+            case 0: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("images/CASA_HOGAR.png").toString(); nombre_casa = "CASA HOGAR "; break;
+            case 1: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("images/MI_CASA.png").toString(); nombre_casa = "MI CASA "; break;
+            case 2: ruta_img = InformeClinicoPDF.class.getClassLoader().getResource("images/REFUGIO_ESPERANZA.png").toString(); nombre_casa = "REFUCIO ESPERANZA "; break;
         }
 
         content.addCell(Default.celda());
@@ -105,8 +105,8 @@ public class InformeClinicoPDF {
         PdfPTable redes = new PdfPTable(3);
 
         redes.addCell(Default.celda("WWW.DURANGO.GOB.MX", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.COURIER, 12, com.itextpdf.text.Font.NORMAL), Element.ALIGN_RIGHT));
-        redes.addCell(Default.celda(Default.createImageWidth(InformeClinicoPDF.class.getClassLoader().getResource("Image/facebook.png").toString(), 15), "| DIF Municipal Durango"));
-        redes.addCell(Default.celda(Default.createImageWidth(InformeClinicoPDF.class.getClassLoader().getResource("Image/twitter.png").toString(), 15), "| @DIF_Durango"));
+        redes.addCell(Default.celda(Default.createImageWidth(InformeClinicoPDF.class.getClassLoader().getResource("images/facebook.png").toString(), 15), "| DIF Municipal Durango"));
+        redes.addCell(Default.celda(Default.createImageWidth(InformeClinicoPDF.class.getClassLoader().getResource("images/twitter.png").toString(), 15), "| @DIF_Durango"));
 
         redes.setWidthPercentage(100);
 

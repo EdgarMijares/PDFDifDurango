@@ -70,8 +70,8 @@ public class RecepcionReportePDF {
         PdfPTable content = new PdfPTable(1);
 
         PdfPTable image = new PdfPTable(2);
-        image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/DIF_ESTATAL.png").toString(), 60, Element.ALIGN_LEFT)));
-        image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/GOBIERNO_ESTADO.png").toString(), 60, Element.ALIGN_RIGHT)));
+        image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/DIF_ESTATAL.png").toString(), 60, Element.ALIGN_LEFT)));
+        image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/GOBIERNO_ESTADO.png").toString(), 60, Element.ALIGN_RIGHT)));
         content.addCell(celda(image));
         content.addCell(celda(5));
         content.addCell(rellenoColor(1, HEXA_AZUL));

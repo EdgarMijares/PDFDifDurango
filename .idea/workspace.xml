@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Design/Default.java" afterPath="$PROJECT_DIR$/src/Design/Default.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/EstadisticasPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/EstadisticasPDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/InformeClinicoPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/InformeClinicoPDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/LiberacionCustodiaPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/LiberacionCustodiaPDF.java" />
       <change beforePath="$PROJECT_DIR$/src/Formatos/RecepcionReportePDF.java" afterPath="$PROJECT_DIR$/src/Formatos/RecepcionReportePDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/ResumenPsicologicoPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/ResumenPsicologicoPDF.java" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/TarjetaInformativaPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/TarjetaInformativaPDF.java" />
       <change beforePath="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" afterPath="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" />
-      <change beforePath="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" afterPath="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" />
+      <change beforePath="$PROJECT_DIR$/src/Image/CASA_HOGAR.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/DIF_ESTATAL.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/GOBIERNO_ESTADO.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/MI_CASA.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/REFUGIO_ESPERANZA.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/evnnya.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/evnnya_lateral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/facebook.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Image/twitter.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Default.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Default.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="383" column="40" lean-forward="true" selection-start-line="383" selection-start-column="40" selection-end-line="383" selection-end-column="40" />
+            <state relative-caret-position="390">
+              <caret line="577" column="10" lean-forward="true" selection-start-line="577" selection-start-column="10" selection-end-line="577" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +63,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrabajoSocialPDF.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InformeClinicoPDF.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Formatos/InformeClinicoPDF.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrabajoSocialPDF.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="484" column="69" lean-forward="true" selection-start-line="484" selection-start-column="69" selection-end-line="484" selection-end-column="73" />
+            <state relative-caret-position="-1530">
+              <caret line="122" column="43" lean-forward="true" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -216,7 +239,7 @@
               <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
               <item name="pdfdifdurango" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Image" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pdfdifdurango" type="b2602c69:ProjectViewProjectNode" />
@@ -384,9 +407,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24378109" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24378109" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32669982" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21515152" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -669,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Formatos/InformeClinicoPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Formatos/LiberacionCustodiaPDF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -746,16 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="383" column="40" lean-forward="true" selection-start-line="383" selection-start-column="40" selection-end-line="383" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Formatos/RecepcionReportePDF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -812,8 +818,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="484" column="69" lean-forward="true" selection-start-line="484" selection-start-column="69" selection-end-line="484" selection-end-column="73" />
+        <state relative-caret-position="-1530">
+          <caret line="122" column="43" lean-forward="true" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Formatos/InformeClinicoPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="577" column="10" lean-forward="true" selection-start-line="577" selection-start-column="10" selection-end-line="577" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

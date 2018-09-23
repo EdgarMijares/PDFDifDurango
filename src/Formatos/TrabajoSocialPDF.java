@@ -77,8 +77,8 @@ public class TrabajoSocialPDF {
 
         content.addCell(Default.celda());
         content.addCell(Default.celda());
-        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/DIF_ESTATAL.png").toString(), 50, Element.ALIGN_LEFT)));
-        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("Image/GOBIERNO_ESTADO.png").toString(), 50, Element.ALIGN_RIGHT)));
+        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/DIF_ESTATAL.png").toString(), 50, Element.ALIGN_LEFT)));
+        content.addCell(Default.celda(Default.createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/GOBIERNO_ESTADO.png").toString(), 50, Element.ALIGN_RIGHT)));
 
         content.setWidthPercentage(80);
         return content;
