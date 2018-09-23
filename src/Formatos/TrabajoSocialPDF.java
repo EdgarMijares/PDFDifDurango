@@ -10,9 +10,38 @@ import java.awt.*;
 import java.io.*;
 import java.text.DecimalFormat;
 
+import static Design.Default.*;
+import static Design.Default.celda;
+
 public class TrabajoSocialPDF {
     TrabajoSocialData data;
     DecimalFormat moneda = new DecimalFormat("$ #.00");
+
+    private static String LISTA_DE_DERECHOS[] = {
+            "Derecho a la vida, a la supervivencia y al desarrollo",
+            "Derecho de prioridad\n",
+            "Derecho a la identidad",
+            "Derecho a vivir en familia",
+            "Derecho a la igualdad sustantiva",
+            "Derecho a no ser discriminado",
+            "Derecho a vivr en condiciones de bienestar y a un sano desarrollo integral",
+            "Derecho a una vida libre de violencia y a la integridad personal",
+            "Derecho a la protección de la salud y a la seguridad social",
+            "Derecho a la inclusión de niñas, niños y adolescentes con discapacidad",
+            "Derecho a la educación",
+            "Derecho al descanso y al esparcimiento",
+            "Derecho a la libertad de convicciones éticas, pensamiento, conciencia, religión y cultura",
+            "Derecho a la libertad de expresión de acceso a la información",
+            "Derecho de participación",
+            "Derecho de asociación y reunió",
+            "Derecho a la intimidad",
+            "Derecho a la seguridad jurídica y al debido proceso",
+            "Derechos de niñas, niños y adolescentes migrantes",
+            "Derecho de acceso a las tecnologías de la información y comunicación así como a los " +
+                    "servicios de radiodifusión y telecuminicaciones, incluido el de banda ancha e internet, en términos" +
+                    "de lo previsto en la Ley Federal de Telecomunicaciones y Radiodifusión. Para tales efectos, el estado " +
+                    "establecerá condiciones de competecia efectiva en la presentación de dicho servicios"
+    };
 
     public TrabajoSocialPDF (String nombre_reporte, String url_reporte, TrabajoSocialData data) throws IOException, DocumentException {
         this.data = data;
@@ -31,6 +60,12 @@ public class TrabajoSocialPDF {
         document.add(getDinamicaFamiliar());
         document.add(getSituacionEconomica());
         document.add(getVivienda());
+        document.add(getAntencedentes());
+        document.add(getEntrevista());
+        document.add(getDiagnostico());
+        document.add(getPlanDeAccion());
+        document.add(getObservaciones());
+        document.add(getVulneraciones());
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -313,7 +348,147 @@ public class TrabajoSocialPDF {
                 Default.opcion("URBANA", (data.getZona_vivienda() == 1) ? true : false, new float[] {20, 80})
         ));
 
+        content.addCell(Default.celda("VII.VI. DISRIBUCIÓN", Default.TITULO));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.opcion("SALA", data.getDistribucion()[0], new float[] {20,80}),
+                        Default.opcion("COMEDOR", data.getDistribucion()[1], new float[] {20,80})
+                ),
+                Default.celdaDoble(
+                        Default.opcion("COCINA", data.getDistribucion()[2], new float[] {20,80}),
+                        Default.opcion("BAÑO", data.getDistribucion()[3], new float[] {20,80})
+                )
+        ));
+        content.addCell(Default.celdaTriple(
+                Default.celdaDobleChica("HABITACIONES", data.getHabitaciones()[0], new float[] {70,30}),
+                Default.celdaDobleChica("RECAMARAS", data.getHabitaciones()[1], new float[] {70,30}),
+                Default.celdaDobleChica("HACINAMIENTO", data.getHabitaciones()[2], new float[] {70,30})
+        ));
+
+        content.addCell(Default.celda("V.II.VII. MATERIAL DE VIVIENDA", Default.TITULO));
+        content.addCell(Default.celda("PISO:", Default.TITULO_CHICA));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.opcion("TIERRA", data.getMaterial_piso()[0]),
+                        Default.opcion("CONCRETO", data.getMaterial_piso()[1])
+                ),
+                Default.celdaDoble(
+                        Default.opcion("PIEDRA", data.getMaterial_piso()[0]),
+                        Default.opcion("MADERA", data.getMaterial_piso()[1])
+                )
+        ));
+        content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_piso_otro(), new float[] {8, 92}));
+
+        content.addCell(Default.celda("MUROS:", Default.TITULO_CHICA));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.opcion("ADOBE", data.getMaterial_muros()[0]),
+                        Default.opcion("CARTÓN", data.getMaterial_muros()[1])
+                ),
+                Default.celdaDoble(
+                        Default.opcion("TABIQUE", data.getMaterial_muros()[0]),
+                        Default.opcion("MADERA", data.getMaterial_muros()[1])
+                )
+        ));
+        content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_muros_otro(), new float[] {8, 92}));
+
+        content.addCell(Default.celda("TECHO:", Default.TITULO_CHICA));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.opcion("LAMINA", data.getMaterial_techo()[0]),
+                        Default.opcion("CARTÓN", data.getMaterial_techo()[1])
+                ),
+                Default.celdaDoble(
+                        Default.opcion("CONCRETO", data.getMaterial_techo()[0]),
+                        Default.opcion("MADERA", data.getMaterial_techo()[1])
+                )
+        ));
+        content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_techo_otro(), new float[] {8, 92}));
+
+        content.addCell(Default.celda("VII.VIII. SERVICIOS PÚBLICOS", Default.TITULO));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.opcion("AGUA POTABLE", data.getServicios_publicos()[0]),
+                        Default.opcion("ELECTRICIDAD", data.getServicios_publicos()[1])
+                ),
+                Default.celdaDoble(
+                        Default.opcion("DRENAJE", data.getServicios_publicos()[2]),
+                        Default.opcion("ALUMBRADO PÚBLICO", data.getServicios_publicos()[3])
+                )
+        ));
+        content.addCell(Default.celdaDoble(
+                Default.celdaDoble(
+                        Default.celda(),
+                        Default.opcion("PAVIMENTACIÓN", data.getServicios_publicos()[4])
+                ),
+                Default.celdaDoble(
+                        Default.opcion("SERVICIO DE LIMPIEZA", data.getServicios_publicos()[5]),
+                        Default.celda()
+                )
+        ));
+
         return content;
     }
 
+    private PdfPTable getAntencedentes() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("VIII. ANTECEDENTES Y DESCRIPCIÓN DE LA PROBLEMÁTICA", Default.TITULO));
+        content.addCell(Default.celda(data.getDescripcion_problematica()));
+
+        return content;
+    }
+
+    private PdfPTable getEntrevista() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("IX. ENTREVISTA CON NIÑA, NIÑO O ADOLESCENTE", Default.TITULO));
+        content.addCell(Default.celda(data.getEntrevista_nino()));
+
+        return content;
+    }
+
+    private PdfPTable getDiagnostico() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("X DIAGNÓSTICO SOCIAL", Default.TITULO));
+        content.addCell(Default.celda(data.getDiagnostico_social()));
+
+        return content;
+    }
+
+    private PdfPTable getPlanDeAccion() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("XI. PLAN DE ACCIÓN", Default.TITULO));
+        content.addCell(Default.celda(data.getPlan_de_accion()));
+
+        return content;
+    }
+
+    private PdfPTable getObservaciones() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("XII. OBSERVACIONES", Default.TITULO));
+        content.addCell(Default.celda(data.getObservaciones()));
+
+        return content;
+    }
+
+    private PdfPTable getVulneraciones() throws DocumentException {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(rellenoColor());
+        content.addCell(celda("CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
+        for (int i = 0; i < LISTA_DE_DERECHOS.length; i++) {
+            if (data.getDerechos()[i]){
+                content.addCell(Default.opcion(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
+            }
+        }
+        content.addCell(data.getDerechos_otro());
+        content.addCell(celda());
+
+        content.setWidthPercentage(90);
+        return content;
+    }
 }

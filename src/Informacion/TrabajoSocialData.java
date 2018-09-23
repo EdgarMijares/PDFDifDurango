@@ -1,6 +1,5 @@
 package Informacion;
 
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -83,6 +82,11 @@ public class TrabajoSocialData {
     private String diagnostico_social = "";
     private String plan_de_accion = "";
     private String observaciones = "";
+
+    private boolean derechos[] = {
+            false, false, false, false, false, false, false, false, false, false,
+            false, false, false, false, false, false, false, false, false, false, };
+    private String derechos_otro = "";
 
     // INFORMACION TRABAJADOR
     private String trabajador_social = "";
@@ -616,6 +620,22 @@ public class TrabajoSocialData {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public boolean[] getDerechos() {
+        return derechos;
+    }
+
+    public void setDerechos(boolean[] derechos) {
+        this.derechos = derechos;
+    }
+
+    public String getDerechos_otro() {
+        return derechos_otro;
+    }
+
+    public void setDerechos_otro(String derechos_otro) {
+        this.derechos_otro = derechos_otro;
     }
 
     public String getTrabajador_social() {

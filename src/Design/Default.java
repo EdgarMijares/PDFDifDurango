@@ -376,6 +376,15 @@ public class Default {
         return celda(content);
     }
 
+    public static PdfPCell celdaDobleChica(String derecha, String izquierda) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+        content.addCell(celda(derecha, TITULO_CHICA));
+        content.addCell(celda(izquierda, NORMAL_CHICA));
+        content.setTotalWidth(new float[] {50, 50});
+        content.setWidthPercentage(100);
+        return celda(content);
+    }
+
     public static PdfPCell celdaTriple(PdfPCell derecha, PdfPCell centro, PdfPCell izquierda, float[] size) throws DocumentException {
         PdfPTable content = new PdfPTable(3);
         content.addCell(derecha);
