@@ -118,9 +118,8 @@ public class TrabajoSocialPDF {
 
     private PdfPTable getDatosGenerales() throws DocumentException {
         PdfPTable content = new PdfPTable(1);
-
+        String domicilio = "";
         content.addCell(Default.celda("I. DATOS GENERALES\n    I.I NIÑA, NIÑO O ADOLESENTE", Default.TITULO));
-//        content.addCell(Default.celda());
         for (InformacionNinoData info: data.getInformacionNinoData()){
             content.addCell(Default.celdaTriple(
                     Default.celdaDoble("NOMBRE:", info.getNombre(), new float[] {21,79}),
@@ -152,9 +151,10 @@ public class TrabajoSocialPDF {
                     Default.celdaDoble("ESCOLARIDAD:", info.getEscolaridad(), new float[] {33,67}),
                     new float[] {50,50}
             ));
+            domicilio = info.getDomicilio();
             content.addCell(Default.celda(discapaciad));
-            content.addCell(Default.celdaDoble("DOMICILIO:", info.getDomicilio(), new float[] {13, 87}));
         }
+        content.addCell(Default.celdaDoble("DOMICILIO:", domicilio, new float[] {13, 87}));
         content.addCell(Default.celda());
         content.addCell(Default.celda("    I.II MADRE, PADRE O TUTOR", Default.TITULO));
 
