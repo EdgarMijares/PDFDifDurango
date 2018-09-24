@@ -293,6 +293,16 @@ public class Default {
         return celda(content);
     }
 
+    public static PdfPCell opcionNormalText (String opcion, boolean question, float size[]) throws DocumentException {
+        PdfPTable content = new PdfPTable(2);
+        content.addCell(question? rellenoTrue(HEXA_ROSA): rellenoFalse(HEXA_ROSA));
+        content.addCell(celda(opcion, NORMAL_CHICA));
+        content.setHorizontalAlignment(Element.ALIGN_CENTER);
+        content.setWidthPercentage(100);
+        content.setTotalWidth(size);
+        return celda(content);
+    }
+
     public static PdfPCell opcion (String opcion, String valor, float size[]) throws DocumentException {
         PdfPTable content = new PdfPTable(2);
 //        content.addCell(question? rellenoTrue(HEXA_ROSA): rellenoFalse(HEXA_ROSA));
@@ -474,7 +484,6 @@ public class Default {
 
     public static PdfPCell celda(String texto) {
         PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto)));
-        cell.setFixedHeight(20);
         cell.setBorder(0);
         return cell;
     }

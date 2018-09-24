@@ -237,8 +237,8 @@ public class TrabajoSocialPDF {
 
         content.addCell(Default.celda());
         content.addCell(Default.celda("        IV. ESTRUCTURA FAMILIAR", Default.TITULO));
-        content.addCell(Default.celda());
         content.addCell(Default.createTableFamilaDetallada(new String[] {"NOMBRE", "PARENTESCO", "EDAD", "SEXO", "ESTADO CIVIL", "ESCOLARIDAD", "OCUPACIÓN"}, data.getFamilia()));
+        content.addCell(Default.celda());
 
         content.setWidthPercentage(100);
         return content;
@@ -247,9 +247,8 @@ public class TrabajoSocialPDF {
     private PdfPTable getDinamicaFamiliar() {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda());
         content.addCell(Default.celda("V. DINÁMICA FAMILIAR", Default.TITULO));
-        content.addCell(Default.celda(data.getDinamica_familiar(), Element.ALIGN_JUSTIFIED));
+        content.addCell(Default.celda(data.getDinamica_familiar(), Default.NORMAL_CHICA,Element.ALIGN_JUSTIFIED));
 
         content.setWidthPercentage(90);
         return content;
@@ -340,7 +339,6 @@ public class TrabajoSocialPDF {
                 Default.opcion("OTRO", (data.getTipo_vivienda() == 4) ? true : false, new float[] {20, 80}),
                 Default.celda()
         ));
-        content.setWidthPercentage(90);
 
         content.addCell(Default.celda("VII.V. ZONA", Default.TITULO));
         content.addCell(Default.celdaDoble(
@@ -427,6 +425,7 @@ public class TrabajoSocialPDF {
                 )
         ));
 
+        content.setWidthPercentage(90);
         return content;
     }
 
@@ -434,8 +433,9 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("VIII. ANTECEDENTES Y DESCRIPCIÓN DE LA PROBLEMÁTICA", Default.TITULO));
-        content.addCell(Default.celda(data.getDescripcion_problematica()));
+        content.addCell(Default.celda(data.getDescripcion_problematica(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
 
+        content.setWidthPercentage(90);
         return content;
     }
 
@@ -443,17 +443,19 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("IX. ENTREVISTA CON NIÑA, NIÑO O ADOLESCENTE", Default.TITULO));
-        content.addCell(Default.celda(data.getEntrevista_nino()));
+        content.addCell(Default.celda(data.getEntrevista_nino(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
 
+        content.setWidthPercentage(90);
         return content;
     }
 
     private PdfPTable getDiagnostico() {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda("X DIAGNÓSTICO SOCIAL", Default.TITULO));
-        content.addCell(Default.celda(data.getDiagnostico_social()));
+        content.addCell(Default.celda("X. DIAGNÓSTICO SOCIAL", Default.TITULO));
+        content.addCell(Default.celda(data.getDiagnostico_social(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
 
+        content.setWidthPercentage(90);
         return content;
     }
 
@@ -461,8 +463,9 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("XI. PLAN DE ACCIÓN", Default.TITULO));
-        content.addCell(Default.celda(data.getPlan_de_accion()));
+        content.addCell(Default.celda(data.getPlan_de_accion(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
 
+        content.setWidthPercentage(90);
         return content;
     }
 
@@ -470,8 +473,9 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.celda("XII. OBSERVACIONES", Default.TITULO));
-        content.addCell(Default.celda(data.getObservaciones()));
-
+        content.addCell(Default.celda(data.getObservaciones(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
+        content.addCell(Default.celda());
+        content.setWidthPercentage(90);
         return content;
     }
 
@@ -479,10 +483,10 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(rellenoColor());
-        content.addCell(celda("CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
+        content.addCell(celda("XIII. CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
         for (int i = 0; i < LISTA_DE_DERECHOS.length; i++) {
             if (data.getDerechos()[i]){
-                content.addCell(Default.opcion(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
+                content.addCell(Default.opcionNormalText(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
             }
         }
         content.addCell(data.getDerechos_otro());
