@@ -386,8 +386,8 @@ public class TrabajoSocialPDF {
                         Default.opcion("CARTÓN", data.getMaterial_muros()[1])
                 ),
                 Default.celdaDoble(
-                        Default.opcion("TABIQUE", data.getMaterial_muros()[0]),
-                        Default.opcion("MADERA", data.getMaterial_muros()[1])
+                        Default.opcion("TABIQUE", data.getMaterial_muros()[2]),
+                        Default.opcion("MADERA", data.getMaterial_muros()[3])
                 )
         ));
         content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_muros_otro(), new float[] {8, 92}));

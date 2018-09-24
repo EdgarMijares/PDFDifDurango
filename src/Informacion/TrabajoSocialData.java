@@ -67,9 +67,9 @@ public class TrabajoSocialData {
     private int zona_vivienda = 0;
     private boolean distribucion[];
     private String habitaciones[];
-    private boolean material_piso[];
-    private boolean material_muros[];
-    private boolean material_techo[];
+    private boolean material_piso[] = {false, false, false, false};
+    private boolean material_muros[] = {false, false, false, false};;
+    private boolean material_techo[] = {false, false, false, false};;
     private boolean servicios_publicos[];
 
     private String material_piso_otro = "";

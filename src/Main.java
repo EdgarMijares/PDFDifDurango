@@ -304,11 +304,11 @@ public class Main {
         data.setZona_vivienda(1);
         data.setDistribucion(new boolean[] {true, true, true, true});
         data.setHabitaciones(new String[] {"1", "1", "1"});
-        data.setMaterial_piso(new boolean[] {false, true, false, false, false});
+        data.setMaterial_piso(new boolean[] {false, true, false, false});
         data.setMaterial_piso_otro("Vitropiso");
-        data.setMaterial_muros(new boolean[] {false, false, true, false, false});
+        data.setMaterial_muros(new boolean[] {false, false, true, false});
         data.setMaterial_muros_otro("");
-        data.setMaterial_techo(new boolean[] {true, true, false, true, false});
+        data.setMaterial_techo(new boolean[] {true, true, false, true});
         data.setMaterial_techo_otro("");
         data.setServicios_publicos(new boolean[] {true, true, true, true, true, false});
 
