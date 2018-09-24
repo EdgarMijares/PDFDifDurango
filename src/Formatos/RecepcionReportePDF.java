@@ -73,8 +73,8 @@ public class RecepcionReportePDF {
         image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/DIF_ESTATAL.png").toString(), 60, Element.ALIGN_LEFT)));
         image.addCell(celda(createImageHeight(AnexoUnoPDF.class.getClassLoader().getResource("images/GOBIERNO_ESTADO.png").toString(), 60, Element.ALIGN_RIGHT)));
         content.addCell(celda(image));
-        content.addCell(celda(5));
-        content.addCell(rellenoColor(1, HEXA_AZUL));
+//        content.addCell(celda(5));
+//        content.addCell(rellenoColor(1, HEXA_AZUL));
         content.addCell(celda("Procuraduría de Protección de Niñas, Niños y Adolescentes", new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD), Element.ALIGN_JUSTIFIED_ALL));
         content.addCell(celda(5));
         content.addCell(celda("Reporte de restricción o vulneración de Derechos de Niñas, Niños y Adolescentes", TITULO, Element.ALIGN_JUSTIFIED_ALL));
@@ -128,10 +128,9 @@ public class RecepcionReportePDF {
                 celda(" ", NORMAL_CHICA),
                 celdaDoble(
                         celda("FECHA:", TITULO_CHICA, Element.ALIGN_RIGHT),
-                        celda(data.getFecha() + " - " + data.getHora(), NORMAL_CHICA, Element.ALIGN_RIGHT),
-                        new float[] {25,65}
+                        celda(data.getFecha() + " - " + data.getHora(), NORMAL_CHICA, Element.ALIGN_RIGHT)
                 ),
-                new float[] {70,30}));
+                new float[] {53,48}));
 
         content.addCell(
                 celdaDoble(

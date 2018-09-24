@@ -24,7 +24,7 @@ public class TrabajoSocialPDF {
             "Derecho a vivir en familia",
             "Derecho a la igualdad sustantiva",
             "Derecho a no ser discriminado",
-            "Derecho a vivr en condiciones de bienestar y a un sano desarrollo integral",
+            "Derecho a vivir en condiciones de bienestar y a un sano desarrollo integral",
             "Derecho a una vida libre de violencia y a la integridad personal",
             "Derecho a la protección de la salud y a la seguridad social",
             "Derecho a la inclusión de niñas, niños y adolescentes con discapacidad",
@@ -373,7 +373,7 @@ public class TrabajoSocialPDF {
                         Default.opcion("CONCRETO", data.getMaterial_piso()[1])
                 ),
                 Default.celdaDoble(
-                        Default.opcion("PIEDRA", data.getMaterial_piso()[2]),
+                        Default.opcion("MOSAICO", data.getMaterial_piso()[2]),
                         Default.opcion("MADERA", data.getMaterial_piso()[3])
                 )
         ));
@@ -386,7 +386,7 @@ public class TrabajoSocialPDF {
                         Default.opcion("CARTÓN", data.getMaterial_muros()[1])
                 ),
                 Default.celdaDoble(
-                        Default.opcion("TABIQUE", data.getMaterial_muros()[2]),
+                        Default.opcion("LADRILLO", data.getMaterial_muros()[2]),
                         Default.opcion("MADERA", data.getMaterial_muros()[3])
                 )
         ));
@@ -496,7 +496,7 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(rellenoColor());
-        content.addCell(celda("XIV. CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
+        content.addCell(celda("XIV. VULNERACIONES COMPROBADAS", TITULO));
         for (int i = 0; i < LISTA_DE_DERECHOS.length; i++) {
             if (data.getDerechos()[i]){
                 content.addCell(Default.opcionNormalText(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));
