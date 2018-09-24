@@ -35,20 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="345" column="66" lean-forward="true" selection-start-line="345" selection-start-column="66" selection-end-line="345" selection-end-column="66" />
+            <state relative-caret-position="304">
+              <caret line="312" column="85" selection-start-line="312" selection-start-column="80" selection-end-line="312" selection-end-column="85" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrabajoSocialPDF.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrabajoSocialPDF.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="514" column="78" lean-forward="true" selection-start-line="514" selection-start-column="78" selection-end-line="514" selection-end-column="78" />
+            <state relative-caret-position="420">
+              <caret line="424" selection-start-line="424" selection-end-line="424" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,9 +71,10 @@
       <file leaf-file-name="TrabajoSocialData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5881">
-              <caret line="633" column="34" selection-start-line="633" selection-start-column="34" selection-end-line="633" selection-end-column="34" />
+            <state relative-caret-position="170">
+              <caret line="71" column="68" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
               <folding>
+                <element signature="e#18764#18765#0" expanded="true" />
                 <element signature="e#18796#18797#0" expanded="true" />
                 <element signature="e#18846#18847#0" expanded="true" />
                 <element signature="e#18888#18889#0" expanded="true" />
@@ -107,6 +108,7 @@
       <find>valor</find>
       <find>valaraci</find>
       <find>valoracion</find>
+      <find>muros</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,10 +131,10 @@
         <option value="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" />
         <option value="$PROJECT_DIR$/src/Formatos/EstadisticasPDF.java" />
         <option value="$PROJECT_DIR$/src/Formatos/RecepcionReportePDF.java" />
-        <option value="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Design/Default.java" />
         <option value="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" />
+        <option value="$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -710,18 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5881">
-          <caret line="633" column="34" selection-start-line="633" selection-start-column="34" selection-end-line="633" selection-end-column="34" />
-          <folding>
-            <element signature="e#18796#18797#0" expanded="true" />
-            <element signature="e#18846#18847#0" expanded="true" />
-            <element signature="e#18888#18889#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -732,20 +722,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Informacion/TrabajoSocialData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="345" column="66" lean-forward="true" selection-start-line="345" selection-start-column="66" selection-end-line="345" selection-end-column="66" />
+        <state relative-caret-position="170">
+          <caret line="71" column="68" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
+          <folding>
+            <element signature="e#18764#18765#0" expanded="true" />
+            <element signature="e#18796#18797#0" expanded="true" />
+            <element signature="e#18846#18847#0" expanded="true" />
+            <element signature="e#18888#18889#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="514" column="78" lean-forward="true" selection-start-line="514" selection-start-column="78" selection-end-line="514" selection-end-column="78" />
+        <state relative-caret-position="420">
+          <caret line="424" selection-start-line="424" selection-end-line="424" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="312" column="85" selection-start-line="312" selection-start-column="80" selection-end-line="312" selection-end-column="85" />
         </state>
       </provider>
     </entry>

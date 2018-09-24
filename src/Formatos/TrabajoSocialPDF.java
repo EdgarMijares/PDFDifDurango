@@ -373,8 +373,8 @@ public class TrabajoSocialPDF {
                         Default.opcion("CONCRETO", data.getMaterial_piso()[1])
                 ),
                 Default.celdaDoble(
-                        Default.opcion("PIEDRA", data.getMaterial_piso()[0]),
-                        Default.opcion("MADERA", data.getMaterial_piso()[1])
+                        Default.opcion("PIEDRA", data.getMaterial_piso()[2]),
+                        Default.opcion("MADERA", data.getMaterial_piso()[3])
                 )
         ));
         content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_piso_otro(), new float[] {8, 92}));
@@ -399,8 +399,8 @@ public class TrabajoSocialPDF {
                         Default.opcion("CARTÓN", data.getMaterial_techo()[1])
                 ),
                 Default.celdaDoble(
-                        Default.opcion("CONCRETO", data.getMaterial_techo()[0]),
-                        Default.opcion("MADERA", data.getMaterial_techo()[1])
+                        Default.opcion("CONCRETO", data.getMaterial_techo()[2]),
+                        Default.opcion("MADERA", data.getMaterial_techo()[3])
                 )
         ));
         content.addCell(Default.celdaDobleChica("OTRO", data.getMaterial_techo_otro(), new float[] {8, 92}));
