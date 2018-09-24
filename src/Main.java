@@ -254,7 +254,7 @@ public class Main {
         data.setDomicilio_tutor("Fraccionamiento Arantzazu Privada Bilbao #111");
 
         // INFORMACION
-        data.setValaracion(true);
+        data.setValoracion(0);
         data.setTecnicas(new boolean[]{true, true, false, false});
 
         // INFORMACION FAMILIA

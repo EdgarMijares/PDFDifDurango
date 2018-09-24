@@ -105,6 +105,16 @@ public class Default {
         }
     }
 
+    public static PdfPCell firmaTrabajador(String trabajador) {
+        PdfPTable content = new PdfPTable(1);
+        content.addCell(celda());
+        content.addCell(celda());
+        content.addCell(celda("_______________________________________",Element.ALIGN_CENTER));
+        content.addCell(celda(trabajador, Element.ALIGN_CENTER));
+
+        return celda(content);
+    }
+
     public static PdfPCell firmaTrabajador(String trabajador, String cargo, String cedula) {
         PdfPTable content = new PdfPTable(1);
         content.addCell(celda());

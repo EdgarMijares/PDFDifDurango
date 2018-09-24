@@ -65,8 +65,9 @@ public class TrabajoSocialPDF {
         document.add(getDiagnostico());
         document.add(getPlanDeAccion());
         document.add(getObservaciones());
-        document.add(getVulneraciones());
         document.add(getResultado());
+        document.add(getVulneraciones());
+        document.add(getFirma());
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -505,6 +506,14 @@ public class TrabajoSocialPDF {
         content.addCell(celda());
 
         content.setWidthPercentage(90);
+        return content;
+    }
+
+    private PdfPTable getFirma() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.firmaTrabajador(data.getTrabajador_social()));
+
         return content;
     }
 }
