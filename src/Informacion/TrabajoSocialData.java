@@ -29,7 +29,7 @@ public class TrabajoSocialData {
     private String domicilio_tutor = "";
 
     // INFORMACION VALORACIÓN
-    private boolean valaracion = false;
+    private int valoracion = 0;
 
     // INFORMACION TECNICAS
     private boolean tecnicas[] = {false, false, false, false};
@@ -95,7 +95,7 @@ public class TrabajoSocialData {
         super();
     }
 
-    public TrabajoSocialData(String folio, String no_expediente, String fecha, String hora, ArrayList<InformacionNinoData> informacionNinoData, String nombre_tutor, String edad_tutor, String parentesco, String estado_civil, String telefono, String idioma_tutor, String etnia_tutor, String religion_tutor, boolean discapacidad_tutor, String tipo_discapacidad_tutor, String escolaridad_tutor, String domicilio_tutor, boolean valaracion, boolean[] tecnicas, ArrayList<Familia> familia, String dinamica_familiar, String familiograma, double ingresos_padre, double ingresos_madre, double ingresos_hermano, double ingresos_otros, double ingresos_total, double egresos_alimentacion, double egresos_educacion, double egresos_salud, double egresos_vestido, double egresos_servicios, double egresos_transporte, double egresos_renta, double egresos_otros, double egresos_total, double superavit, double deficit, int vivienda, int tipo_vivienda, int zona_vivienda, boolean[] distribucion, String[] habitaciones, boolean[] material_piso, boolean[] material_muros, boolean[] material_techo, boolean[] servicios_publicos, String material_piso_otro, String material_muros_otro, String material_techo_otro, String descripcion_problematica, String entrevista_nino, String diagnostico_social, String plan_de_accion, String observaciones, String trabajador_social) {
+    public TrabajoSocialData(String folio, String no_expediente, String fecha, String hora, ArrayList<InformacionNinoData> informacionNinoData, String nombre_tutor, String edad_tutor, String parentesco, String estado_civil, String telefono, String idioma_tutor, String etnia_tutor, String religion_tutor, boolean discapacidad_tutor, String tipo_discapacidad_tutor, String escolaridad_tutor, String domicilio_tutor, int valoracion, boolean[] tecnicas, ArrayList<Familia> familia, String dinamica_familiar, String familiograma, double ingresos_padre, double ingresos_madre, double ingresos_hermano, double ingresos_otros, double ingresos_total, double egresos_alimentacion, double egresos_educacion, double egresos_salud, double egresos_vestido, double egresos_servicios, double egresos_transporte, double egresos_renta, double egresos_otros, double egresos_total, double superavit, double deficit, int vivienda, int tipo_vivienda, int zona_vivienda, boolean[] distribucion, String[] habitaciones, boolean[] material_piso, boolean[] material_muros, boolean[] material_techo, boolean[] servicios_publicos, String material_piso_otro, String material_muros_otro, String material_techo_otro, String descripcion_problematica, String entrevista_nino, String diagnostico_social, String plan_de_accion, String observaciones, String trabajador_social) {
         this.folio = folio;
         this.no_expediente = no_expediente;
         this.fecha = fecha;
@@ -113,7 +113,7 @@ public class TrabajoSocialData {
         this.tipo_discapacidad_tutor = tipo_discapacidad_tutor;
         this.escolaridad_tutor = escolaridad_tutor;
         this.domicilio_tutor = domicilio_tutor;
-        this.valaracion = valaracion;
+        this.valoracion = valoracion;
         this.tecnicas = tecnicas;
         this.familia = familia;
         this.dinamica_familiar = dinamica_familiar;
@@ -290,12 +290,12 @@ public class TrabajoSocialData {
         this.domicilio_tutor = domicilio_tutor;
     }
 
-    public boolean isValaracion() {
-        return valaracion;
+    public int isValoracion() {
+        return valoracion;
     }
 
-    public void setValaracion(boolean valaracion) {
-        this.valaracion = valaracion;
+    public void setValoracion(int valoracion) {
+        this.valoracion = valoracion;
     }
 
     public boolean[] getTecnicas() {

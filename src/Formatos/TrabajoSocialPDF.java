@@ -201,9 +201,9 @@ public class TrabajoSocialPDF {
         content.addCell(Default.celda());
         content.addCell(Default.celda("II. VALORACIÓN", Default.TITULO));
         content.addCell(Default.celdaTriple(
-                Default.opcion("INICIAL", true, new float[] {20, 80}),
-                Default.opcion("SUBSECUENTE", true, new float[] {20, 80}),
-                Default.opcion("SEGUIMIENTO DE CASO", true, new float[] {20, 80})
+                Default.opcion("INICIAL", (data.isValoracion() == 0), new float[] {20, 80}),
+                Default.opcion("SUBSECUENTE", (data.isValoracion() == 1), new float[] {20, 80}),
+                Default.opcion("SEGUIMIENTO DE CASO", (data.isValoracion() == 2), new float[] {20, 80})
         ));
 
         content.setWidthPercentage(90);
