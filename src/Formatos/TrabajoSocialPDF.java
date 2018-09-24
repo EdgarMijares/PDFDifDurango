@@ -66,6 +66,7 @@ public class TrabajoSocialPDF {
         document.add(getPlanDeAccion());
         document.add(getObservaciones());
         document.add(getVulneraciones());
+        document.add(getResultado());
         document.close();
 
         pdfWriter.setPageEvent(new Default.FooterTableCount());
@@ -474,7 +475,18 @@ public class TrabajoSocialPDF {
 
         content.addCell(Default.celda("XII. OBSERVACIONES", Default.TITULO));
         content.addCell(Default.celda(data.getObservaciones(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
+
+        content.setWidthPercentage(90);
+        return content;
+    }
+
+    private PdfPTable getResultado() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda("XIII. RESULTADO", Default.TITULO));
+        content.addCell(Default.celda(data.getResultado(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
         content.addCell(Default.celda());
+
         content.setWidthPercentage(90);
         return content;
     }
@@ -483,7 +495,7 @@ public class TrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(rellenoColor());
-        content.addCell(celda("XIII. CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
+        content.addCell(celda("XIV. CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", TITULO));
         for (int i = 0; i < LISTA_DE_DERECHOS.length; i++) {
             if (data.getDerechos()[i]){
                 content.addCell(Default.opcionNormalText(LISTA_DE_DERECHOS[i], true, new float[] {3, 97}));

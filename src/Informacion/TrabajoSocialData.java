@@ -82,6 +82,7 @@ public class TrabajoSocialData {
     private String diagnostico_social = "";
     private String plan_de_accion = "";
     private String observaciones = "";
+    private String resultado = "";
 
     private boolean derechos[] = {
             false, false, false, false, false, false, false, false, false, false,
@@ -628,6 +629,14 @@ public class TrabajoSocialData {
 
     public void setDerechos(boolean[] derechos) {
         this.derechos = derechos;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 
     public String getDerechos_otro() {
