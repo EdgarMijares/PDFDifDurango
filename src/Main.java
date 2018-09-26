@@ -366,8 +366,9 @@ public class Main {
 //            new AnexoUnoPDF("ANEXO_UNO", "F:\\Downloads\\DIF\\", anexoUnoData);
 //            new RecepcionReportePDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
 //            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
-            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
+//            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
 //            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+            new InvolucradosPDF("INVOLUCRADOS_EXPEDIENTE", "F:\\Downloads\\DIF\\", recepcionReporteData);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
