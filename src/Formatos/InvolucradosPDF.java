@@ -218,7 +218,7 @@ public class InvolucradosPDF {
         discapaciad.setTotalWidth(new float[] {18,32,10,40});
         discapaciad.setWidthPercentage(100);
 
-        content.addCell(discapaciad);
+        content.addCell(Default.celda(discapaciad));
         content.addCell(celdaDoble(
                 celdaDobleChica("TELÉFONO FIJO:", data.getCustodio().getTelefono(), new float[] {35,65}),
                 celdaDobleChica("TELÉFONO MÓVIL:", data.getCustodio().getCelular(), new float[] {38,62})
