@@ -2,38 +2,32 @@ package Informacion;
 
 public class InformacionNinoData {
 
+
     private String nombre = "";
+    private String apeliido_paterno = "";
+    private String apeliido_materno = "";
+    private String nombre_completo = nombre + " " + apeliido_paterno + " " + apeliido_materno;
     private String edad = "";
-    private String fecha_nacimiento = "";
-    private String lugar_nacimiento = "";
-    private String nacionalidad = "";
     private String sexo = "";
-    private String idioma = "";
-    private String etnia = "";
+    private String escolaridad = "";
+    private String relacion_agresor = "";
+    private String domicilio = "";
+    private String lugar_nacimiento = "";
+    private String fecha_nacimiento = "";
+    private String nacionalidad = "";
     private String religion = "";
+    private String estado_civil = "";
     private boolean discapacidad = false;
     private String tipo_discapacidad = "";
-    private String escolaridad = "";
-    private String domicilio = "";
+    private String idioma = "";
+    private String etnia = "";
 
-    public InformacionNinoData() {
-    }
+    private String correo = "";
+    private String telefono = "";
+    private String celular = "";
+    private String referencia = "";
 
-    public InformacionNinoData(String nombre, String edad, String fecha_nacimiento, String lugar_nacimiento, String nacionalidad, String sexo, String idioma, String etnia, String religion, boolean discapacidad, String tipo_discapacidad, String escolaridad, String domicilio) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.lugar_nacimiento = lugar_nacimiento;
-        this.nacionalidad = nacionalidad;
-        this.sexo = sexo;
-        this.idioma = idioma;
-        this.etnia = etnia;
-        this.religion = religion;
-        this.discapacidad = discapacidad;
-        this.tipo_discapacidad = tipo_discapacidad;
-        this.escolaridad = escolaridad;
-        this.domicilio = domicilio;
-    }
+    public InformacionNinoData() { }
 
     public String getNombre() {
         return nombre;
@@ -41,6 +35,30 @@ public class InformacionNinoData {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApeliido_paterno() {
+        return apeliido_paterno;
+    }
+
+    public void setApeliido_paterno(String apeliido_paterno) {
+        this.apeliido_paterno = apeliido_paterno;
+    }
+
+    public String getApeliido_materno() {
+        return apeliido_materno;
+    }
+
+    public void setApeliido_materno(String apeliido_materno) {
+        this.apeliido_materno = apeliido_materno;
+    }
+
+    public String getNombre_completo() {
+        return nombre_completo;
+    }
+
+    public void setNombre_completo(String nombre_completo) {
+        this.nombre_completo = nombre_completo;
     }
 
     public String getEdad() {
@@ -51,12 +69,36 @@ public class InformacionNinoData {
         this.edad = edad;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getEscolaridad() {
+        return escolaridad;
+    }
+
+    public void setEscolaridad(String escolaridad) {
+        this.escolaridad = escolaridad;
+    }
+
+    public String getRelacion_agresor() {
+        return relacion_agresor;
+    }
+
+    public void setRelacion_agresor(String relacion_agresor) {
+        this.relacion_agresor = relacion_agresor;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
     public String getLugar_nacimiento() {
@@ -67,6 +109,14 @@ public class InformacionNinoData {
         this.lugar_nacimiento = lugar_nacimiento;
     }
 
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
     public String getNacionalidad() {
         return nacionalidad;
     }
@@ -75,36 +125,20 @@ public class InformacionNinoData {
         this.nacionalidad = nacionalidad;
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
-    }
-
-    public String getEtnia() {
-        return etnia;
-    }
-
-    public void setEtnia(String etnia) {
-        this.etnia = etnia;
-    }
-
     public String getReligion() {
         return religion;
     }
 
     public void setReligion(String religion) {
         this.religion = religion;
+    }
+
+    public String getEstado_civil() {
+        return estado_civil;
+    }
+
+    public void setEstado_civil(String estado_civil) {
+        this.estado_civil = estado_civil;
     }
 
     public boolean isDiscapacidad() {
@@ -123,19 +157,51 @@ public class InformacionNinoData {
         this.tipo_discapacidad = tipo_discapacidad;
     }
 
-    public String getEscolaridad() {
-        return escolaridad;
+    public String getIdioma() {
+        return idioma;
     }
 
-    public void setEscolaridad(String escolaridad) {
-        this.escolaridad = escolaridad;
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 
-    public String getDomicilio() {
-        return domicilio;
+    public String getEtnia() {
+        return etnia;
     }
 
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
+    public void setEtnia(String etnia) {
+        this.etnia = etnia;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 }

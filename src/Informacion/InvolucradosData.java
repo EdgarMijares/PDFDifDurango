@@ -11,7 +11,7 @@ public class InvolucradosData {
     private String cargo_asesor = "";
     private String fehca_oficio = "";
 
-    private ArrayList<PersonaData> victima = new ArrayList();
+    private ArrayList<InformacionNinoData> victima = new ArrayList();
     private PersonaData custodio = new PersonaData();
     private ArrayList<PersonaData> agresor = new ArrayList();
 
@@ -73,11 +73,11 @@ public class InvolucradosData {
         this.fehca_oficio = fehca_oficio;
     }
 
-    public ArrayList<PersonaData> getVictima() {
+    public ArrayList<InformacionNinoData> getVictima() {
         return victima;
     }
 
-    public void setVictima(ArrayList<PersonaData> victima) {
+    public void setVictima(ArrayList<InformacionNinoData> victima) {
         this.victima = victima;
     }
 

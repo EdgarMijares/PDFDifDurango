@@ -1,5 +1,6 @@
 package Formatos;
 
+import Informacion.InformacionNinoData;
 import Informacion.PersonaData;
 import Informacion.RecepcionReporteData;
 import com.itextpdf.text.*;
@@ -188,7 +189,7 @@ public class RecepcionReportePDF {
         );
 //        content.addCell(celdaDobleChica("DOMICILIO:", "CALLE " + " #" + " C.P.", new float[] {12, 83}));
         content.addCell(celdaDoble(
-                celdaDobleChica("RELACIÓN CON LA VÍCTIMA: ", data.getDenunciante().getRelacion(), new float[] {75,25}),
+                celdaDobleChica("RELACIÓN CON LA VÍCTIMA: ", data.getDenunciante().getRelacion_victima(), new float[] {75,25}),
                 celdaDobleChica("DOMICILIO:", data.getDenunciante().getDireccion(), new float[] {20, 80}),
                 new float[] {40,60}
         ));
@@ -209,9 +210,9 @@ public class RecepcionReportePDF {
         PdfPTable content = new PdfPTable(1);
         content.addCell(rellenoColor());
         content.addCell(celda("DATOS DE LA" + ((data.getVictima().size() > 0)? "S":"") + " VICTIMA" + ((data.getVictima().size() > 0)? "S":""), TITULO));
-        for (PersonaData victima : data.getVictima()) {
+        for (InformacionNinoData victima : data.getVictima()) {
             content.addCell(celdaTriple(
-                    celdaDobleChica("NOMBRE:",victima.getNombre(), new float[] {10,40}),
+                    celdaDobleChica("NOMBRE:",victima.getNombre_completo(), new float[] {10,40}),
                     celdaDobleChica("EDAD:", victima.getEdad(), new float[] {50,50}),
                     celdaDobleChica("SEXO:", victima.getSexo(), new float[] {50,50}),
                     new float[] {60,20,20}
@@ -219,7 +220,7 @@ public class RecepcionReportePDF {
             content.addCell(celdaDobleChica("ESCOLARIDAD:", victima.getEscolaridad(), new float[] {16,84}));
             content.addCell(
                     celdaDoble(
-                            celdaDobleChica("RELACIÓN CON EL AGRESOR:", victima.getRelacion(), new float[] {60,40}),
+                            celdaDobleChica("RELACIÓN CON EL AGRESOR:", victima.getRelacion_agresor(), new float[] {60,40}),
                             celdaDobleChica("CORREO:", victima.getCorreo(), new float[] {20,80})
                     )
             );
@@ -228,7 +229,7 @@ public class RecepcionReportePDF {
                     celdaDobleChica("TELÉFONO MÓVIL:", victima.getCelular(), new float[] {38,62})
             ));
         }
-        content.addCell(celdaDobleChica("DIRECCIÓN:", (data.getVictima().size() > 0)? data.getVictima().get(0).getDireccion(): "", new float[] {13,87}));
+        content.addCell(celdaDobleChica("DIRECCIÓN:", (data.getVictima().size() > 0)? data.getVictima().get(0).getDomicilio(): "", new float[] {13,87}));
         content.addCell(celdaDobleChica("REFERENCIA:",(data.getVictima().size() > 0)? data.getVictima().get(0).getReferencia(): "", new float[] {15,85}));
 
         content.setWidthPercentage(90);
@@ -249,7 +250,7 @@ public class RecepcionReportePDF {
         content.addCell(celdaDobleChica("ESCOLARIDAD:", data.getCustodio().getEscolaridad(), new float[] {16,84}));
         content.addCell(
                 celdaDoble(
-                        celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", data.getCustodio().getRelacion(), new float[] {60,40}),
+                        celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", data.getCustodio().getRelacion_victima(), new float[] {60,40}),
                         celdaDobleChica("CORREO:", data.getCustodio().getCorreo(), new float[] {20,80})
                 )
         );
@@ -284,7 +285,7 @@ public class RecepcionReportePDF {
             );
             content.addCell(
                     celdaDoble(
-                            celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", agresor.getRelacion(), new float[] {60,40}),
+                            celdaDobleChica("RELACIÓN CON LA VÍCTIMA:", agresor.getRelacion_victima(), new float[] {60,40}),
                             celdaDobleChica("ESTADO CIVIL:", agresor.getEstado_civil(), new float[] {35,65})
                     )
             );

@@ -19,7 +19,7 @@ public class RecepcionReporteData {
 
     private PersonaData denunciante = new PersonaData();
     private boolean estado_denunciante = false;
-    private ArrayList<PersonaData> victima = new ArrayList();
+    private ArrayList<InformacionNinoData> victima = new ArrayList();
     private PersonaData custodio = new PersonaData();
     private ArrayList<PersonaData> agresor = new ArrayList();
 
@@ -31,30 +31,7 @@ public class RecepcionReporteData {
     private String observaciones = "";
 
     private String firma = "";
-    public RecepcionReporteData() {
-    }
-
-    public RecepcionReporteData(String folio, String no_expediente, String fecha, String hora, String recibio, String no_oficio, String fehca_oficio, String quien_envia, boolean[] anonimato, boolean[] medio_reporte, PersonaData denunciante, boolean estado_denunciante, ArrayList<PersonaData> victima, PersonaData custodio, ArrayList<PersonaData> agresor, boolean[] derechos, String derechos_otro, String resena, String observaciones) {
-        this.folio = folio;
-        this.no_expediente = no_expediente;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.recibio = recibio;
-        this.no_oficio = no_oficio;
-        this.fehca_oficio = fehca_oficio;
-        this.quien_envia = quien_envia;
-        this.anonimato = anonimato;
-        this.medio_reporte = medio_reporte;
-        this.denunciante = denunciante;
-        this.estado_denunciante = estado_denunciante;
-        this.victima = victima;
-        this.custodio = custodio;
-        this.agresor = agresor;
-        this.derechos = derechos;
-        this.derechos_otro = derechos_otro;
-        this.resena = resena;
-        this.observaciones = observaciones;
-    }
+    public RecepcionReporteData() { }
 
     public String getFolio() {
         return folio;
@@ -152,11 +129,11 @@ public class RecepcionReporteData {
         this.estado_denunciante = estado_denunciante;
     }
 
-    public ArrayList<PersonaData> getVictima() {
+    public ArrayList<InformacionNinoData> getVictima() {
         return victima;
     }
 
-    public void setVictima(ArrayList<PersonaData> victima) {
+    public void setVictima(ArrayList<InformacionNinoData> victima) {
         this.victima = victima;
     }
 
