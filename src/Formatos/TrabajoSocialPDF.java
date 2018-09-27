@@ -124,7 +124,7 @@ public class TrabajoSocialPDF {
         content.addCell(Default.celda("I. DATOS GENERALES\n    I.I NIÑA, NIÑO O ADOLESENTE", Default.TITULO));
         for (InformacionNinoData info: data.getInformacionNinoData()){
             content.addCell(Default.celdaTriple(
-                    Default.celdaDoble("NOMBRE:", info.getNombre(), new float[] {21,79}),
+                    Default.celdaDoble("NOMBRE:", info.getNombre_completo(), new float[] {21,79}),
                     Default.celdaDoble("EDAD:", info.getEdad(), new float[] {40,60}),
                     Default.celdaDoble("GÉNERO:", info.getSexo(), new float[] {40,60}),
                     new float[] {50, 20 , 30}
