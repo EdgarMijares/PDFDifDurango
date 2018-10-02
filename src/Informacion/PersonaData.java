@@ -31,6 +31,55 @@ public class PersonaData {
 
     public PersonaData() { }
 
+    public PersonaData(String nombre, String edad, String sexo, String escolaridad, String relacion, String correo, String telefono, String celular, String direccion, String referencia, String municipio, String ocupacion, String trabajo, String estado_civil) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.escolaridad = escolaridad;
+        this.relacion_victima = relacion;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.direccion = direccion;
+        this.referencia = referencia;
+        this.municipio = municipio;
+        this.ocupacion = ocupacion;
+        this.trabajo = trabajo;
+        this.estado_civil = estado_civil;
+    }
+
+    public PersonaData(String nombre, String apeliido_paterno, String apeliido_materno, String sexo, String escolaridad,
+            String ocupacion, String trabajo, String estado_civil, String relacion_victima, String direccion,
+            String lugar_nacimiento, String fecha_nacimiento, String nacionalidad, String religion, boolean discapacidad,
+            String tipo_discapacidad, String idioma, String etnia, String correo, String telefono, String celular,
+            String referencia, String municipio) {
+
+        this.nombre = nombre;
+        this.apeliido_paterno = apeliido_paterno;
+        this.apeliido_materno = apeliido_materno;
+        this.sexo = sexo;
+        this.escolaridad = escolaridad;
+        this.ocupacion = ocupacion;
+        this.trabajo = trabajo;
+        this.estado_civil = estado_civil;
+        this.relacion_victima = relacion_victima;
+        this.direccion = direccion;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.nacionalidad = nacionalidad;
+        this.religion = religion;
+        this.discapacidad = discapacidad;
+        this.tipo_discapacidad = tipo_discapacidad;
+        this.idioma = idioma;
+        this.etnia = etnia;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.referencia = referencia;
+        this.municipio = municipio;
+
+    }
+
     public String getCorreo() {
         return correo;
     }

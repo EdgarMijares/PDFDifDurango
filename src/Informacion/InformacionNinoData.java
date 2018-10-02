@@ -29,6 +29,51 @@ public class InformacionNinoData {
 
     public InformacionNinoData() { }
 
+    public InformacionNinoData(String nombre, String apeliido_paterno, String apeliido_materno, String edad,
+            String sexo, String escolaridad, String relacion_agresor, String domicilio, String lugar_nacimiento,
+            String fecha_nacimiento, String nacionalidad, String religion, String estado_civil, boolean discapacidad,
+            String tipo_discapacidad, String idioma, String etnia, String correo, String telefono, String celular,
+            String referencia) {
+
+        this.nombre = nombre;
+        this.apeliido_paterno = apeliido_paterno;
+        this.apeliido_materno = apeliido_materno;
+        this.nombre_completo = nombre + " " + apeliido_paterno + " " + apeliido_materno;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.escolaridad = escolaridad;
+        this.relacion_agresor = relacion_agresor;
+        this.domicilio = domicilio;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.nacionalidad = nacionalidad;
+        this.religion = religion;
+        this.estado_civil = estado_civil;
+        this.discapacidad = discapacidad;
+        this.tipo_discapacidad = tipo_discapacidad;
+        this.idioma = idioma;
+        this.etnia = etnia;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.referencia = referencia;
+
+    }
+    public InformacionNinoData(String nombre, String edad, String fecha_nacimiento, String lugar_nacimiento, String nacionalidad, String sexo, String idioma, String etnia, String religion, boolean discapacidad, String tipo_discapacidad, String escolaridad, String domicilio) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.nacionalidad = nacionalidad;
+        this.sexo = sexo;
+        this.idioma = idioma;
+        this.etnia = etnia;
+        this.religion = religion;
+        this.discapacidad = discapacidad;
+        this.tipo_discapacidad = tipo_discapacidad;
+        this.escolaridad = escolaridad;
+        this.domicilio = domicilio;
+    }
     public String getNombre() {
         return nombre;
     }
