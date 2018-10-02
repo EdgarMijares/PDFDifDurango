@@ -27,7 +27,7 @@ public class EstadisticaInvolucradosPDF {
         pdfWriter.setPageEvent(header);
         document.open();
         document.add(getTitle());
-        document.add(getTablaUno(data.getDatos_involucrados_hombre(), data.getDatos_involucrados_mujer(), data.getDatos_involucrados_desconocido()));
+        document.add(getTablaUno(data.getInvolucrados()));
         document.add(getFirma(d));
         document.close();
 
@@ -57,14 +57,9 @@ public class EstadisticaInvolucradosPDF {
         return content;
     }
 
-    private PdfPTable getTablaUno(String[] HOMBRES, String[] MUJER, String[] DESCONOCIDO) throws DocumentException {
+    private PdfPTable getTablaUno(ArrayList<String[]> datos) throws DocumentException {
         String[] titulo = new String[] {"", "AGRESOR", "VICTIMA"};
-        ArrayList<String[]> datos = new ArrayList<>();
-        datos.add(HOMBRES);
-        datos.add(MUJER);
-        datos.add(DESCONOCIDO);
         PdfPTable table = new PdfPTable(titulo.length);
-
         for (String t : titulo) {
             table.addCell(rellenoColor(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }

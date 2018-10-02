@@ -1,5 +1,7 @@
 package Informacion;
 
+import java.util.ArrayList;
+
 public class EstadisticaTrabajoSocialData {
 
     private String[] datos_mpales = {"", "", "", "", "", "","",""};
@@ -20,13 +22,13 @@ public class EstadisticaTrabajoSocialData {
     public String[] getDatos_pmnna() {
         return datos_pmnna;
     }
+
     public void setDatos_pmnna(String[] datos_pmnna) {
         this.datos_pmnna = datos_pmnna;
     }
     public void setDatos_mpales(String[] datos_mpales) {
         this.datos_mpales = datos_mpales;
     }
-
     public void setDatos_primera_t2(String[] datos_primera_t2) {
         this.datos_primera_t2 = datos_primera_t2;
     }
@@ -78,10 +80,17 @@ public class EstadisticaTrabajoSocialData {
     }
 
     // INVOLUCRADOS
+    private ArrayList<String[]> involucrados = new ArrayList<>();
     private String[] datos_involucrados_hombre = {"", ""};
     private String[] datos_involucrados_mujer = {"", ""};
     private String[] datos_involucrados_desconocido = {"", ""};
 
+    public ArrayList<String[]> getInvolucrados() {
+        this.involucrados.add(getDatos_involucrados_hombre());
+        this.involucrados.add(getDatos_involucrados_mujer());
+        this.involucrados.add(getDatos_involucrados_desconocido());
+        return this.involucrados;
+    }
     public void setDatos_involucrados_hombre(String[] datos_involucrados_hombre) {
         this.datos_involucrados_hombre = datos_involucrados_hombre;
     }
