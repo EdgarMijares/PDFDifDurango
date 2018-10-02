@@ -1,4 +1,5 @@
 import Formatos.*;
+import Formatos.Estadisticas.EstadisticaInvolucradosPDF;
 import Informacion.*;
 import com.itextpdf.text.DocumentException;
 import org.omg.CORBA.TRANSACTION_MODE;
@@ -358,6 +359,10 @@ public class Main {
         estadisticaTrabajoSocialData.setDatos_segunda_t3(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
         estadisticaTrabajoSocialData.setDatos_tercera_t3(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
 
+        estadisticaTrabajoSocialData.setDatos_involucrados_hombre(new String[] {"1", "2"});
+        estadisticaTrabajoSocialData.setDatos_involucrados_mujer(new String[] {"1", "2"});
+        estadisticaTrabajoSocialData.setDatos_involucrados_desconocido(new String[] {"1", "2"});
+
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);
@@ -368,7 +373,8 @@ public class Main {
 //            new EstadisticasPDF("RECEPCION_REPORTE", "F:\\Downloads\\DIF\\", estadisticasData);
 //            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
 //            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
-            new InvolucradosPDF("INVOLUCRADOS_EXPEDIENTE", "F:\\Downloads\\DIF\\", new InvolucradosData());
+//            new InvolucradosPDF("INVOLUCRADOS_EXPEDIENTE", "F:\\Downloads\\DIF\\", new InvolucradosData());
+            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

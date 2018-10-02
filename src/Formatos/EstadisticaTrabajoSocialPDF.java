@@ -49,25 +49,29 @@ public class EstadisticaTrabajoSocialPDF {
         return content;
     }
 
+    public PdfPTable getTitle() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda());
+        content.addCell(Default.celda("ESTADISTICAS DEL DEPARTAMENTO DE TRABAJO SOCIAL", Default.TITULO, Element.ALIGN_CENTER));
+
+        return content;
+    }
+
     private PdfPTable getTablaUno(String[] PMNNA, String[] MPALES) throws DocumentException {
         String[] titulo = new String[] {"SOLICITANTES", "DIRECTAS", "COLATERALES", "TOTAL", "1ERA VEZ", "SUB", "SEGUIM"};
         ArrayList<String[]> datos = new ArrayList<>();
         datos.add(PMNNA);
         datos.add(MPALES);
-        System.out.println(PMNNA.length);
         PdfPTable table = new PdfPTable(titulo.length);
 
         for (String t : titulo) {
             table.addCell(rellenoColor(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
         for (String[] t : datos){
-            table.addCell(celdaBorderButtomAzul(t[0], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[1], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[2], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[3], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[4], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[5], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[6], NORMAL_CHICA, Element.ALIGN_CENTER));
+            for (int i = 0; i < t.length; i++){
+                table.addCell(celdaBorderButtomAzul(t[i].toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            }
         }
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
@@ -90,16 +94,9 @@ public class EstadisticaTrabajoSocialPDF {
             table.addCell(rellenoColorDoble(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
         for (String[] t : datos){
-            table.addCell(celdaBorderButtomAzul(t[0], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[1], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[2], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[3], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[4], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[5], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[6], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[7], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[8], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[9], NORMAL_CHICA, Element.ALIGN_CENTER));
+            for (String aT : t) {
+                table.addCell(celdaBorderButtomAzul(aT.toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            }
         }
         table.setTotalWidth(new float[] {10,10,10,8,10,10,10,12,10,10});
         table.setWidthPercentage(100);
@@ -122,16 +119,9 @@ public class EstadisticaTrabajoSocialPDF {
             table.addCell(rellenoColorDoble(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
         for (String[] t : datos){
-            table.addCell(celdaBorderButtomAzul(t[0], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[1], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[2], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[3], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[4], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[5], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[6], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[7], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[8], NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(celdaBorderButtomAzul(t[9], NORMAL_CHICA, Element.ALIGN_CENTER));
+            for (int i = 0; i < t.length; i++){
+                table.addCell(celdaBorderButtomAzul(t[i].toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            }
         }
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
@@ -145,15 +135,6 @@ public class EstadisticaTrabajoSocialPDF {
         PdfPTable content = new PdfPTable(1);
 
         content.addCell(Default.firmaTrabajador(t.getNombre(), ""));
-
-        return content;
-    }
-
-    public PdfPTable getTitle() {
-        PdfPTable content = new PdfPTable(1);
-
-        content.addCell(Default.celda());
-        content.addCell(Default.celda("ESTADISTICAS DEL DEPARTAMENTO DE TRABAJO SOCIAL", Default.TITULO, Element.ALIGN_CENTER));
 
         return content;
     }
