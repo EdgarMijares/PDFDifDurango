@@ -594,6 +594,24 @@ public class Default {
         return celda(table);
     }
 
+    public static PdfPTable generarTabla(String[] titulo, ArrayList<String[]> datos) throws DocumentException {
+        PdfPTable table = new PdfPTable(titulo.length);
+        for (String t : titulo) {
+            table.addCell(rellenoColor(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+        }
+        for (Object[] t : datos){
+            for (Object aT : t) {
+                table.addCell(celdaBorderButtomAzul(aT.toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            }
+        }
+        table.setWidthPercentage(100);
+        PdfPTable content = new PdfPTable(1);
+        content.addCell(Default.celda());
+        content.addCell(celda(table));
+        content.setWidthPercentage(100);
+        return content;
+    }
+
     public static ZapfDingbatsList crearLista(ArrayList lista) {
         ZapfDingbatsList list = new ZapfDingbatsList(40);
         for(int i = 0; i < lista.size(); i++) {

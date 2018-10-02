@@ -27,7 +27,7 @@ public class EstadisticaInvolucradosPDF {
         pdfWriter.setPageEvent(header);
         document.open();
         document.add(getTitle());
-        document.add(getTablaUno(data.getInvolucrados()));
+        document.add(Default.generarTabla(new String[] {"", "AGRESOR", "VICTIMA"}, data.getInvolucrados()));
         document.add(getFirma(d));
         document.close();
 
@@ -54,26 +54,6 @@ public class EstadisticaInvolucradosPDF {
         content.addCell(Default.celda());
         content.addCell(Default.celda("REPORTE DE INVOLUCRADOS", Default.TITULO, Element.ALIGN_CENTER));
 
-        return content;
-    }
-
-    private PdfPTable getTablaUno(ArrayList<String[]> datos) throws DocumentException {
-        String[] titulo = new String[] {"", "AGRESOR", "VICTIMA"};
-        PdfPTable table = new PdfPTable(titulo.length);
-        for (String t : titulo) {
-            table.addCell(rellenoColor(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
-        }
-        for (Object[] t : datos){
-            for (Object aT : t) {
-                table.addCell(celdaBorderButtomAzul(aT.toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
-            }
-        }
-        table.setWidthPercentage(100);
-        PdfPTable content = new PdfPTable(1);
-        content.addCell(Default.celda());
-        content.addCell(celda(table));
-        content.addCell(Default.celda());
-        content.setWidthPercentage(100);
         return content;
     }
 

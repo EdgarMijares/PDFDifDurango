@@ -63,23 +63,10 @@ public class EstadisticaTrabajoSocialPDF {
         ArrayList<String[]> datos = new ArrayList<>();
         datos.add(PMNNA);
         datos.add(MPALES);
-        PdfPTable table = new PdfPTable(titulo.length);
+        PdfPTable table = Default.generarTabla(titulo, datos);
+        table.addCell(Default.celda());
 
-        for (String t : titulo) {
-            table.addCell(rellenoColor(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
-        }
-        for (String[] t : datos){
-            for (int i = 0; i < t.length; i++){
-                table.addCell(celdaBorderButtomAzul(t[i].toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
-            }
-        }
-        table.setWidthPercentage(100);
-        PdfPTable content = new PdfPTable(1);
-        content.addCell(Default.celda());
-        content.addCell(celda(table));
-        content.addCell(Default.celda());
-        content.setWidthPercentage(100);
-        return content;
+        return table;
     }
 
     private PdfPTable getTablaDos(String[] PRIMERAVEZ, String[] SUBSECUENTE, String[] SEGUIMIENTO) throws DocumentException {
@@ -102,7 +89,6 @@ public class EstadisticaTrabajoSocialPDF {
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
         content.addCell(celda(table));
-        content.addCell(Default.celda());
         content.setWidthPercentage(100);
         return content;
     }
@@ -113,22 +99,9 @@ public class EstadisticaTrabajoSocialPDF {
         datos.add(PRIMERAVEZ);
         datos.add(SUBSECUENTE);
         datos.add(SEGUIMIENTO);
-        PdfPTable table = new PdfPTable(titulo.length);
+        PdfPTable table = Default.generarTabla(titulo, datos);
 
-        for (String t : titulo) {
-            table.addCell(rellenoColorDoble(t, HEXA_AZUL, TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
-        }
-        for (String[] t : datos){
-            for (int i = 0; i < t.length; i++){
-                table.addCell(celdaBorderButtomAzul(t[i].toString(), NORMAL_CHICA, Element.ALIGN_CENTER));
-            }
-        }
-        table.setWidthPercentage(100);
-        PdfPTable content = new PdfPTable(1);
-        content.addCell(celda(table));
-        content.addCell(Default.celda());
-        content.setWidthPercentage(100);
-        return content;
+        return table;
     }
 
     private PdfPTable getFirma(TrabajadorData t) {
