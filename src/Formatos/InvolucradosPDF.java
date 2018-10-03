@@ -195,11 +195,11 @@ public class InvolucradosPDF {
         ));
         content.addCell(Default.celdaDoble(
                 Default.celdaDoble("FECHA DE NACIMIENTO:", data.getCustodio().getFecha_nacimiento().toUpperCase(), new float[] {65, 35}),
-                Default.celdaDoble("ESTADO CIVIL:", data.getCustodio().getLugar_nacimiento().toUpperCase(), new float[] {43, 57}),
+                Default.celdaDoble("ESTADO CIVIL:", data.getCustodio().getEstado_civil().toUpperCase(), new float[] {43, 57}),
                 new float[] {40, 60}
         ));
         content.addCell(Default.celdaTriple(
-                Default.celdaDoble("RELIGIÓN:", data.getCustodio().getNacionalidad(), new float[] {50,50}),
+                Default.celdaDoble("RELIGIÓN:", data.getCustodio().getReligion(), new float[] {50,50}),
                 Default.celdaDoble("IDIOMA:", data.getCustodio().getIdioma(), new float[] {35,65}),
                 Default.celdaDoble("GRUPO ÉTNICO:", data.getCustodio().getEtnia(), new float[] {50,50}),
                 new float[] {33, 25, 42}
@@ -251,7 +251,7 @@ public class InvolucradosPDF {
             Default.celdaDobleChica("NACIONALIDAD", agresor.getNacionalidad(), new float[] {20, 80});
 
             content.addCell(Default.celdaTriple(
-                    Default.celdaDoble("RELIGIÓN:", agresor.getNacionalidad(), new float[] {50,50}),
+                    Default.celdaDoble("RELIGIÓN:", agresor.getReligion(), new float[] {50,50}),
                     Default.celdaDoble("IDIOMA:", agresor.getIdioma(), new float[] {35,65}),
                     Default.celdaDoble("GRUPO ÉTNICO:", agresor.getEtnia(), new float[] {50,50}),
                     new float[] {33, 25, 42}
