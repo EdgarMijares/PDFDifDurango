@@ -48,7 +48,7 @@ public class PersonaData {
         this.estado_civil = estado_civil;
     }
 
-    public PersonaData(String nombre, String apeliido_paterno, String apeliido_materno, String sexo, String escolaridad,
+    public PersonaData(String nombre, String apeliido_paterno, String apeliido_materno, String edad, String sexo, String escolaridad,
             String ocupacion, String trabajo, String estado_civil, String relacion_victima, String direccion,
             String lugar_nacimiento, String fecha_nacimiento, String nacionalidad, String religion, boolean discapacidad,
             String tipo_discapacidad, String idioma, String etnia, String correo, String telefono, String celular,
@@ -57,6 +57,7 @@ public class PersonaData {
         this.nombre = nombre;
         this.apeliido_paterno = apeliido_paterno;
         this.apeliido_materno = apeliido_materno;
+        this.edad = edad;
         this.sexo = sexo;
         this.escolaridad = escolaridad;
         this.ocupacion = ocupacion;
