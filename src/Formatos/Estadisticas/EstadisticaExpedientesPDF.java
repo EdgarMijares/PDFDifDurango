@@ -80,10 +80,10 @@ public class EstadisticaExpedientesPDF {
     public static PdfPTable generarTablaExpedientes(String[] titulo, ArrayList<EstadisticaExpendientesData> datos) throws DocumentException {
         PdfPTable table = new PdfPTable(titulo.length);
         for (String t : titulo) {
-            table.addCell(Default.rellenoColor(t, Default.HEXA_AZUL, Default.TITULO_CHICA_BLANCO, Element.ALIGN_LEFT));
+            table.addCell(Default.rellenoColor(t, Default.HEXA_AZUL, Default.TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
         for (EstadisticaExpendientesData t : datos){
-            table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_LEFT));
             table.addCell(Default.celdaBorderButtomAzul(t.getNo_comprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getFalsos(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getNo_favorable(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
@@ -93,7 +93,7 @@ public class EstadisticaExpedientesPDF {
             table.addCell(Default.celdaBorderButtomAzul(t.getSin_resultado(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getTotal_asignados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
         }
-        table.setTotalWidth(new float[] {20,10,10,6,9,9,10,10,8,8});
+        table.setTotalWidth(new float[] {22,10,10,6,8,8,10,10,8,8});
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
         content.addCell(Default.celda());
