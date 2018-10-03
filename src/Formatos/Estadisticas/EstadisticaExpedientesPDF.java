@@ -93,7 +93,7 @@ public class EstadisticaExpedientesPDF {
             table.addCell(Default.celdaBorderButtomAzul(t.getSin_resultado(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getTotal_asignados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
         }
-        table.setTotalWidth(new float[] {15,10,10,9,9,9,10,10,9,9});
+        table.setTotalWidth(new float[] {20,10,10,6,9,9,10,10,8,8});
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
         content.addCell(Default.celda());
