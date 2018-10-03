@@ -163,6 +163,7 @@ public class InvolucradosPDF {
             discapaciad.addCell(Default.celda(victima.getTipo_discapacidad(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
             discapaciad.setTotalWidth(new float[] {18,32,10,40});
             discapaciad.setWidthPercentage(100);
+            content.addCell(Default.celda(discapaciad));
             content.addCell(Default.celdaDoble(
                     Default.celdaDoble("RELIGIÓN:", victima.getReligion(), new float[] {25,75}),
                     Default.celdaDoble("ESCOLARIDAD:", victima.getEscolaridad(), new float[] {33,67}),
@@ -172,6 +173,7 @@ public class InvolucradosPDF {
                     celdaDobleChica("TELÉFONO FIJO:", victima.getTelefono(), new float[] {35,65}),
                     celdaDobleChica("TELÉFONO MÓVIL:", victima.getCelular(), new float[] {38,62})
             ));
+            content.addCell(Default.celdaDobleChica("ESTADO CIVIL", victima.getEstado_civil(), new float[] {13, 87}));
         }
         content.addCell(celdaDobleChica("DIRECCIÓN:", (data.getVictima().size() > 0)? data.getVictima().get(0).getDomicilio(): "", new float[] {13,87}));
         content.addCell(celdaDobleChica("REFERENCIA:",(data.getVictima().size() > 0)? data.getVictima().get(0).getReferencia(): "", new float[] {15,85}));
@@ -243,10 +245,13 @@ public class InvolucradosPDF {
             ));
             content.addCell(Default.celdaDoble(
                     Default.celdaDoble("FECHA DE NACIMIENTO:", agresor.getFecha_nacimiento().toUpperCase(), new float[] {65, 35}),
-                    Default.celdaDoble("ESTADO CIVIL:", agresor.getLugar_nacimiento().toUpperCase(), new float[] {43, 57}),
+                    Default.celdaDoble("LUGAR DE NACIMIENTO:", agresor.getLugar_nacimiento().toUpperCase(), new float[] {65, 35}),
                     new float[] {40, 60}
             ));
-            content.addCell(Default.celdaDoble("NACIONALIDAD", agresor.getNacionalidad(), new float[] {15, 85}));
+            content.addCell(Default.celdaDoble(
+                    Default.celdaDoble("NACIONALIDAD", agresor.getNacionalidad(), new float[] {43, 57}),
+                    Default.celdaDoble("ESTADO CIVIL", agresor.getEstado_civil(), new float[] {43, 57})
+            ));
             content.addCell(Default.celdaTriple(
                     Default.celdaDoble("RELIGIÓN:", agresor.getNacionalidad(), new float[] {50,50}),
                     Default.celdaDoble("IDIOMA:", agresor.getIdioma(), new float[] {35,65}),
@@ -272,6 +277,16 @@ public class InvolucradosPDF {
                     celdaDobleChica("TELÉFONO MÓVIL:", agresor.getCelular(), new float[] {55,45}),
                     new float[] {33,33,34}
             ));
+            PdfPTable discapaciad = new PdfPTable(4);
+            discapaciad.addCell(Default.celda("DISCAPACIDAD:", Default.TITULO_CHICA, Element.ALIGN_LEFT));
+            discapaciad.addCell(Default.checkTrueFalse(agresor.isDiscapacidad(), 80));
+
+            discapaciad.addCell(Default.celda("¿CUÁL?", Default.TITULO_CHICA, Element.ALIGN_LEFT));
+            discapaciad.addCell(Default.celda(agresor.getTipo_discapacidad(), Default.NORMAL_CHICA, Element.ALIGN_JUSTIFIED));
+            discapaciad.setTotalWidth(new float[] {18,32,10,40});
+            discapaciad.setWidthPercentage(100);
+            content.addCell(Default.celda(discapaciad));
+
             content.addCell(celdaDobleChica("DIRECCIÓN:", agresor.getDireccion(), new float[] {13,87}));
         }
 
