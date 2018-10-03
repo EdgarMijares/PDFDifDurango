@@ -365,6 +365,13 @@ public class Main {
         estadisticaTrabajoSocialData.setDatos_involucrados_mujer(new String[] {"1", "2"});
         estadisticaTrabajoSocialData.setDatos_involucrados_desconocido(new String[] {"1", "2"});
 
+        EstadisticaVulneracionesData d1 = new EstadisticaVulneracionesData("vulneracion 1",
+                "1","2","3",
+                "1","2","3");
+        ArrayList<EstadisticaVulneracionesData> vulneraciones = new ArrayList<>();
+        vulneraciones.add(d1);
+        estadisticaTrabajoSocialData.setVulneraciones(vulneraciones);
+
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);

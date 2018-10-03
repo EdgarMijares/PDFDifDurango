@@ -197,6 +197,16 @@ public class EstadisticaTrabajoSocialData {
         };
     }
 
+    // VULNERACIONES
+    private ArrayList<EstadisticaVulneracionesData> vulneraciones = new ArrayList<>();
+
+    public ArrayList<EstadisticaVulneracionesData> getVulneraciones() {
+        return vulneraciones;
+    }
+
+    public void setVulneraciones(ArrayList<EstadisticaVulneracionesData> vulneraciones) {
+        this.vulneraciones = vulneraciones;
+    }
 
     private static String autoSuma(String a, String b){
         int x = Integer.parseInt((a.equals(""))? "0": a);

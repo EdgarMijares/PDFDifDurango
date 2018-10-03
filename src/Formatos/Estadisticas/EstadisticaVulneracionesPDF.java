@@ -3,6 +3,7 @@ package Formatos.Estadisticas;
 import Design.Default;
 import Formatos.AnexoUnoPDF;
 import Informacion.EstadisticaTrabajoSocialData;
+import Informacion.EstadisticaVulneracionesData;
 import Informacion.TrabajadorData;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -29,9 +30,9 @@ public class EstadisticaVulneracionesPDF {
 
         pdfWriter.setPageEvent(header);
         document.open();
-        document.add(getTitle());
+        document.add(getTitle("VULNERACIONES"));
+        document.add(getTablaVulneraciones(data.getVulneraciones()));
         document.add(Default.generarTabla(new String[] {"VALORACIÓN", "OC", "FISICO", "PSIC EM", "EB SEX", "G Y C", "AM FAB", "RIES", "REINT", "OTRO"}, data.getVulneraciones_tabla_uno()));
-        document.add(getTablaVulneraciones(prueba, prueba, prueba));
         document.add(getFirma(d));
         document.close();
 
@@ -52,11 +53,12 @@ public class EstadisticaVulneracionesPDF {
         return content;
     }
 
-    public PdfPTable getTitle() {
+    public PdfPTable getTitle(String titulo) {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda());
-        content.addCell(Default.celda("VULNERACIONES", Default.TITULO, Element.ALIGN_CENTER));
+        content.addCell(Default.celda(5));
+        content.addCell(Default.celda(titulo.toUpperCase(), Default.TITULO, Element.ALIGN_CENTER));
+        content.addCell(Default.celda(5));
 
         return content;
     }
@@ -69,31 +71,33 @@ public class EstadisticaVulneracionesPDF {
         return content;
     }
 
-    private PdfPTable getTablaVulneraciones(String[] datos, String[] expe, String[] repo) throws DocumentException {
+    private PdfPTable getTablaVulneraciones(ArrayList<EstadisticaVulneracionesData> datos) throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda());
+
         content.addCell(Default.celdaTriple(
                 Default.rellenoColor(Default.HEXA_ROSA),
                 Default.rellenoColor("EXPEDIENTES", Default.HEXA_ROSA, Element.ALIGN_CENTER),
                 Default.rellenoColor("REPORTES", Default.HEXA_ROSA, Element.ALIGN_CENTER),
-                new float[] {20,40,40}
+                new float[] {40,30,30}
         ));
         content.addCell(Default.celdaTripleBackground(
-                Default.rellenoColor("CLASIFICACIÓN DE VULNERACIÓN\nDE DERECHOS", Default.HEXA_AZUL, Element.ALIGN_CENTER),
+                Default.rellenoColor("CLASIFICACIÓN DE VULNERACIÓN DE DERECHOS", Default.HEXA_AZUL, Element.ALIGN_CENTER),
                 Default.celdaCuadruple(
                         Default.rellenoColor("MUJER", Default.HEXA_AZUL, Element.ALIGN_CENTER),
                         Default.rellenoColor("HOMBRE", Default.HEXA_AZUL, Element.ALIGN_CENTER),
                         Default.rellenoColor("DESCONOCIDO", Default.HEXA_AZUL, Element.ALIGN_CENTER),
-                        Default.rellenoColor("TOTAL", Default.HEXA_AZUL, Element.ALIGN_CENTER)
+                        Default.rellenoColor("TOTAL", Default.HEXA_AZUL, Element.ALIGN_CENTER),
+                        new float[] {22,22,34,22}
                 ),
                 Default.celdaCuadruple(
                         Default.rellenoColor("MUJER", Default.HEXA_AZUL, Element.ALIGN_CENTER),
                         Default.rellenoColor("HOMBRE", Default.HEXA_AZUL, Element.ALIGN_CENTER),
                         Default.rellenoColor("DESCONOCIDO", Default.HEXA_AZUL, Element.ALIGN_CENTER),
-                        Default.rellenoColor("TOTAL", Default.HEXA_AZUL, Element.ALIGN_CENTER)
+                        Default.rellenoColor("TOTAL", Default.HEXA_AZUL, Element.ALIGN_CENTER),
+                        new float[] {22,22,34,22}
                 ),
-                new float[] {20,40,40}, Default.HEXA_AZUL
+                new float[] {40,30,30}, Default.HEXA_AZUL
 
         ));
 
@@ -102,14 +106,18 @@ public class EstadisticaVulneracionesPDF {
         PdfPTable reportes = new PdfPTable(4);
         expedientes.setWidthPercentage(100);
         reportes.setWidthPercentage(100);
-        for (int i = 0; datos.length > i; i++) {
-            table.addCell(rellenoColor("VULNERACIÓN " + (i+1), Default.HEXA_AZUL, Element.ALIGN_CENTER));
-            for (String t: expe) {
-                expedientes.addCell(celdaBorderButtomAzul(t, NORMAL_CHICA, Element.ALIGN_CENTER));
-            }
-            for (String t: repo) {
-                reportes.addCell(celdaBorderButtomAzul(t, NORMAL_CHICA, Element.ALIGN_CENTER));
-            }
+        for (EstadisticaVulneracionesData t : datos) {
+            table.addCell(rellenoColor(t.getVulneracion(), Default.HEXA_AZUL, Element.ALIGN_LEFT));
+            expedientes.addCell(celdaBorderButtomAzul(t.getExpediente_mujer(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            expedientes.addCell(celdaBorderButtomAzul(t.getExpediente_hombre(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            expedientes.addCell(celdaBorderButtomAzul(t.getExpediente_desconocido(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            expedientes.addCell(celdaBorderButtomAzul(t.getExpediente_total(), NORMAL_CHICA, Element.ALIGN_CENTER));
+
+            reportes.addCell(celdaBorderButtomAzul(t.getReporte_mujer(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            reportes.addCell(celdaBorderButtomAzul(t.getReporte_hombre(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            reportes.addCell(celdaBorderButtomAzul(t.getReporte_desconocido(), NORMAL_CHICA, Element.ALIGN_CENTER));
+            reportes.addCell(celdaBorderButtomAzul(t.getReporte_total(), NORMAL_CHICA, Element.ALIGN_CENTER));
+
             table.addCell(Default.celda(expedientes));
             table.addCell(Default.celda(reportes));
             expedientes.deleteBodyRows();
@@ -117,7 +125,7 @@ public class EstadisticaVulneracionesPDF {
         }
 
         table.setWidthPercentage(100);
-        table.setTotalWidth(new float[] {20, 40,40});
+        table.setTotalWidth(new float[] {40,30,30});
         content.addCell(Default.celda(table));
 
         content.setWidthPercentage(100);

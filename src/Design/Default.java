@@ -445,13 +445,13 @@ public class Default {
         return celda(content);
     }
 
-    public static PdfPCell celdaCuadruple(PdfPCell primera, PdfPCell segunda, PdfPCell tercer, PdfPCell cuarta) throws DocumentException {
+    public static PdfPCell celdaCuadruple(PdfPCell primera, PdfPCell segunda, PdfPCell tercer, PdfPCell cuarta, float[] size) throws DocumentException {
         PdfPTable content = new PdfPTable(4);
         content.addCell(primera);
         content.addCell(segunda);
         content.addCell(tercer);
         content.addCell(cuarta);
-        content.setTotalWidth(new float[] {25,25,25,25});
+        content.setTotalWidth(size);
         content.setWidthPercentage(100);
         return celda(content);
     }
