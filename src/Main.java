@@ -1,5 +1,7 @@
 import Formatos.*;
+import Formatos.Estadisticas.EstadisticaAsistenciaSocialPDF;
 import Formatos.Estadisticas.EstadisticaInvolucradosPDF;
+import Formatos.Estadisticas.EstadisticaVulneracionesPDF;
 import Informacion.*;
 import com.itextpdf.text.DocumentException;
 import org.omg.CORBA.TRANSACTION_MODE;
@@ -374,7 +376,9 @@ public class Main {
 //            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
 //            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new InvolucradosPDF("INVOLUCRADOS_EXPEDIENTE", "F:\\Downloads\\DIF\\", new InvolucradosData());
-            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+//            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+//            new EstadisticaAsistenciaSocialPDF("ESTADISTICAS_ASISTENCIA_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+            new EstadisticaVulneracionesPDF("ESTADISTICAS_VULNERACIONES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

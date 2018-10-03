@@ -14,6 +14,9 @@ public class EstadisticaTrabajoSocialData {
     private String[] datos_primera_t3 = {"", "", "", "", "", "", "", "", ""};
     private String[] datos_segunda_t3 = {"", "", "", "", "", "", "", "", ""};
     private String[] datos_tercera_t3 = {"", "", "", "", "", "", "", "", ""};
+
+    private ArrayList<String[]> vulneraciones_tabla_uno = new ArrayList<>();
+
     public EstadisticaTrabajoSocialData() { }
 
     public String[] getDatos_mpales() {
@@ -46,6 +49,13 @@ public class EstadisticaTrabajoSocialData {
     }
     public void setDatos_tercera_t3(String[] datos_tercera_t3) {
         this.datos_tercera_t3 = datos_tercera_t3;
+    }
+
+    public ArrayList<String[]> getVulneraciones_tabla_uno() {
+        this.vulneraciones_tabla_uno.add(getPRIMERAVEZ_T3());
+        this.vulneraciones_tabla_uno.add(getSUBSECUENTE_T3());
+        this.vulneraciones_tabla_uno.add(getSEGUIMIENTO_T3());
+        return vulneraciones_tabla_uno;
     }
 
     public String[] getPMNNA() {
@@ -114,4 +124,83 @@ public class EstadisticaTrabajoSocialData {
                 datos_involucrados_desconocido[0], datos_involucrados_desconocido[1]};
     }
 
+    // INGRESOS Y EGRESOS A CENTROS DE ASISTENCIA SOLCIAL
+    // INRGESOS
+    private ArrayList<String[]> ingresos_centros = new ArrayList<>();
+    private String[] datos_ingresos_micasa = {"","","",""};
+    private String[] datos_ingresos_casahogar = {"","","",""};
+    private String[] datos_ingresos_total = {"","","",""};
+
+    public ArrayList<String[]> getIngresos_centros() {
+        this.ingresos_centros.add(getDatos_ingresos_micasa());
+        this.ingresos_centros.add(getDatos_ingresos_casahogar());
+        this.ingresos_centros.add(getDatos_ingresos_total());
+        return ingresos_centros;
+    }
+    public void setDatos_ingresos_casahogar(String[] datos_ingresos_casahogar) {
+        this.datos_ingresos_casahogar = datos_ingresos_casahogar;
+    }
+    public void setDatos_ingresos_micasa(String[] datos_ingresos_micasa) {
+        this.datos_ingresos_micasa = datos_ingresos_micasa;
+    }
+
+    public String[] getDatos_ingresos_micasa() {
+        return new String[] {"MI CASA",
+                datos_ingresos_micasa[0], datos_ingresos_micasa[1], datos_ingresos_micasa[2], datos_ingresos_micasa[3]};
+    }
+    public String[] getDatos_ingresos_casahogar() {
+        return new String[] {"CASA HOGAR",
+                datos_ingresos_casahogar[0], datos_ingresos_casahogar[1], datos_ingresos_casahogar[2], datos_ingresos_casahogar[3]};
+    }
+    public String[] getDatos_ingresos_total() {
+        return new String[] {"TOTAL",
+                autoSuma(this.getDatos_ingresos_casahogar()[1], this.getDatos_ingresos_micasa()[1]),
+                autoSuma(this.getDatos_ingresos_casahogar()[2], this.getDatos_ingresos_micasa()[2]),
+                autoSuma(this.getDatos_ingresos_casahogar()[3], this.getDatos_ingresos_micasa()[3]),
+                autoSuma(this.getDatos_ingresos_casahogar()[4], this.getDatos_ingresos_micasa()[4]),
+        };
+    }
+
+    // EGRESOS
+    private ArrayList<String[]> egresos_centros = new ArrayList<>();
+    private String[] datos_egresos_micasa = {"","","",""};
+    private String[] datos_egresos_casahogar = {"","","",""};
+    private String[] datos_egresos_total = {"","","",""};
+
+    public ArrayList<String[]> getEgresos_centros() {
+        this.egresos_centros.add(getDatos_egresos_micasa());
+        this.egresos_centros.add(getDatos_egresos_casahogar());
+        this.egresos_centros.add(getDatos_egresos_total());
+        return egresos_centros;
+    }
+    public void setDatos_egresos_casahogar(String[] datos_egresos_casahogar) {
+        this.datos_egresos_casahogar = datos_egresos_casahogar;
+    }
+    public void setDatos_egresos_micasa(String[] datos_egresos_micasa) {
+        this.datos_egresos_micasa = datos_egresos_micasa;
+    }
+
+    public String[] getDatos_egresos_micasa() {
+        return new String[] {"MI CASA",
+                datos_egresos_micasa[0], datos_egresos_micasa[1], datos_egresos_micasa[2], datos_egresos_micasa[3]};
+    }
+    public String[] getDatos_egresos_casahogar() {
+        return new String[] {"CASA HOGAR",
+                datos_egresos_casahogar[0], datos_egresos_casahogar[1], datos_egresos_casahogar[2], datos_egresos_casahogar[3]};
+    }
+    public String[] getDatos_egresos_total() {
+        return new String[] {"TOTAL",
+                autoSuma(this.getDatos_egresos_casahogar()[1], this.getDatos_egresos_micasa()[1]),
+                autoSuma(this.getDatos_egresos_casahogar()[2], this.getDatos_egresos_micasa()[2]),
+                autoSuma(this.getDatos_egresos_casahogar()[3], this.getDatos_egresos_micasa()[3]),
+                autoSuma(this.getDatos_egresos_casahogar()[4], this.getDatos_egresos_micasa()[4]),
+        };
+    }
+
+
+    private static String autoSuma(String a, String b){
+        int x = Integer.parseInt((a.equals(""))? "0": a);
+        int y = Integer.parseInt((b.equals(""))? "0": b);
+        return String.valueOf(x + y);
+    }
 }

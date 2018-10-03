@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="828cdf13-85c6-4238-abe2-ee41dbe30833" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaVulneracionesPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/EstadisticaTrabajoSocialPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/EstadisticaTrabajoSocialPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/Estadisticas/EstadisticaInvolucradosPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pdfdifdurango/Formatos/Estadisticas/EstadisticaInvolucradosPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pdfdifdurango/Informacion/EstadisticaTrabajoSocialData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pdfdifdurango/Informacion/EstadisticaTrabajoSocialData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pdfdifdurango/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pdfdifdurango/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Design/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Design/Default.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaAsistenciaSocialPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaAsistenciaSocialPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,35 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EstadisticaTrabajoSocialPDF.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EstadisticaInvolucradosPDF.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Default.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="604" column="13" lean-forward="true" selection-start-line="604" selection-start-column="13" selection-end-line="604" selection-end-column="13" />
+            <state relative-caret-position="223">
+              <caret line="635" column="35" selection-start-line="635" selection-start-column="35" selection-end-line="635" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,8 +40,8 @@
       <file leaf-file-name="EstadisticaTrabajoSocialData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="114" column="5" lean-forward="true" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+            <state relative-caret-position="-306">
+              <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
               <folding>
                 <element signature="method#getPMNNA#0;class#EstadisticaTrabajoSocialData#0" />
                 <element signature="method#getMPALES#0;class#EstadisticaTrabajoSocialData#0" />
@@ -74,6 +58,18 @@
                 <element signature="method#getDatos_involucrados_hombre#0;class#EstadisticaTrabajoSocialData#0" />
                 <element signature="method#getDatos_involucrados_mujer#0;class#EstadisticaTrabajoSocialData#0" />
                 <element signature="method#getDatos_involucrados_desconocido#0;class#EstadisticaTrabajoSocialData#0" />
+                <element signature="e#6450#6548#0" />
+                <element signature="e#6168#6316#0" />
+                <element signature="e#6321#6457#0" />
+                <element signature="e#6588#6689#0" />
+                <element signature="e#6804#7019#0" />
+                <element signature="e#6780#7286#0" />
+                <element signature="e#7677#7945#0" />
+                <element signature="e#7668#7812#0" />
+                <element signature="e#7817#7949#0" />
+                <element signature="e#8246#8457#0" />
+                <element signature="e#8462#8691#0" />
+                <element signature="e#8696#9198#0" />
               </folding>
             </state>
           </provider>
@@ -82,8 +78,32 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="375" column="37" lean-forward="true" selection-start-line="375" selection-start-column="37" selection-end-line="375" selection-end-column="37" />
+            <state relative-caret-position="536">
+              <caret line="380" column="71" selection-start-line="380" selection-start-column="71" selection-end-line="380" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EstadisticaTrabajoSocialPDF.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EstadisticaVulneracionesPDF.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaVulneracionesPDF.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="103" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,11 +159,13 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Formatos/RecepcionReportePDF.java" />
         <option value="$PROJECT_DIR$/src/Formatos/TrabajoSocialPDF.java" />
-        <option value="$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java" />
         <option value="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java" />
-        <option value="$PROJECT_DIR$/src/Design/Default.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaAsistenciaSocialPDF.java" />
+        <option value="$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java" />
         <option value="$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Design/Default.java" />
+        <option value="$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaVulneracionesPDF.java" />
       </list>
     </option>
   </component>
@@ -153,7 +175,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="27" />
     <option name="width" value="1366" />
     <option name="height" value="741" />
@@ -379,7 +401,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -387,20 +409,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Informacion/Familia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Formatos/AnexoUnoPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3740">
-          <caret line="229" column="1" selection-start-line="229" selection-start-column="1" selection-end-line="229" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4709">
@@ -880,17 +888,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="61" column="23" lean-forward="true" selection-end-line="63" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaAsistenciaSocialPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="375" column="37" lean-forward="true" selection-start-line="375" selection-start-column="37" selection-end-line="375" selection-end-column="37" />
+        <state relative-caret-position="536">
+          <caret line="380" column="71" selection-start-line="380" selection-start-column="71" selection-end-line="380" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="635" column="35" selection-start-line="635" selection-start-column="35" selection-end-line="635" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Informacion/EstadisticaTrabajoSocialData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="114" column="5" lean-forward="true" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+        <state relative-caret-position="-306">
+          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
           <folding>
             <element signature="method#getPMNNA#0;class#EstadisticaTrabajoSocialData#0" />
             <element signature="method#getMPALES#0;class#EstadisticaTrabajoSocialData#0" />
@@ -907,34 +955,26 @@
             <element signature="method#getDatos_involucrados_hombre#0;class#EstadisticaTrabajoSocialData#0" />
             <element signature="method#getDatos_involucrados_mujer#0;class#EstadisticaTrabajoSocialData#0" />
             <element signature="method#getDatos_involucrados_desconocido#0;class#EstadisticaTrabajoSocialData#0" />
+            <element signature="e#6450#6548#0" />
+            <element signature="e#6168#6316#0" />
+            <element signature="e#6321#6457#0" />
+            <element signature="e#6588#6689#0" />
+            <element signature="e#6804#7019#0" />
+            <element signature="e#6780#7286#0" />
+            <element signature="e#7677#7945#0" />
+            <element signature="e#7668#7812#0" />
+            <element signature="e#7817#7949#0" />
+            <element signature="e#8246#8457#0" />
+            <element signature="e#8462#8691#0" />
+            <element signature="e#8696#9198#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Design/Default.java">
+    <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaVulneracionesPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="604" column="13" lean-forward="true" selection-start-line="604" selection-start-column="13" selection-end-line="604" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Formatos/Estadisticas/EstadisticaInvolucradosPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Formatos/EstadisticaTrabajoSocialPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+        <state relative-caret-position="155">
+          <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="103" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

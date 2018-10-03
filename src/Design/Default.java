@@ -198,7 +198,7 @@ public class Default {
 
     public static PdfPCell rellenoColor(String texto, int color, int align) {
         PdfPCell cell = celda(texto, NORMAL, align, new int[] {255,255,255}, 9);
-        cell.setFixedHeight(15);
+//        cell.setFixedHeight(30);
         cell.setBorder(0);
         cell.setBackgroundColor(new BaseColor(color));
         return cell;
@@ -229,6 +229,14 @@ public class Default {
         cell.setFixedHeight(1);
         cell.setBorder(0);
         cell.setBackgroundColor(new BaseColor(HEXA_AZUL));
+        return cell;
+    }
+
+    public static PdfPCell rellenoColor(int color) {
+        PdfPCell cell = celda(" ", NORMAL, Element.ALIGN_RIGHT, new int[] {255,255,255}, 9);
+        cell.setFixedHeight(1);
+        cell.setBorder(0);
+        cell.setBackgroundColor(new BaseColor(color));
         return cell;
     }
 
@@ -415,11 +423,35 @@ public class Default {
         return celda(content);
     }
 
+    public static PdfPCell celdaTripleBackground(PdfPCell derecha, PdfPCell centro, PdfPCell izquierda, float[] size, int color) throws DocumentException {
+        PdfPTable content = new PdfPTable(3);
+        derecha.setBackgroundColor(new BaseColor(color));
+        centro.setBackgroundColor(new BaseColor(color));
+        izquierda.setBackgroundColor(new BaseColor(color));
+        content.addCell(derecha);
+        content.addCell(centro);
+        content.addCell(izquierda);
+        content.setWidthPercentage(100);
+        content.setTotalWidth(size);
+        return celda(content);
+    }
+
     public static PdfPCell celdaTriple(PdfPCell derecha, PdfPCell centro, PdfPCell izquierda) throws DocumentException {
         PdfPTable content = new PdfPTable(3);
         content.addCell(derecha);
         content.addCell(centro);
         content.addCell(izquierda);
+        content.setWidthPercentage(100);
+        return celda(content);
+    }
+
+    public static PdfPCell celdaCuadruple(PdfPCell primera, PdfPCell segunda, PdfPCell tercer, PdfPCell cuarta) throws DocumentException {
+        PdfPTable content = new PdfPTable(4);
+        content.addCell(primera);
+        content.addCell(segunda);
+        content.addCell(tercer);
+        content.addCell(cuarta);
+        content.setTotalWidth(new float[] {25,25,25,25});
         content.setWidthPercentage(100);
         return celda(content);
     }
@@ -482,6 +514,14 @@ public class Default {
         cell.setBorder(2);
         cell.setHorizontalAlignment(posicion);
         cell.setBorderColor(COLOR_AZUL);
+        return cell;
+    }
+
+    public static PdfPCell celdaBorderButtomRosa(String texto, Font fuente, int posicion) {
+        PdfPCell cell = new PdfPCell(new Paragraph(new Chunk(texto, fuente)));
+        cell.setBorder(2);
+        cell.setHorizontalAlignment(posicion);
+        cell.setBorderColor(COLOR_ROSA);
         return cell;
     }
 

@@ -28,7 +28,6 @@ public class EstadisticaTrabajoSocialPDF {
         document.add(getTitle());
         document.add(getTablaUno(data.getPMNNA(), data.getMPALES()));
         document.add(getTablaDos(data.getPRIMERAVEZ_T2(), data.getSUBSECUENTE_T2(), data.getSEGUIMIENTO_T2()));
-        document.add(getTablaTres(data.getPRIMERAVEZ_T3(), data.getSUBSECUENTE_T3(), data.getSEGUIMIENTO_T3()));
         document.add(getFirma(d));
         document.close();
 
@@ -91,17 +90,6 @@ public class EstadisticaTrabajoSocialPDF {
         content.addCell(celda(table));
         content.setWidthPercentage(100);
         return content;
-    }
-
-    private PdfPTable getTablaTres(String[] PRIMERAVEZ, String[] SUBSECUENTE, String[] SEGUIMIENTO) throws DocumentException {
-        String[] titulo = new String[] {"VALORACIÓN", "OC", "FISICO", "PSIC EM", "EB SEX", "G Y C", "AM FAB", "RIES", "REINT", "OTRO"};
-        ArrayList<String[]> datos = new ArrayList<>();
-        datos.add(PRIMERAVEZ);
-        datos.add(SUBSECUENTE);
-        datos.add(SEGUIMIENTO);
-        PdfPTable table = Default.generarTabla(titulo, datos);
-
-        return table;
     }
 
     private PdfPTable getFirma(TrabajadorData t) {
