@@ -199,13 +199,20 @@ public class EstadisticaTrabajoSocialData {
 
     // VULNERACIONES
     private ArrayList<EstadisticaVulneracionesData> vulneraciones = new ArrayList<>();
-
     public ArrayList<EstadisticaVulneracionesData> getVulneraciones() {
         return vulneraciones;
     }
-
     public void setVulneraciones(ArrayList<EstadisticaVulneracionesData> vulneraciones) {
         this.vulneraciones = vulneraciones;
+    }
+
+    // ESTADISTICA EXPEDIENTES
+    private ArrayList<EstadisticaExpendientesData> expendientesData = new ArrayList<>();
+    public ArrayList<EstadisticaExpendientesData> getExpendientesData() {
+        return expendientesData;
+    }
+    public void setExpendientesData(ArrayList<EstadisticaExpendientesData> expendientesData) {
+        this.expendientesData = expendientesData;
     }
 
     private static String autoSuma(String a, String b){

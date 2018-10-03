@@ -250,7 +250,7 @@ public class Default {
 
     public static PdfPCell rellenoColor(String texto, int fondo,Font fuente, int posicion) {
         PdfPCell cell = celda(texto, fuente, posicion);
-        cell.setFixedHeight(15);
+//        cell.setFixedHeight(15);
         cell.setBorder(0);
         cell.setBackgroundColor(new BaseColor(fondo));
         return cell;
