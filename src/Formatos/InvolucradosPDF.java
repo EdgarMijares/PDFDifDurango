@@ -248,10 +248,8 @@ public class InvolucradosPDF {
                     Default.celdaDoble("LUGAR DE NACIMIENTO:", agresor.getLugar_nacimiento().toUpperCase(), new float[] {65, 35}),
                     new float[] {40, 60}
             ));
-            content.addCell(Default.celdaDoble(
-                    Default.celdaDoble("NACIONALIDAD", agresor.getNacionalidad(), new float[] {43, 57}),
-                    Default.celdaDoble("ESTADO CIVIL", agresor.getEstado_civil(), new float[] {43, 57})
-            ));
+            Default.celdaDobleChica("NACIONALIDAD", agresor.getNacionalidad(), new float[] {20, 80});
+
             content.addCell(Default.celdaTriple(
                     Default.celdaDoble("RELIGIÓN:", agresor.getNacionalidad(), new float[] {50,50}),
                     Default.celdaDoble("IDIOMA:", agresor.getIdioma(), new float[] {35,65}),
