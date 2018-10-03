@@ -80,7 +80,7 @@ public class EstadisticaExpedientesPDF {
     public static PdfPTable generarTablaExpedientes(String[] titulo, ArrayList<EstadisticaExpendientesData> datos) throws DocumentException {
         PdfPTable table = new PdfPTable(titulo.length);
         for (String t : titulo) {
-            table.addCell(Default.rellenoColor(t, Default.HEXA_AZUL, Default.TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
+            table.addCell(Default.rellenoColor(t, Default.HEXA_AZUL, Default.TITULO_CHICA_BLANCO, Element.ALIGN_LEFT));
         }
         for (EstadisticaExpendientesData t : datos){
             table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
