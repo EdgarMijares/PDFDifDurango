@@ -14,7 +14,7 @@ public class EstadisticaExpendientesData {
 
     public EstadisticaExpendientesData(String asesor, String comprobados, String no_comprobados,
                                        String falsos, String no_favorable, String favorable, String antes_actualizados,
-                                       String actualizados, String sin_resultado, String total_asignados) {
+                                       String actualizados, String sin_resultado) {
         this.asesor = asesor;
         this.comprobados = comprobados;
         this.no_comprobados = no_comprobados;
@@ -24,7 +24,6 @@ public class EstadisticaExpendientesData {
         this.antes_actualizados = antes_actualizados;
         this.actualizados = actualizados;
         this.sin_resultado = sin_resultado;
-        this.total_asignados = total_asignados;
     }
 
     public void setAsesor(String asesor) {
@@ -83,7 +82,8 @@ public class EstadisticaExpendientesData {
         return sin_resultado;
     }
     public String getTotal_asignados() {
-        return total_asignados;
+        return sumar(getComprobados(), getNo_comprobados(), getFalsos(), getNo_favorable(), getFavorable(),
+                getAntes_actualizados(), getActualizados(), getSin_resultado());
     }
 
     private String sumar(String a, String b, String c, String d, String e, String f, String g, String h) {
