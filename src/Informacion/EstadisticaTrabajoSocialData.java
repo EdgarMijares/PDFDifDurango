@@ -215,6 +215,15 @@ public class EstadisticaTrabajoSocialData {
         this.expendientesData = expendientesData;
     }
 
+    // ESTADISITCA REPORTES MUNICIPIO
+    private ArrayList<ReportesMunicipiosData> municipiosData = new ArrayList<>();
+    public ArrayList<ReportesMunicipiosData> getMunicipiosData() {
+        return municipiosData;
+    }
+    public void setMunicipiosData(ArrayList<ReportesMunicipiosData> municipiosData) {
+        this.municipiosData = municipiosData;
+    }
+
     private static String autoSuma(String a, String b){
         int x = Integer.parseInt((a.equals(""))? "0": a);
         int y = Integer.parseInt((b.equals(""))? "0": b);

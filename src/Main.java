@@ -1,8 +1,5 @@
 import Formatos.*;
-import Formatos.Estadisticas.EstadisticaAsistenciaSocialPDF;
-import Formatos.Estadisticas.EstadisticaExpedientesPDF;
-import Formatos.Estadisticas.EstadisticaInvolucradosPDF;
-import Formatos.Estadisticas.EstadisticaVulneracionesPDF;
+import Formatos.Estadisticas.*;
 import Informacion.*;
 import com.itextpdf.text.DocumentException;
 import org.omg.CORBA.TRANSACTION_MODE;
@@ -384,6 +381,14 @@ public class Main {
         expedientes.add(epe1);
         estadisticaTrabajoSocialData.setExpendientesData(expedientes);
 
+        // REPORTES MUNICIOPIO
+        ArrayList<ReportesMunicipiosData> municipio = new ArrayList<>();
+        ReportesMunicipiosData mun1 = new ReportesMunicipiosData(
+                "Durango", "1", "1", "1"
+        );
+        municipio.add(mun1);
+        estadisticaTrabajoSocialData.setMunicipiosData(municipio);
+
         try {
 //            new ResumenPsicologicoPDF("RESUMEN_PSICOLOGICO","F:\\Downloads\\DIF\\", 0, resumenPsicologico);
 //            new InformeClinicoPDF("INFORME_CLINICO","F:\\Downloads\\DIF\\", 0, informeClinicoData);
@@ -398,7 +403,8 @@ public class Main {
 //            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaAsistenciaSocialPDF("ESTADISTICAS_ASISTENCIA_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaVulneracionesPDF("ESTADISTICAS_VULNERACIONES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
-            new EstadisticaExpedientesPDF("ESTADISTICAS_EXPEDIETNES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+//            new EstadisticaExpedientesPDF("ESTADISTICAS_EXPEDIETNES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+            new ReportesMunicipiosPDF("REPORTE_MUNICIPIO", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
