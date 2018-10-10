@@ -83,7 +83,8 @@ public class EstadisticaExpedientesPDF {
             table.addCell(Default.rellenoColor(t, Default.HEXA_AZUL, Default.TITULO_CHICA_BLANCO, Element.ALIGN_CENTER));
         }
         for (EstadisticaExpendientesData t : datos){
-            table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_LEFT));
+            table.addCell(Default.celdaBorderButtomAzul(t.getAsesor(), Default.NORMAL_CHICA, Element.ALIGN_LEFT));
+            table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getNo_comprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getFalsos(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getNo_favorable(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));

@@ -376,11 +376,11 @@ public class Main {
         estadisticaTrabajoSocialData.setVulneraciones(vulneraciones);
 
         // EXPEDIENTES
+        ArrayList<EstadisticaExpendientesData> expedientes = new ArrayList<>();
         EstadisticaExpendientesData epe1 = new EstadisticaExpendientesData(
                 "Nombre asesor", "1", "1", "1", "1",
                 "1", "2", "1", "1"
         );
-        ArrayList<EstadisticaExpendientesData> expedientes = new ArrayList<>();
         expedientes.add(epe1);
         estadisticaTrabajoSocialData.setExpendientesData(expedientes);
 
@@ -395,7 +395,7 @@ public class Main {
 //            new TrabajoSocialPDF("ANEXO_DOS", "F:\\Downloads\\DIF\\", data);
 //            new EstadisticaTrabajoSocialPDF("ESTADISTICAS_TRABAJO_SOCIAL", "F:\\Downloads\\DIF\\",estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new InvolucradosPDF("INVOLUCRADOS_EXPEDIENTE", "F:\\Downloads\\DIF\\", new InvolucradosData());
-            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+//            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaAsistenciaSocialPDF("ESTADISTICAS_ASISTENCIA_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaVulneracionesPDF("ESTADISTICAS_VULNERACIONES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
             new EstadisticaExpedientesPDF("ESTADISTICAS_EXPEDIETNES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
