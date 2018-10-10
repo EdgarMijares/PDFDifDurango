@@ -403,8 +403,9 @@ public class Main {
 //            new EstadisticaInvolucradosPDF("ESTADISTICAS_INVOLUCRADOS", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaAsistenciaSocialPDF("ESTADISTICAS_ASISTENCIA_SOCIAL", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
 //            new EstadisticaVulneracionesPDF("ESTADISTICAS_VULNERACIONES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
-//            new EstadisticaExpedientesPDF("ESTADISTICAS_EXPEDIETNES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
-            new ReportesMunicipiosPDF("REPORTE_MUNICIPIO", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+            new EstadisticaExpedientesPDF("ESTADISTICAS_EXPEDIETNES", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData,
+                    "Primer periodo: 10/10/1994 - 11/10/1994", "Segundo periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
+//            new ReportesMunicipiosPDF("REPORTE_MUNICIPIO", "F:\\Downloads\\DIF\\", estadisticaTrabajoSocialData, "Periodo: 10/10/1994 - 11/10/1994", new TrabajadorData("Nombre"));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

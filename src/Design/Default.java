@@ -71,6 +71,20 @@ public class Default {
             this.tableHeight = this.table.getTotalHeight();
         }
 
+        public HeaderTable(PdfPTable table,String izquierda, String derecha, boolean v) throws IOException, BadElementException {
+            this.table = new PdfPTable(1);
+            PdfPTable c = new PdfPTable(2);
+            c.addCell(rellenoColor(izquierda, HEXA_AZUL, Element.ALIGN_CENTER));
+            c.addCell(rellenoColor(derecha, HEXA_AZUL, Element.ALIGN_CENTER));
+            c.setWidthPercentage(100);
+            this.table.addCell(celda(table));
+            this.table.addCell(celda(c));
+
+            this.table.setTotalWidth(770);
+            this.table.setLockedWidth(true);
+            this.tableHeight = this.table.getTotalHeight();
+        }
+
         public float getTableHeight() {
             return tableHeight;
         }

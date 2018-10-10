@@ -17,8 +17,9 @@ import java.util.ArrayList;
 
 public class EstadisticaExpedientesPDF {
 
-    public EstadisticaExpedientesPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data, String periodo, TrabajadorData d) throws IOException, DocumentException {
-        Default.HeaderTable header = new Default.HeaderTable(getHeader(), periodo, true);
+    public EstadisticaExpedientesPDF (String nombre_reporte, String url_reporte, EstadisticaTrabajoSocialData data,
+                                      String primer_periodo, String segundo_periodo, TrabajadorData d) throws IOException, DocumentException {
+        Default.HeaderTable header = new Default.HeaderTable(getHeader(), primer_periodo, segundo_periodo, true);
 
         Document document = new Document(PageSize.A4.rotate(), 30, 30, header.getTableHeight(), 30);
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(url_reporte + nombre_reporte + ".pdf"));
@@ -34,19 +35,6 @@ public class EstadisticaExpedientesPDF {
         Desktop.getDesktop().open(new File(url_reporte + nombre_reporte + ".pdf"));
     }
 
-    private PdfPTable getTabla(EstadisticaTrabajoSocialData data) throws DocumentException {
-        PdfPTable content = new PdfPTable(1);
-
-        content.addCell(Default.celda(generarTablaExpedientes(
-                new String[] {"ASESOR JURÍDICO", "COMPROBADOS", "NO COMPROBADOS", "FALSOS",
-                        "NO FAVORABLE", "FAVORABLE", "ANTES ACTUALIZADOS", "ACTUALIZADOS", "SIN RESULTADO", "TOTAL ASIGNADOS"},
-                    data.getExpendientesData()
-                )));
-        content.setWidthPercentage(100);
-
-        return content;
-    }
-
     private PdfPTable getHeader() throws IOException, BadElementException {
         PdfPTable content = new PdfPTable(2);
 
@@ -60,11 +48,25 @@ public class EstadisticaExpedientesPDF {
         return content;
     }
 
-    public PdfPTable getTitle() {
+    private PdfPTable getTabla(EstadisticaTrabajoSocialData data) throws DocumentException {
         PdfPTable content = new PdfPTable(1);
 
-        content.addCell(Default.celda());
+        content.addCell(Default.celda(generarTablaExpedientes(
+                new String[] {"ASESOR JURÍDICO", "COMPROBADOS", "NO COMPROBADOS", "FALSOS",
+                        "NO FAVORABLE", "FAVORABLE", "ANTES ACTUALIZADOS", "ACTUALIZADOS", "SIN RESULTADO", "TOTAL ASIGNADOS"},
+                    data.getExpendientesData()
+                )));
+        content.setWidthPercentage(100);
+
+        return content;
+    }
+
+    private PdfPTable getTitle() {
+        PdfPTable content = new PdfPTable(1);
+
+        content.addCell(Default.celda(5));
         content.addCell(Default.celda("EXPEDIENTES ASIGNADOS", Default.TITULO, Element.ALIGN_CENTER));
+        content.addCell(Default.celda(5));
 
         return content;
     }
@@ -97,7 +99,6 @@ public class EstadisticaExpedientesPDF {
         table.setTotalWidth(new float[] {22,10,10,6,8,8,10,10,8,8});
         table.setWidthPercentage(100);
         PdfPTable content = new PdfPTable(1);
-        content.addCell(Default.celda());
         content.addCell(Default.celda(table));
         content.setWidthPercentage(100);
         return content;
