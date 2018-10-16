@@ -82,20 +82,14 @@ public class EstadisticaExpendientesData {
         return sin_resultado;
     }
     public String getTotal_asignados() {
-        return sumar(getComprobados(), getNo_comprobados(), getFalsos(), getNo_favorable(), getFavorable(),
-                getAntes_actualizados(), getActualizados(), getSin_resultado());
+        return sumar(getAntes_actualizados(), getActualizados(), getSin_resultado());
     }
 
-    private String sumar(String a, String b, String c, String d, String e, String f, String g, String h) {
-        int m = Integer.parseInt((a.equals("")? "0": a));
-        int n = Integer.parseInt((a.equals("")? "0": b));
-        int o = Integer.parseInt((a.equals("")? "0": c));
-        int p = Integer.parseInt((a.equals("")? "0": d));
-        int q = Integer.parseInt((a.equals("")? "0": e));
-        int r = Integer.parseInt((a.equals("")? "0": f));
-        int s = Integer.parseInt((a.equals("")? "0": g));
-        int t = Integer.parseInt((a.equals("")? "0": h));
+    private String sumar(String a, String b, String c) {
+        int m = Integer.parseInt((a.equals("") ? "0" : a));
+        int n = Integer.parseInt((a.equals("") ? "0" : b));
+        int o = Integer.parseInt((a.equals("") ? "0" : c));
 
-        return String.valueOf(m + n + o + p + q+ r + s + t);
+        return String.valueOf(m + n + o);
     }
 }

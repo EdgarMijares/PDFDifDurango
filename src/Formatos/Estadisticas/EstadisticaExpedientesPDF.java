@@ -53,7 +53,7 @@ public class EstadisticaExpedientesPDF {
 
         content.addCell(Default.celda(generarTablaExpedientes(
                 new String[] {"ASESOR JURÍDICO", "COMPROBADOS", "NO COMPROBADOS", "FALSOS",
-                        "NO FAVORABLE", "FAVORABLE", "ANTES ACTUALIZADOS", "ACTUALIZADOS", "SIN RESULTADO", "TOTAL ASIGNADOS"},
+                        "FAVORABLE", "NO FAVORABLE", "ACTUALIZADOS", "ANTES ACTUALIZADOS", "SIN RESULTADO", "TOTAL ASIGNADOS"},
                     data.getExpendientesData()
                 )));
         content.setWidthPercentage(100);
@@ -89,10 +89,10 @@ public class EstadisticaExpedientesPDF {
             table.addCell(Default.celdaBorderButtomAzul(t.getComprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getNo_comprobados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getFalsos(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(Default.celdaBorderButtomAzul(t.getNo_favorable(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getFavorable(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
-            table.addCell(Default.celdaBorderButtomAzul(t.getAntes_actualizados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtomAzul(t.getNo_favorable(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getActualizados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
+            table.addCell(Default.celdaBorderButtomAzul(t.getAntes_actualizados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getSin_resultado(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
             table.addCell(Default.celdaBorderButtomAzul(t.getTotal_asignados(), Default.NORMAL_CHICA, Element.ALIGN_CENTER));
         }
